@@ -1,0 +1,161 @@
+{% load staticfiles %}
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <!--<link rel="icon" href="../../../../favicon.ico">-->
+
+    <title>Event Cube Demo</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="{% static "bootstrap-3.4.0-dist/css/bootstrap.min.css" %}" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="{% static "css/album.css" %}" rel="stylesheet">
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="{% static "js/jquery-3.3.1.min.js" %}"></script>
+    <script src="{% static "js/popper.min.js" %}"></script>
+    <script src="{% static "bootstrap-3.4.0-dist/js/bootstrap.min.js" %}"></script>
+    <script src="{% static "js/holder.min.js" %}"></script>
+
+
+    <!-- Following code are for the update version -->
+    <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"> -->
+  
+ 
+    <!-- <link href="{% static 'update/vendor/fontawesome-free/css/all.min.css' %}" rel="stylesheet" type="text/css"> -->
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+  
+ 
+     <link href="{% static 'update/vendor/datatables/dataTables.bootstrap4.css' %}" rel="stylesheet"> 
+     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+    <!-- <link href="{% static 'update/css/sb-admin.min.css' %}" rel="stylesheet"> -->
+    <script src="http://d3js.org/d3.v3.min.js"></script>
+    <script src="https://code.jquery.com/jquery-2.2.0.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+  
+  
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  
+    <script src="https://cdn.rawgit.com/kimmobrunfeldt/progressbar.js/0.5.6/dist/progressbar.js"></script>
+    <script src="http://d3js.org/d3.v2.min.js?2.9.3"></script>   
+    <!-- <script src = "build_graph.js"></script> -->
+    <!-- Custom styles for this template-->
+
+
+    <!-- second update -->
+  <!-- Bootstrap core CSS -->
+  <link href="{% static 'navigation/vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+
+  <!-- Custom fonts for this template -->
+  <link href="https://fonts.googleapis.com/css?family=Saira+Extra+Condensed:500,700" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Muli:400,400i,800,800i" rel="stylesheet">
+  <link href="{% static 'navigation/vendor/fontawesome-free/css/all.min.css' %}" rel="stylesheet">
+
+  <!-- Custom styles for this template -->
+  <link href="{% static 'navigation/css/resume.min.css' %}" rel="stylesheet">
+ 
+    {% block extra_head %} {% endblock %}
+  </head>
+  <style>
+  .active li{
+    background-color:black!important;
+  }
+  .vertical-center {
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+  .text-primary {
+    /* color: #007bff!important; */
+  }
+  {% block extra_css %}{% endblock %}
+  </style>
+
+  <body>
+    
+    
+      <nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top" style="background: white!important;" id="sideNav">
+        <div class="navbar-collapse mt-5">
+        <a class="navbar-brand js-scroll-trigger" href="/">
+          <span class="d-block d-lg-none">Clarence Taylor</span>
+          <span class="d-none d-lg-block">
+            <img class="img-fluid img-profile mx-auto mb-2" src="{% static 'navigation/img/cube2.png' %}" alt="">
+          </span>
+        </a>
+        
+      </div>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        
+        <div class="collapse navbar-collapse"  id="navbarSupportedContent" style="magrin:0 auto;">
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link js-scroll-trigger text-dark font-weight-bold" href="/visualization/county">Country</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link js-scroll-trigger text-dark font-weight-bold"  href="/visualization/city">City</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link js-scroll-trigger text-dark font-weight-bold" href="/cube/upload">Upload</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link js-scroll-trigger text-dark font-weight-bold" href="/cube/query">Query</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link js-scroll-trigger text-dark font-weight-bold" href="#interests">Coming Soon</a>
+            </li>
+           
+          </ul>
+        </div>
+      </nav>
+     
+    
+
+    {% block content %} {% endblock content %}
+
+    
+
+    <!-- Updated Version -->
+    <script src="{% static 'update/vendor/jquery/jquery.min.js' %}"></script>
+    <script src="{% static 'update/vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+  
+    <!-- Core plugin JavaScript-->
+    <script src="{% static 'update/vendor/jquery-easing/jquery.easing.min.js' %}"></script>
+  
+    <!-- Page level plugin JavaScript-->
+    <script src="{% static 'update/vendor/chart.js/Chart.min.js' %}"></script>
+    <script src="{% static 'update/vendor/datatables/jquery.dataTables.js' %}"></script>
+    <script src="{% static 'update/vendor/datatables/dataTables.bootstrap4.js' %}"></script>
+  
+    <!-- Custom scripts for all pages-->
+    <script src="{% static 'update/js/sb-admin.min.js' %}"></script>
+  
+    <!-- Demo scripts for this page-->
+    <script src="{% static 'update/js/demo/datatables-demo.js' %}"></script>
+    <script src="{% static 'update/js/demo/chart-area-demo.js' %}"></script>
+
+    <script src="{% static 'navigation/vendor/jquery/jquery.min.js' %}"></script>
+    <script src="{% static 'navigation/vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+  
+    <!-- Plugin JavaScript -->
+    <script src="{% static 'navigation/vendor/jquery-easing/jquery.easing.min.js' %}"></script>
+  
+    <!-- Custom scripts for this template -->
+    <script src="{% static 'navigation/js/resume.min.js' %}"></script>
+  </body>
+</html>
+
+

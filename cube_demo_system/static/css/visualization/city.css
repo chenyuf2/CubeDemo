@@ -1,0 +1,40 @@
+#id-city-map { height: 720px; }
+
+.info {
+    padding: 6px 8px;
+    font: 14px/16px Arial, Helvetica, sans-serif;
+    background: white;
+    background: rgba(255,255,255,0.8);
+    box-shadow: 0 0 15px rgba(0,0,0,0.2);
+    border-radius: 5px;
+}
+.info h4 {
+    margin: 0 0 5px;
+    color: #777;
+}
+
+ul{
+  list-style-type: none;
+  display: flex;
+  padding: 0;
+}
+
+.key-phrase-li{
+  margin:auto;
+  text-align: center;
+  font-size: 2.5ex;
+}
+
+div.form-group{
+  width: 70%;
+  margin-left:2%;
+}
+
+#model_img_container{
+    width: 70%
+}
+
+#model_img_container img{
+  display: block;
+  margin:auto;
+}
