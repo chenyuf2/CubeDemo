@@ -224,7 +224,7 @@ function creategraph() {
                 //   var keywords_html = "";
                   var default_category = Object.keys(piechart_dict)[0];
                   var name2 = document.getElementById("name2");
-              name2.innerHTML = "News Details of " + default_category.toUpperCase();
+              name2.innerHTML = "News Details of " + default_category;
                   console.log(default_category);
                   var news_list = piechart_news_dict[default_category]; // This stores the news id for each clicked category;
                   var paper_detail_width = document.getElementById("paper_de").offsetWidth;
@@ -298,7 +298,7 @@ function creategraph() {
                   // helpful color to build line chart
                 
                  //Codes for building line chart
-                  var colors= ['rgb(93,165,218,', 'rgb(250,164,58,', 'rgb(96,189,104,',"rgb(241,124,176,","rgb(178,118,178,","#DECF3F"];
+                  var colors= ['rgb(93,165,218,', 'rgb(250,164,58,', 'rgb(96,189,104,',"rgb(241,124,176,","rgb(219,50,54,","#DECF3F"];
                   var linechartContainer = document.getElementById("linechartContainer");
                 linechartContainer.innerHTML='<canvas id="myLineChart"></canvas>';
                 var ctx1 = document.getElementById("myLineChart");
@@ -373,8 +373,8 @@ function creategraph() {
       for (var i = 0; i < 5; i++) {
         var temp_label = labels[i];
         var temp_data = Object.values(linechart_dict[temp_label]);
-        var easy_color = colors[i] + '0.2)';
-        var hard_color = colors[i] + '1)';
+        var easy_color = colors[i] + '0.8)';
+        var hard_color = colors[i] + '0.8)';
         var temp_label = temp_label.toUpperCase();
         myLineChart.data.datasets.push(
           {
@@ -382,10 +382,11 @@ function creategraph() {
             lineTension: 0.3,
             backgroundColor: easy_color,
             borderColor: hard_color,
-            pointRadius: 3,
+            pointRadius: 0,
             pointBackgroundColor: hard_color,
             pointBorderColor: hard_color,
             pointHoverRadius: 3,
+            borderColor:"rgb(0,0,0,0)",
             pointHoverBackgroundColor: hard_color,
             pointHoverBorderColor: hard_color,
             pointHitRadius: 10,
@@ -398,6 +399,8 @@ function creategraph() {
 
 
       //Next part is the keywords and phrases and image
+      var keyword_sentence = document.getElementById("keywords");
+      keyword_sentence.innerHTML = "";
       var key_phrase_list = [];
       var key_sentence_list=[];
       var phrase_html = "";
@@ -413,7 +416,7 @@ function creategraph() {
       }
       var paper_detail_width = document.getElementById("paper_de").offsetWidth;
       for(var key in key_phrase){
-        if(key.includes(category_name)){
+        if(key.includes(checked_button_id)){
           if(key.includes(input_time)){
             if(key.includes(input_city)){
               var content = key_phrase[key];
@@ -423,12 +426,12 @@ function creategraph() {
                 phrase_html += '<a class="list-group-item list-group-item-action flex-column align-items-start" style="border-radius:16px; width:'+(paper_detail_width*0.84).toString()+'px!important; border-style:none;"><li class="font-weight-bold text-primary" style="text-transform: uppercase;font-size:15px;">'+words.substr(0,3)+'<span class="text-dark" style="text-transform:upperclass;">'+words.substr(3,words.length)+'</span></li><li class="section-subheading text-muted font-weight-bold" style="font-size:smaller;font-family: "Droid Serif"; font-style: italic!important;">'+sentence+'</li></a>';
 
               }
+              break;
 
             }
           }
         }
-      }
-      var keyword_sentence = document.getElementById("keywords");
+      }     
       keyword_sentence.innerHTML = phrase_html;
 
 
@@ -477,10 +480,10 @@ function creategraph() {
       var image_container = document.getElementById("image_container");
       var imagegroup = document.getElementById("imagegroup");
       if (src.length != 0) {
-      image_container.innerHTML = "<img  src=" + src +" style='width:"+(imagegroup.offsetWidth*0.94).toString()+"px!important; border-radius:25px;'>";
+      image_container.innerHTML = "<img  src=" + src +" style='width:"+(imagegroup.offsetWidth*0.89).toString()+"px!important; border-radius:25px;'>";
     } else {
       var temp_src = "static/img/notfound.png";
-      image_container.innerHTML = "<img  src=" + temp_src +" style='width:"+(imagegroup.offsetWidth*0.94).toString()+"px!important; border-radius:25px;'>";
+      image_container.innerHTML = "<img  src=" + temp_src +" style='width:"+(imagegroup.offsetWidth*0.89).toString()+"px!important; border-radius:25px;'>";
     }
       var explain = document.getElementById("explain");
       if (src.length != 0) {
