@@ -4,6 +4,8 @@ var unitDate = 3
 var topicList = ['justice', 'election', 'international_relation', 'governance', 'trade', 'finance', 'tax', 'welfare', 'combat', 'weapons', 'terrorism', 'ceasefire']
 var prevPath = []
 
+
+
 function getFilledColor(fillColor, percentage){
   return "hsl("+fillColor+", "+Math.min(100, (percentage*100).toFixed(2))+"%, 60%)"
 }
@@ -158,6 +160,21 @@ function newSwitchShowAll(){
 
 
 function update(topicIndex, month) {
+  function loadJSON(callback) {
+    var xobj = new XMLHttpRequest();
+    xobj.overrideMimeType("application/json");
+    xobj.open('GET', 'cube_demo_system/static/json/total_weights.json', true);
+    xobj.onreadystatechange = function () {
+      if (xobj.readyState == 4 && xobj.status == "200") {
+        callback(JSON.parse(xobj.responseText));
+      }
+    };
+    xobj.send(null);
+
+  }
+  loadJSON(function(json) {
+    var topicWeights = json;
+    console.log(topicWeights);
     if (month === '')
         month = 'all';
 
@@ -178,6 +195,7 @@ function update(topicIndex, month) {
         let county = svgDoc.getElementById(keyArray[i]);
         county.style.fill = "hsl("+ fillColor + ", "+Math.min(100, 100*topicWeights[month][topic][keyArray[i]].toFixed(2))+"%, 67.5%)";
     }
+  });
 }
 
 

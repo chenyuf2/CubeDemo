@@ -199,6 +199,19 @@ class CountyView(TemplateView):
         with open('cube_demo_system/static/json/image_county.json') as imageFile:
             image = json.load(imageFile)
 
+        with open('cube_demo_system/static/jsonData/locations.json') as locationFile:
+            locations = json.load(locationFile)
+        with open('cube_demo_system/static/jsonData/times.json') as timeFile:
+            times = json.load(timeFile)
+        with open('cube_demo_system/static/jsonData/topics_new.json') as topicFile:
+            topics = json.load(topicFile)
+        with open('cube_demo_system/static/jsonData/fid_content_title_n.json') as titleFile:
+            titles = json.load(titleFile)
+        
+        text_file = open('cube_demo_system/static/jsonData/phrase_text_700_code.txt', "r")
+        lines = text_file.readlines()
+        
+
         return render_to_response(
             'visualization/county.html', {
                 'minDate': minDate.strftime('%B %d, %Y'),
@@ -206,14 +219,18 @@ class CountyView(TemplateView):
                 'fireData': raw,
                 'summary': summary,
                 'image': image,
-
+                'locations': locations,
                 'topicWeights': topicWeights,
                 'monthList': month_list,
                 'monthRange': len(month_list),
+                'ids': lines,
+                'topics': topics,
+                'times': times,
+                'titles': titles
 
 
             })
-
+        text_file.close()
 
 class CityView(TemplateView):
 
