@@ -7,18 +7,6 @@
 <link href='https://fonts.googleapis.com/css?family=Merriweather+Sans:800' rel='stylesheet' type='text/css'>
 <link href="https://fonts.googleapis.com/css?family=Alegreya+Sans" rel="stylesheet">
 
-
-    <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" type="text/css"/>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"> -->
-
-
-    <!-- Compiled and minified JavaScript -->
-  
-<!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script> --> 
-
     <script src="{% static 'js/visualization/county.js' %}"></script>
     <script src="{% static 'js/visualization/chart.js' %}" type="text/javascript"></script>
 
@@ -30,1052 +18,1061 @@
   <link href="{% static 'css/sb-admin-2.min.css' %}" rel="stylesheet">
   <link href="{% static 'vendor/fontawesome-free/css/all.min.css' %}" rel="stylesheet" type="text/css">
 
-<script src="https://use.fontawesome.com/1179e95335.js"></script>
+        <link href="{% static "css/leaflet.css" %}" rel="stylesheet">
+    <script src="{% static "js/jquery-1.11.1.min.js" %}"></script>
+    <script src="{% static "js/leaflet.js" %}"></script>
+{#<script src="https://use.fontawesome.com/1179e95335.js"></script>#}
 
     <script type="text/javascript">
-    
-   
 
 
-      var scrolling = null;
-      var county = null;
-      var topic = null;
-      var time = null;
-      var fireData = {{ fireData|safe }};
-      var images = {{ image|safe }};
+    console.log("entered")
+
 
       var topicWeights = {{ topicWeights|safe }};
       var monthList = {{ monthList|safe }};
       var monthRange = {{ monthRange|safe }};
-     
-      // console.log(locations);
+      var topicList = {{ topicList|safe }};
+
+
+    $( document ).ready(function() {
+
+
+          console.log("load")
+
+
+          document.getElementById("military.ceasefire").checked = false;
+
+          var geoJsonData = {{ geoJsonData|safe }};
+          var map = L.map('mapid').setView([52.60311, 39.57076], 5);
+          var geojsonFeature = geoJsonData['features'];
+
+          function styleLines(feature) {
+              var wt;
+              var col;
+              if (map.getZoom() <= 6) {
+                  wt = 2;
+              } else {
+                  wt = 10;
+              }
+              if (feature.properties.NAME_0 == "Ukraine") {
+                  return {
+                      weight: wt,
+                      opacity: .9,
+                      fillColor: "#fff",
+                      color: '#198C62'
+                  }
+              }
+              return {
+                  weight: wt,
+                  opacity: .9,
+                  fillColor: "#fff",
+                  color: '#3388ff'
+              };
+          }
+
+          var latlng = "LatLng(0, 0)";
+          var para = document.createElement("p");
+          para.id = 'latlng';
+          para.innerHTML = latlng;
+          var elements = document.getElementsByClassName("leaflet-control-attribution leaflet-control");
+          elements[0].appendChild(para);
+
+
+          function onEachFeature(feature, layer) {
+              if (feature.properties && feature.properties.NAME_0) {
+                  layer.bindPopup('<h3>' + feature.properties.NAME_1 + '</h3><p>' + feature.properties.NAME_0 + '</p>', {
+                      closeButton: false,
+                      offset: L.point(0, -20)
+                  });
+                  layer.on('mouseover', function () {
+                      layer.openPopup();
+                  });
+                  layer.on('mouseout', function () {
+                      layer.closePopup();
+                  });
+
+              }
+          };
 
 
 
-      function mapOnClick(e){
-          // console.log("laskd;fkajsd");
-        topic = document.querySelector('input[name="topic_filter"]:checked').value
-        if( !$('#show_all_checkbox').checked && topic<3){
-          var location = e.target.id.split('_')
-          location = location.slice(3, location.length).join(' ')
-          var val = $("#timeline_slider").val();
-          var minDate = new Date("{{minDate}}");
-          val = parseInt(val)
-          minDate.setDate(minDate.getDate() + val);
-          var minDateString = minDate.getMonth()+1+ "." +minDate.getDate()
-          minDate.setDate(minDate.getDate() + 2);
-          time= minDateString + "-" + (minDate.getMonth()+1)+ "." +minDate.getDate();
-          county = location
-          showModal({{ summary|safe }}, location,topic, time)
-        }
-      }
-
-        {#window.onload = function(){#}
-        {#  console.log("sdkfsdkfj")#}
-        {#    updateTimeInput({{ dateRange }},{{dateRange}}, "{{minDate}}");#}
-        {##}
-        {#var svg = document.getElementById("map_current").contentDocument;#}
-        {#console.log(svg)#}
-        {#var paths = svg.getElementsByTagName("path");#}
-        {#var polylines = svg.getElementsByTagName("polyline");#}
-        {##}
-        {#        for (var i = 0; i < paths.length; i++) {#}
-        {#                paths[i].addEventListener('click',mapOnClick , false);#}
-        {#        }#}
-        {##}
-        {#        for (var i = 0; i < polylines.length; i++) {#}
-        {#                polylines[i].addEventListener('click',mapOnClick, false);#}
-        {#        }#}
-        {##}
-        {#}#}
+          var layerGroup = L.geoJSON(geojsonFeature, {
+              style: styleLines,
+              onEachFeature: onEachFeature
+          }).addTo(map);
 
 
-      function changeTopic() {
-          var topicIndex = parseInt(document.querySelector('input[name="topic_filter"]:checked').value);
-          var newTopicIndex = (topicIndex + 1) % 4;
-          document.getElementsByName("topic_filter")[newTopicIndex].checked = true
-          document.getElementsByName("topic_filter")[newTopicIndex].onchange()
-      }
-
-      function animationOnPlay(){
-          var text = ['Start Animation', 'Stop Animation']
-          $('#animation_btn').val(1-$('#animation_btn').val())
-          var isPlaying= $('#animation_btn').val()
-          $('#animation_btn').html(text[isPlaying])
-          if(isPlaying=="1") scrolling = setInterval(changeTopic, 2000)
-          else clearInterval(scrolling);
-      }
-
-      function drillDownCity(){
-        window.location = "visualization/city?topic="+topic+"&county="+county+"&time="+time;
-      }
+          map.on("mousemove", function (event) {
+              var elm = document.getElementById("latlng");
+              elm.innerHTML = event.latlng.toString();
+          });
 
 
+          layerGroup.eachLayer(function (layer) {
+              layer.on('click', function () {
+                  console.log(this._leaflet_id)
+              });
+          });
 
 
-      // function toggleButton(radiosId, buttonId) {
-      //     let radios = document.getElementById(radiosId);
-      //     if (radios.style.display == "none") {
-      //       radios.style.display = "block";
-      //     } else {
-      //       radios.style.display = "none";
-      //     }
-
-      //     let button = document.getElementById(buttonId);
-      //     let elementDown = button.getElementsByClassName('fa-angle-down');
-      //     let elementRight = button.getElementsByClassName('fa-angle-right');
-      //     if (elementRight.length !== 0)
-      //         elementRight[0].className = 'fa fa-angle-down';
-      //     else if (elementDown.length !== 0)
-      //         elementDown[0].className = 'fa fa-angle-right';
-      // }
+          var filter = L.geoJson(geojsonFeature, {
+              filter: function (feature, layer) {
+                  return feature.properties.NAME_1 == "Luhans'k";
+              },
+          });
 
 
-      function addText(p, text) {
-        let t = document.createElementNS("http://www.w3.org/2000/svg", "text");
-        let b = p.getBBox();
-        if (text === "Moscow" || text === "Moscow Oblast") {
-            t.setAttribute("transform", "translate(" + (b.x + b.width/4) + " " + (b.y + b.height/5) + ")");
-        }
-        else if (text === "Krasnodar Krai") {
-            t.setAttribute("transform", "translate(" + (b.x + b.width/3) + " " + (b.y + 3*b.height/5) + ")");
-        }
-        else if (text === "Rostov") {
-            t.setAttribute("transform", "translate(" + (b.x + b.width/3) + " " + (b.y + b.height/2) + ")");
-        }
-        else if (text === "Lipetsk" || text === "Tambov") {
-            t.setAttribute("transform", "translate(" + (b.x + b.width/10) + " " + (b.y + b.height/2) + ")");
-        }
-        else if (text === "Leningrad") {
-            t.setAttribute("transform", "translate(" + (b.x + b.width/3) + " " + (b.y + 2*b.height/3) + ")");
-        }
-        else if (text === 'Voronezh') {
-            t.setAttribute("transform", "translate(" + (b.x + b.width/4) + " " + (b.y + b.height/3) + ")");
-        }
-        else if (text === 'Saint Petersburg') {
-            t.setAttribute("transform", "translate(" + (b.x + b.width/10) + " " + (b.y + 2*b.height/10) + ")");
-        }
-        else if (text === 'Dnipropetrovsk') {
-            t.setAttribute("transform", "translate(" + (b.x) + " " + (b.y + b.height/2) + ")");
-        }
-        else if (text === 'Sumy') {
-            t.setAttribute("transform", "translate(" + (b.x + b.width/10) + " " + (b.y + 2*b.height/3) + ")");
-        }
-        else if (text === 'Saratov') {
-            t.setAttribute("transform", "translate(" + (b.x + 2*b.width/5) + " " + (b.y + 2*b.height/5) + ")");
-        }
-        else {
-            t.setAttribute("transform", "translate(" + (b.x + b.width/4) + " " + (b.y + b.height/2) + ")");
-        }
-        t.textContent = text;
-        t.setAttribute("font-size", "13");
-        t.style.stroke = "black";
-        t.style.fill = "#000";
-        t.style.fontFamily="'Courgette', cursive";
-        {#t.classList.add("name");#}
+          function resetColor(layerGroup) {
+              layerGroup.eachLayer(function (layer) {
 
-          let map = document.getElementById("russia_ukraine_map");
-        let svgDoc = map.contentDocument;
-          let g = svgDoc.getElementById("nameTopIndex");
-        g.appendChild(t);
-
-        {#p.parentNode.insertBefore(t, p.nextSibling);#}
-
-      }
-
-      window.onload=function() {
-        let monthIdx = document.querySelector('#days').value;
-          let month = monthList[monthIdx-1];
-          document.getElementById("monthText").innerHTML = month;
-          newSwitchShowAll();
-
-          let topCountiesPath = [
-              'path37205',
-              'RU-MOS',
-              'path37245',
-              'path6791',
-              'path37160',
-              'path37177',
-              'path6527',
-              'path37198',
-              'path6488' ,
-              'path6895',
-              'path37154',
-              'RU-SPE',
-              'path37095',
-              'path37217',
-              'path37222',
-              'path37210',
-              'path37212',
-              'path6765',
-              'path6490',
-              'path6501',
-              'path6725',
-              'path6613',
-              'path6741',
-              'path6759',
-              'path6753',
-              'path6506',
-              'path6547',
-          ]
-          let topCountiesName = [
-              'Donetsk',
-              'Moscow',
-              'Kyiv',
-              'Moscow Oblast',
-              'Zaporizhia',
-              'Odessa',
-              'Saratov',
-              'Luhansk',
-              'Krasnodar Krai',
-              'Leningrad',
-              'Crimea',
-              'Saint Petersburg',
-              'Sumy',
-              'Kharkiv',
-              'Chernihiv',
-              'Poltava',
-              'Dnipropetrovsk',
-              'Bryansk',
-              'Kursk',
-              'Belgorod',
-              'Smolensk',
-              'Rostov',
-              'Kaluga',
-              'Oryol',
-              'Lipetsk',
-              'Voronezh',
-              'Tambov',
-          ]
-
-          let map = document.getElementById("russia_ukraine_map");
-          let svgDoc = map.contentDocument;
-
-          {#updateTimeInput({{ dateRange }},{{dateRange}}, "{{minDate}}");#}
-          {##}
-          {#var svg = document.getElementById("map_current").contentDocument;#}
-          {#var paths = svg.getElementsByTagName("path");#}
-          {#var polylines = svg.getElementsByTagName("polyline");#}
-          {##}
-          {#for (var i = 0; i < paths.length; i++) {#}
-          {#    paths[i].addEventListener('click',mapOnClick , false);#}
-          {#}#}
-          {##}
-          {#for (var i = 0; i < polylines.length; i++) {#}
-          {#    polylines[i].addEventListener('click',mapOnClick, false);#}
-          {#}#}
-
-          for (let i = 0; i <= topCountiesPath.length; i++) {
-              let county = svgDoc.getElementById(topCountiesPath[i]);
-              addText(county, topCountiesName[i])
+                  if (layer.feature.properties.NAME_0 == "Ukraine") {
+                      layer.setStyle({fillColor: '#fff'});
+                  } else {
+                      layer.setStyle({fillColor: '#fff'});
+                  }
+                  ;
+              });
           }
 
 
-      }
 
-  
-      function slideMonth(value) {
-          let monthIdx = document.querySelector('#days').value;
-          let month = monthList[monthIdx-1];
-          document.getElementById("monthText").innerHTML = month;
-          newSwitchShowAll();
-      }
+          function refillColor(layerGroup, month, topic) {
+              let keyArray = Object.keys(topicWeights[month][topic]);
+              let maxVal = arrayMax(Object.values(topicWeights[month][topic]));
+
+              for (let i = 0; i < keyArray.length; i++)
+                  topicWeights[month][topic][keyArray[i]] = topicWeights[month][topic][keyArray[i]] / maxVal;
+
+              layerGroup.eachLayer(function (layer) {
+                  for (var key in topicWeights[month][topic]) {
+                      if (!topicWeights[month][topic].hasOwnProperty(key)) {
+                          continue;
+                      }
+                      var fillColor = 0;
+                      if (layer.feature.properties.NAME_1 == key) {
+                          var scale_value = 20
+                          var a_value = 200 / (Math.exp(-1 * scale_value * topicWeights[month][topic][key]) + 1) - 100
+                          layer.setStyle({fillColor: "hsla(" + fillColor + ", 100%, 50%," + a_value.toFixed(2) + "%"});
+                      }
+
+                  }
+              });
+          }
+
+          function domGetTopic() {
+              var topicIndex = parseInt(document.querySelector('input[name="topic_filter"]:checked').value);
+              return topicList[topicIndex];
+          }
+
+          function domGetMonth(useTime) {
+              var monthIdx = document.getElementById("monthSlider").value;
+              var month = useTime ? monthList[monthIdx] : "all";
+              return month;
+          }
+
+
+          $(".topic").click(function () {
+              console.log("topic")
+              console.log(map.hasLayer(layerGroup))
+              resetColor(layerGroup);
+              var topic = $(this).attr('id');
+              var useTime = document.getElementById("useTime").checked;
+              var month = domGetMonth(useTime);
+              refillColor(layerGroup, month, topic);
+          });
+
+
+          $(".slider").on('input', function () {
+              resetColor(layerGroup);
+              var topic = domGetTopic();
+              var useTime = document.getElementById("useTime").checked;
+              var monthIdx = $(this).val();
+              var month = useTime ? monthList[monthIdx] : "all";
+              refillColor(layerGroup, month, topic);
+          });
+
+
+          $('input[type="checkbox"]').change(function () {
+              resetColor(layerGroup);
+              var topic = domGetTopic();
+              var useTime = $(this).is(':checked') ? true : false;
+              var month = domGetMonth(useTime);
+              refillColor(layerGroup, month, topic);
+          });
+
+          function arrayMax(arr) {
+              let len = arr.length, max = -Infinity;
+              while (len--) {
+                  if (arr[len] > max) {
+                      max = arr[len];
+                  }
+              }
+              return max;
+          };
+      })
+
+
+
+
 
 		</script>
 {% endblock %}
 
 <!-- Compiled and minified JavaScript -->
-<style>
-  
- {% block extra_css %}
- 
-   .custom-range {
-    -webkit-appearance: none;
-    height: 5px;
-    border-radius: 1px !important;
-    background: #d3d3d3;
-    outline: 0 !important;
-    opacity: 1;
-    -webkit-transition: .2s;
-    transition: opacity .2s;
-    border: none!important;
-  }
-  
-  .slider:hover {
-    opacity: 1;
-    border: none!important;
-  }
-  
-   .slider::-webkit-slider-thumb {
-    -webkit-appearance: none;
-    appearance: none;
-    width: 25px;
-    height: 25px;
-    border-radius: 50%;
-    background: #007bff;
-    cursor: pointer;
-    border: none!important;
-  } 
-  
-  .custom-range::-moz-range-thumb {
-    width: 18px;
-    height: 18px;
-    border-radius: 50%;
-    background:#007bff !important;
-    cursor: pointer;
-    border: none!important;
-  }
-  hr-sect {
-	display: flex;
-	flex-basis: 100%;
-	align-items: center;
-	color: rgba(0, 0, 0, 0.35);
-	margin: 8px 0px;
-}
-
-.strike {
-        display: block;
-        text-align: center;
-        overflow: hidden;
-        white-space: nowrap; 
-    }
-
-    .strike > p {
-        position: relative;
-        display: inline-block;
-    }
-	
-    .strike > p:before,
-    .strike > p:after {
-        content: "";
-        position: absolute;
-        top: 50%;
-        width: 9999px;
-        height: 3%;
-        background:rgba(52,58,64,0.2) ;
-    }
-
-    .strike > p:before {
-        right: 100%;
-        margin-right: 15px;
-    }
-
-    .strike > p:after {
-        left: 100%;
-        margin-left: 15px;
-    }
-
-    @import url(https://fonts.googleapis.com/css?family=Roboto:400,700);
-
-strong{
-  color: #58ba83;
-}
-.transition{
-  transition: all .3s ease-out;
-}
-
-.center-align{
-  width: 1000%;
-  height: 120%;
-}
-
-input[type="radio"]{
-  visibility: hidden;
-  height: 0;
-  width: 0;
-  cursor: pointer;
-  z-index: 2;
-}
-
-label {
-  display: table-cell;
-  vertical-align: middle;
-  text-align: center;
-  cursor: pointer;
-  background-color: white;
-  color: rgba(52,58,64,1);
-  padding: 5px 10px;
-  border-radius: 3px;
-  .transition;
-}
-input[type="radio"]:checked + label{
-  background-color: #BD5D38;
-  color: white;
-}
-.collapsible {
-  background-color:white;
-  color:  rgba(52,58,64,1);
-  cursor: pointer;
-  padding: 18px;
-  width: 33.3%;
-  border: none;
-  text-align: center !important;
-  outline: none;
-  font-size: 14px;
-}
-
-
-
-
-@import 'https://fonts.googleapis.com/css?family=Open+Sans:400,700';
-
-div h1 {
-  display: inline-block;
-  opacity: 0.0;
-  animation: port 3s 1 forwards;
-  -webkit-animation: port 3s 1 forwards;
-}
-
-div h1:nth-of-type(2){
-  animation-delay: 0.1s;
-  -webkit-animation-delay: 0.1s;
-}
-
-div h1:nth-of-type(3){
-  animation-delay: 0.2s;
-  -webkit-animation-delay: 0.2s;
-}
-
-div h1:nth-of-type(4){
-  animation-delay: 0.3s;
-  -webkit-animation-delay: 0.3s;
-}
-
-div h1:nth-of-type(5){
-  animation-delay: 0.4s;
-  -webkit-animation-delay: 0.4s;
-}
-
-div h1:nth-of-type(6){
-  animation-delay: 0.5s;
-  -webkit-animation-delay: 0.5s;
-}
-
-div h1:nth-of-type(7){
-  animation-delay: 0.6s;
-  -webkit-animation-delay: 0.6s;
-}
-
-div h1:nth-of-type(8){
-  animation-delay: 0.7s;
-  -webkit-animation-delay: 0.7s;
-}
-
-div h1:nth-of-type(9){
-  animation-delay: 0.8s;
-  -webkit-animation-delay: 0.8s;
-}
-
-div:hover h1 {
-  /* animation: reset 1s 1;
-  -webkit-animation: reset 1s 1 ; */
-}
-
-@keyframes port {
-  0%{
-    transform: rotateY(90deg) translateY(25%);
-    opacity: 0.0;
-  }
-  100%{
-    transform: rotateY(0deg) translateY(0%);
-    opacity: 1.0;
-  }
-}
-
-@-webkit-keyframes port {
-  0%{
-   -webkit-transform: rotateY(90deg) translateY(25%);
-    opacity: 0.0;
-  }
-  100%{
-    -webkit-transform: rotateY(0deg) translateY(0%);
-    opacity: 1.0;
-  }
-}
-
-
-
-
-h1{
-             font-size:25px;
-             text-align: left;
-             text-transform:capitalize;
-         }
-        .service-box{
-            position: relative;
-            overflow: hidden;
-            margin-bottom:10px;
-            perspective:1000px;
-            -webkit-perspective:1000px;
-        }
-        .service-icon{
-            width: 100%;
-            height: 240px;
-            padding: 20px;
-            text-align: center;
-            transition: all .5s ease;
-        }
-
-        .service-content{
-            position: absolute;
-            top: 0;
-            left: 0;
-            z-index: 1;
-            opacity: 0;
-            width: 100%;
-            height: 240px;
-            padding: 20px;
-            text-align: center;
-            transition: all .5s ease;
-            background-color: #FFFFFF;
-            backface-visibility:hidden;
-            transform-style: preserve-3d;
-            -webkit-transform: translateY(110px) rotateX(-90deg);
-            -moz-transform: translateY(110px) rotateX(-90deg);
-            -ms-transform: translateY(110px) rotateX(-90deg);
-            -o-transform: translateY(110px) rotateX(-90deg);
-            transform: translateY(110px) rotateX(-90deg);
-        }
-        .service-box .service-icon .front-content{
-            position: absolute;
-            top:80px;
-            -webkit-transform: translateY(-50%);
-            -moz-transform: translateY(-50%);
-            -ms-transform: translateY(-50%);
-            -o-transform: translateY(-50%);
-            transform: translateY(-50%);
-            text-align: center;
-        }
-
-        .service-box .service-icon .front-content i {
-            font-size: 28px;
-            color: #fff;
-            font-weight: normal;
-            text-align: center;
-        }
-
-        .service-box .service-icon .front-content h3 {
-            font-size: 15px;
-            color: #fff;
-            text-align: center;
-            margin-bottom: 15px;
-            text-transform: uppercase;
-        }
-        .service-box .service-content h3 {
-            font-size: 15px;
-            font-weight: 700;
-            color: black;
-            margin-bottom:10px;
-            text-transform: uppercase;
-        }
-        .service-box .service-content p {
-            font-size: 13px;
-            color: #b1b1b1;
-            margin:0;
-        }
-        .yellow{background-color: #FFFFFF;}
-        .orange{background-color: #FFFFFF;}
-        .red{background-color: #FFFFFF;}
-        .grey{background-color: #474747;}
-        .service-box:hover .service-icon{
-            opacity: 0;
-            -webkit-transform: translateY(-110px) rotateX(90deg);
-            -moz-transform: translateY(-110px) rotateX(90deg);
-            -ms-transform: translateY(-110px) rotateX(90deg);
-            -o-transform: translateY(-110px) rotateX(90deg);
-            transform: translateY(-110px) rotateX(90deg);
-        }
-        .service-box:hover .service-content {
-            opacity: 1;
-            -webkit-transform: rotateX(0);
-            -moz-transform: rotateX(0);
-            -ms-transform: rotateX(0);
-            -o-transform: rotateX(0);
-            transform: rotateX(0);
-        }
-
-        #paperdetail a {
-            position: relative;
-            display: block;
-            
-            /* border: 1px solid hotpink; */
-            padding: 40px;
-            text-align: center;
-            float: right!important;
-            margin:0 auto!important;
-            border:none!important;
-            
-            text-transform: uppercase;
-            animation: fadeIn 0.5s linear;
-            animation-fill-mode: both;
-          }
-
-          @for $i from 1 through 5 {
-          #paperdetail a:nth-child(#{$i}) {
-              animation-delay: .75s * $i;
-            }
-          }
-
-
-          @keyframes fadeIn {
-            0% {
-              opacity: 0;
-              top: 100px;
-            }
-            75% {
-              opacity: 0.5;
-              top: 0px;
-            }
-            100% {
-              opacity: 1;
-            }
-          }
-
-
-
-          @import url(https://fonts.googleapis.com/css?family=Raleway);
-
-*, *:before, *:after{
-  margin: 0;
-  padding: 0;
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing:border-box;
-  box-sizing: border-box;
-}
-
-
-.main-title{
-  color: #2d2d2d;
-  text-align: center;
-  text-transform: capitalize;
-  padding: 0.7em 0;
-}
-
-.importantcontainer{
-  padding: 1em 0;
-  float: left;
-  width: 50%;
-}
-
-.importantcontainer .title{
-  color: #1a1a1a;
-  text-align: center;
-  margin-bottom: 10px;
-}
-
-.importantcontent {
-  position: relative;
-  margin: auto;
-  overflow: hidden;
-}
-
-.importantcontent .content-overlay {
-  background: rgba(0,0,0,0.5);
-  position: absolute;
-  height: 100%;
-  width: 93%;
-  left: 0;
-  top: 0;
-  bottom: 0;
-  right: 0;
-  opacity: 0;
-  -webkit-transition: all 0.4s ease-in-out 0s;
-  -moz-transition: all 0.4s ease-in-out 0s;
-  transition: all 0.4s ease-in-out 0s;
-}
-
-.importantcontent:hover .content-overlay{
-  opacity: 1;
-}
-
-.content-image{
-  width: 100%;
-}
-
-.content-details {
-  position: absolute;
-  text-align: left;
-  font-weight: 800;
-  padding-left: 1em;
-  padding-right: 1em;
-  width: 100%;
-  top: 50%;
-  left: 50%;
-  opacity: 0;
-  -webkit-transform: translate(-50%, -50%);
-  -moz-transform: translate(-50%, -50%);
-  transform: translate(-50%, -50%);
-  -webkit-transition: all 0.3s ease-in-out 0s;
-  -moz-transition: all 0.3s ease-in-out 0s;
-  transition: all 0.3s ease-in-out 0s;
-}
-
-.importantcontent:hover .content-details{
-  top: 50%;
-  left: 50%;
-  opacity: 1;
-}
-
-.content-details h3{
-  color: #fff;
-  font-weight: 800;
-  letter-spacing: 0.15em;
-  margin-bottom: 0.5em;
-  text-transform: uppercase;
-  font-family: fantasy;
-}
-
-.content-details p{
-  color: #fff;
-  font-size: 0.9em;
-  font-family: fantasy;
-  font-style: italic;
-
-
-}
-
-
-          
-
-
-
-  {% endblock %}
-  </style>
+{#<style>#}
+{#  #}
+{# {% block extra_css %}#}
+{##}
+{#   .custom-range {#}
+{#    -webkit-appearance: none;#}
+{#    height: 5px;#}
+{#    border-radius: 1px !important;#}
+{#    background: #d3d3d3;#}
+{#    outline: 0 !important;#}
+{#    opacity: 1;#}
+{#    -webkit-transition: .2s;#}
+{#    transition: opacity .2s;#}
+{#    border: none!important;#}
+{#  }#}
+{##}
+{#  .slider:hover {#}
+{#    opacity: 1;#}
+{#    border: none!important;#}
+{#  }#}
+{##}
+{#   .slider::-webkit-slider-thumb {#}
+{#    -webkit-appearance: none;#}
+{#    appearance: none;#}
+{#    width: 25px;#}
+{#    height: 25px;#}
+{#    border-radius: 50%;#}
+{#    background: #007bff;#}
+{#    cursor: pointer;#}
+{#    border: none!important;#}
+{#  }#}
+{##}
+{#  .custom-range::-moz-range-thumb {#}
+{#    width: 18px;#}
+{#    height: 18px;#}
+{#    border-radius: 50%;#}
+{#    background:#007bff !important;#}
+{#    cursor: pointer;#}
+{#    border: none!important;#}
+{#  }#}
+{#  hr-sect {#}
+{#	display: flex;#}
+{#	flex-basis: 100%;#}
+{#	align-items: center;#}
+{#	color: rgba(0, 0, 0, 0.35);#}
+{#	margin: 8px 0px;#}
+{#}#}
+{##}
+{#.strike {#}
+{#        display: block;#}
+{#        text-align: center;#}
+{#        overflow: hidden;#}
+{#        white-space: nowrap;#}
+{#    }#}
+{##}
+{#    .strike > p {#}
+{#        position: relative;#}
+{#        display: inline-block;#}
+{#    }#}
+{##}
+{#    .strike > p:before,#}
+{#    .strike > p:after {#}
+{#        content: "";#}
+{#        position: absolute;#}
+{#        top: 50%;#}
+{#        width: 9999px;#}
+{#        height: 3%;#}
+{#        background:rgba(52,58,64,0.2) ;#}
+{#    }#}
+{##}
+{#    .strike > p:before {#}
+{#        right: 100%;#}
+{#        margin-right: 15px;#}
+{#    }#}
+{##}
+{#    .strike > p:after {#}
+{#        left: 100%;#}
+{#        margin-left: 15px;#}
+{#    }#}
+{##}
+{#    @import url(https://fonts.googleapis.com/css?family=Roboto:400,700);#}
+{##}
+{#strong{#}
+{#  color: #58ba83;#}
+{#}#}
+{#.transition{#}
+{#  transition: all .3s ease-out;#}
+{#}#}
+{##}
+{#.center-align{#}
+{#  width: 1000%;#}
+{#  height: 120%;#}
+{#}#}
+{##}
+{#input[type="radio"]{#}
+{#  visibility: hidden;#}
+{#  height: 0;#}
+{#  width: 0;#}
+{#  cursor: pointer;#}
+{#  z-index: 2;#}
+{#}#}
+{##}
+{#label {#}
+{#  display: table-cell;#}
+{#  vertical-align: middle;#}
+{#  text-align: center;#}
+{#  cursor: pointer;#}
+{#  background-color: white;#}
+{#  color: rgba(52,58,64,1);#}
+{#  padding: 5px 10px;#}
+{#  border-radius: 3px;#}
+{#  .transition;#}
+{#}#}
+{#input[type="radio"]:checked + label{#}
+{#  background-color: #BD5D38;#}
+{#  color: white;#}
+{#}#}
+{#.collapsible {#}
+{#  background-color:white;#}
+{#  color:  rgba(52,58,64,1);#}
+{#  cursor: pointer;#}
+{#  padding: 18px;#}
+{#  width: 33.3%;#}
+{#  border: none;#}
+{#  text-align: center !important;#}
+{#  outline: none;#}
+{#  font-size: 14px;#}
+{#}#}
+{##}
+{##}
+{##}
+{##}
+{#@import 'https://fonts.googleapis.com/css?family=Open+Sans:400,700';#}
+{##}
+{#div h1 {#}
+{#  display: inline-block;#}
+{#  opacity: 0.0;#}
+{#  animation: port 3s 1 forwards;#}
+{#  -webkit-animation: port 3s 1 forwards;#}
+{#}#}
+{##}
+{#div h1:nth-of-type(2){#}
+{#  animation-delay: 0.1s;#}
+{#  -webkit-animation-delay: 0.1s;#}
+{#}#}
+{##}
+{#div h1:nth-of-type(3){#}
+{#  animation-delay: 0.2s;#}
+{#  -webkit-animation-delay: 0.2s;#}
+{#}#}
+{##}
+{#div h1:nth-of-type(4){#}
+{#  animation-delay: 0.3s;#}
+{#  -webkit-animation-delay: 0.3s;#}
+{#}#}
+{##}
+{#div h1:nth-of-type(5){#}
+{#  animation-delay: 0.4s;#}
+{#  -webkit-animation-delay: 0.4s;#}
+{#}#}
+{##}
+{#div h1:nth-of-type(6){#}
+{#  animation-delay: 0.5s;#}
+{#  -webkit-animation-delay: 0.5s;#}
+{#}#}
+{##}
+{#div h1:nth-of-type(7){#}
+{#  animation-delay: 0.6s;#}
+{#  -webkit-animation-delay: 0.6s;#}
+{#}#}
+{##}
+{#div h1:nth-of-type(8){#}
+{#  animation-delay: 0.7s;#}
+{#  -webkit-animation-delay: 0.7s;#}
+{#}#}
+{##}
+{#div h1:nth-of-type(9){#}
+{#  animation-delay: 0.8s;#}
+{#  -webkit-animation-delay: 0.8s;#}
+{#}#}
+{##}
+{#div:hover h1 {#}
+{#  /* animation: reset 1s 1;#}
+{#  -webkit-animation: reset 1s 1 ; */#}
+{#}#}
+{##}
+{#@keyframes port {#}
+{#  0%{#}
+{#    transform: rotateY(90deg) translateY(25%);#}
+{#    opacity: 0.0;#}
+{#  }#}
+{#  100%{#}
+{#    transform: rotateY(0deg) translateY(0%);#}
+{#    opacity: 1.0;#}
+{#  }#}
+{#}#}
+{##}
+{#@-webkit-keyframes port {#}
+{#  0%{#}
+{#   -webkit-transform: rotateY(90deg) translateY(25%);#}
+{#    opacity: 0.0;#}
+{#  }#}
+{#  100%{#}
+{#    -webkit-transform: rotateY(0deg) translateY(0%);#}
+{#    opacity: 1.0;#}
+{#  }#}
+{#}#}
+{##}
+{##}
+{##}
+{##}
+{#h1{#}
+{#             font-size:25px;#}
+{#             text-align: left;#}
+{#             text-transform:capitalize;#}
+{#         }#}
+{#        .service-box{#}
+{#            position: relative;#}
+{#            overflow: hidden;#}
+{#            margin-bottom:10px;#}
+{#            perspective:1000px;#}
+{#            -webkit-perspective:1000px;#}
+{#        }#}
+{#        .service-icon{#}
+{#            width: 100%;#}
+{#            height: 240px;#}
+{#            padding: 20px;#}
+{#            text-align: center;#}
+{#            transition: all .5s ease;#}
+{#        }#}
+{##}
+{#        .service-content{#}
+{#            position: absolute;#}
+{#            top: 0;#}
+{#            left: 0;#}
+{#            z-index: 1;#}
+{#            opacity: 0;#}
+{#            width: 100%;#}
+{#            height: 240px;#}
+{#            padding: 20px;#}
+{#            text-align: center;#}
+{#            transition: all .5s ease;#}
+{#            background-color: #FFFFFF;#}
+{#            backface-visibility:hidden;#}
+{#            transform-style: preserve-3d;#}
+{#            -webkit-transform: translateY(110px) rotateX(-90deg);#}
+{#            -moz-transform: translateY(110px) rotateX(-90deg);#}
+{#            -ms-transform: translateY(110px) rotateX(-90deg);#}
+{#            -o-transform: translateY(110px) rotateX(-90deg);#}
+{#            transform: translateY(110px) rotateX(-90deg);#}
+{#        }#}
+{#        .service-box .service-icon .front-content{#}
+{#            position: absolute;#}
+{#            top:80px;#}
+{#            -webkit-transform: translateY(-50%);#}
+{#            -moz-transform: translateY(-50%);#}
+{#            -ms-transform: translateY(-50%);#}
+{#            -o-transform: translateY(-50%);#}
+{#            transform: translateY(-50%);#}
+{#            text-align: center;#}
+{#        }#}
+{##}
+{#        .service-box .service-icon .front-content i {#}
+{#            font-size: 28px;#}
+{#            color: #fff;#}
+{#            font-weight: normal;#}
+{#            text-align: center;#}
+{#        }#}
+{##}
+{#        .service-box .service-icon .front-content h3 {#}
+{#            font-size: 15px;#}
+{#            color: #fff;#}
+{#            text-align: center;#}
+{#            margin-bottom: 15px;#}
+{#            text-transform: uppercase;#}
+{#        }#}
+{#        .service-box .service-content h3 {#}
+{#            font-size: 15px;#}
+{#            font-weight: 700;#}
+{#            color: black;#}
+{#            margin-bottom:10px;#}
+{#            text-transform: uppercase;#}
+{#        }#}
+{#        .service-box .service-content p {#}
+{#            font-size: 13px;#}
+{#            color: #b1b1b1;#}
+{#            margin:0;#}
+{#        }#}
+{#        .yellow{background-color: #FFFFFF;}#}
+{#        .orange{background-color: #FFFFFF;}#}
+{#        .red{background-color: #FFFFFF;}#}
+{#        .grey{background-color: #474747;}#}
+{#        .service-box:hover .service-icon{#}
+{#            opacity: 0;#}
+{#            -webkit-transform: translateY(-110px) rotateX(90deg);#}
+{#            -moz-transform: translateY(-110px) rotateX(90deg);#}
+{#            -ms-transform: translateY(-110px) rotateX(90deg);#}
+{#            -o-transform: translateY(-110px) rotateX(90deg);#}
+{#            transform: translateY(-110px) rotateX(90deg);#}
+{#        }#}
+{#        .service-box:hover .service-content {#}
+{#            opacity: 1;#}
+{#            -webkit-transform: rotateX(0);#}
+{#            -moz-transform: rotateX(0);#}
+{#            -ms-transform: rotateX(0);#}
+{#            -o-transform: rotateX(0);#}
+{#            transform: rotateX(0);#}
+{#        }#}
+{##}
+{#        #paperdetail a {#}
+{#            position: relative;#}
+{#            display: block;#}
+{##}
+{#            /* border: 1px solid hotpink; */#}
+{#            padding: 40px;#}
+{#            text-align: center;#}
+{#            float: right!important;#}
+{#            margin:0 auto!important;#}
+{#            border:none!important;#}
+{##}
+{#            text-transform: uppercase;#}
+{#            animation: fadeIn 0.5s linear;#}
+{#            animation-fill-mode: both;#}
+{#          }#}
+{##}
+{#          @for $i from 1 through 5 {#}
+{#          #paperdetail a:nth-child(#{$i}) {#}
+{#              animation-delay: .75s * $i;#}
+{#            }#}
+{#          }#}
+{##}
+{##}
+{#          @keyframes fadeIn {#}
+{#            0% {#}
+{#              opacity: 0;#}
+{#              top: 100px;#}
+{#            }#}
+{#            75% {#}
+{#              opacity: 0.5;#}
+{#              top: 0px;#}
+{#            }#}
+{#            100% {#}
+{#              opacity: 1;#}
+{#            }#}
+{#          }#}
+{##}
+{##}
+{##}
+{#          @import url(https://fonts.googleapis.com/css?family=Raleway);#}
+{##}
+{#*, *:before, *:after{#}
+{#  margin: 0;#}
+{#  padding: 0;#}
+{#  -webkit-box-sizing: border-box;#}
+{#  -moz-box-sizing:border-box;#}
+{#  box-sizing: border-box;#}
+{#}#}
+{##}
+{##}
+{#.main-title{#}
+{#  color: #2d2d2d;#}
+{#  text-align: center;#}
+{#  text-transform: capitalize;#}
+{#  padding: 0.7em 0;#}
+{#}#}
+{##}
+{#.importantcontainer{#}
+{#  padding: 1em 0;#}
+{#  float: left;#}
+{#  width: 50%;#}
+{#}#}
+{##}
+{#.importantcontainer .title{#}
+{#  color: #1a1a1a;#}
+{#  text-align: center;#}
+{#  margin-bottom: 10px;#}
+{#}#}
+{##}
+{#.importantcontent {#}
+{#  position: relative;#}
+{#  margin: auto;#}
+{#  overflow: hidden;#}
+{#}#}
+{##}
+{#.importantcontent .content-overlay {#}
+{#  background: rgba(0,0,0,0.5);#}
+{#  position: absolute;#}
+{#  height: 100%;#}
+{#  width: 93%;#}
+{#  left: 0;#}
+{#  top: 0;#}
+{#  bottom: 0;#}
+{#  right: 0;#}
+{#  opacity: 0;#}
+{#  -webkit-transition: all 0.4s ease-in-out 0s;#}
+{#  -moz-transition: all 0.4s ease-in-out 0s;#}
+{#  transition: all 0.4s ease-in-out 0s;#}
+{#}#}
+{##}
+{#.importantcontent:hover .content-overlay{#}
+{#  opacity: 1;#}
+{#}#}
+{##}
+{#.content-image{#}
+{#  width: 100%;#}
+{#}#}
+{##}
+{#.content-details {#}
+{#  position: absolute;#}
+{#  text-align: left;#}
+{#  font-weight: 800;#}
+{#  padding-left: 1em;#}
+{#  padding-right: 1em;#}
+{#  width: 100%;#}
+{#  top: 50%;#}
+{#  left: 50%;#}
+{#  opacity: 0;#}
+{#  -webkit-transform: translate(-50%, -50%);#}
+{#  -moz-transform: translate(-50%, -50%);#}
+{#  transform: translate(-50%, -50%);#}
+{#  -webkit-transition: all 0.3s ease-in-out 0s;#}
+{#  -moz-transition: all 0.3s ease-in-out 0s;#}
+{#  transition: all 0.3s ease-in-out 0s;#}
+{#}#}
+{##}
+{#.importantcontent:hover .content-details{#}
+{#  top: 50%;#}
+{#  left: 50%;#}
+{#  opacity: 1;#}
+{#}#}
+{##}
+{#.content-details h3{#}
+{#  color: #fff;#}
+{#  font-weight: 800;#}
+{#  letter-spacing: 0.15em;#}
+{#  margin-bottom: 0.5em;#}
+{#  text-transform: uppercase;#}
+{#  font-family: fantasy;#}
+{#}#}
+{##}
+{#.content-details p{#}
+{#  color: #fff;#}
+{#  font-size: 0.9em;#}
+{#  font-family: fantasy;#}
+{#  font-style: italic;#}
+{##}
+{##}
+{#}#}
+{##}
+{##}
+{##}
+{##}
+{##}
+{##}
+{#  {% endblock %}#}
+{#  </style>#}
 
 
 
 {% block content %}
 
-<section class="resume-section p-3 p-lg-5 d-flex align-items-center" id="about" >
-    <div class="w-100" style="height: 100%;">
-      <!-- <div class="row">
-      <h1 class="mb-50" >T
-        <!-- <span class="text-primary">Demo</span> -->
-      <!-- </h1>
-      <h1 class="mb-50" >H
-        </h1>
-        <h1 class="mb-50" >E
-          </h1>
-          <h1 class="mb-50" style="margin: 0.5%;">
-            </h1>
-            <h1 class="mb-50" >C
-              </h1>
-              <h1 class="mb-50">U
-                </h1>
-                <h1 class="mb-50">B
-                  </h1>
-                  <h1 class="mb-50" >E
-                    </h1>
-                    <h1 class="mb-50" style=" margin:0.5%;">
-                      </h1>
-                      <h1 class="mb-50 text-primary">D
-                        </h1>
-                        <h1 class="mb-50 text-primary">E
-                          </h1>
-                          <h1 class="mb-50 text-primary">M
-                            </h1>
-                            <h1 class="mb-50 text-primary">O
-                              </h1>
-    </div> -->
-     
-      
-      <!-- <div class="mt-1">
-        <div class="row">
-      <h5>B</h5>
-      <h5>Y</h5>
-      <h5 style="margin:0.5%;"></h5>
-      <h5>H</h5>
-      <h5>A</h5>
-      <h5>N</h5>
-      <h5>'</h5>
-      <h5>S</h5>
-      <h5 style="margin:0.5%;"></h5>
-      <h5>G</h5>
-      <h5>R</h5>
-      <h5>O</h5>
-      <h5>U</h5>
-      <h5>P</h5>
-     </div>
-    </div> -->
-    </div>
+                 <div id="mapid" style="height: 600px; margin-bottom: 20px;"></div>
 
-  </section>
+		<input type="radio" class="topic" id="politics.international_relation" name="topic_filter" value="0" autocomplete="off" checked="false"/>
+		<label for="politics.international_relation">International Relation</label>
 
+		<input type="radio" class="topic" id="politics" name="topic_filter" value="1" autocomplete="off" checked="false"/>
+		<label for="politics">Politics</label>
 
+		<input type="radio" class="topic" id="economic.finance" name="topic_filter" value="1" autocomplete="off" checked="false"/>
+		<label for="economic.finance">Finance</label>
 
-    <!-- Time Navigation bar -->
+		<input type="radio" class="topic" id="politics.governance" name="topic_filter" value="1" autocomplete="off" checked="false"/>
+		<label for="politics.governance">Governance</label>
 
-   
-  <div id="map_visualization_container" class="mt-2">
+		<input type="radio" class="topic" id="politics.election" name="topic_filter" value="1" autocomplete="off" checked="false"/>
+		<label for="politics.election">Election</label>
 
-      <section class="page-section" id="services">
-          <div class="container">
-              <div class="row">
-                  <div class="col-lg-12 text-center">
-                    <h2 class="section-heading text-uppercase" style="font-size:25px;margin-top:0;margin-bottom:15px;">MAP</h2>
-                    <h5 class="section-subheading text-muted" style="font-size:smaller;font-style: italic;font-family: 'Droid Serif';">Please click each city to update information.</h5>
-                  </div>
-          </div>
-            <div class="mt-5 mb-5" style="width500px;">
-               <object id="russia_ukraine_map" data="{% static 'img/Russia_Ukraine.svg' %}" type="image/svg+xml" style="max-width: 100vw; max-height: 100vh;"></object>
-             </div>
-             
-             <div class="row" id="selector">
-                <div class="col-lg-12 text-center">
-                  <h2 class="section-heading text-uppercase" style="font-size:25px;margin-top:0;margin-bottom:15px;">TOPIC SELECTOR</h2>
-                  <h5 class="section-subheading text-muted" style="font-size:smaller;font-style: italic;font-family: 'Droid Serif';">Please select one topic from a category.</h5>
-                </div>
-        </div>
-       
-            <div class="row mt-5">
-                <div class="col-md-4">
-                    <div class="service-box">
-                        <div class="service-icon yellow">
-                            <span class="fa-stack fa-4x mb-4">
-                                <i class="fas fa-circle fa-stack-2x text-primary";></i>
-                                <i class="fas fa-briefcase fa-stack-1x fa-inverse"></i>
-                    </span>
-                    <h4>Politics</h4>
-                        </div>
-                        <div class="service-content">
-                            <h3>Politics</h3>
-                            <div id="politicsRadios" style="margin-left:35%;display: block;"> 
-                                <div>
-                                  <input type="radio" id="justice" name="topic_filter" value="0" autocomplete="off" checked="false" onchange="newSwitchShowAll();"/>
-                                  <label for="justice">Justice</label>
-                                </div>
-                      
-                                <div>
-                                  <input type="radio" id="election" name="topic_filter" value="1" autocomplete="off" checked="false" onchange="newSwitchShowAll()"/>
-                                  <label for="election">Election</label>
-                                </div>
-                                <div>
-                                  <input type="radio" id="international_relation" name="topic_filter" value="2" autocomplete="off" checked="false" onchange="newSwitchShowAll()"/>
-                                  <label for="international_relation">International Relation</label>
-                                </div>
-                                <div>
-                                  <input type="radio" id="governance" name="topic_filter" value="3" autocomplete="off" checked="false" onchange="newSwitchShowAll()"/>
-                                  <label for="governance">Governance</label>
-                                </div>
-                            </div>
-                           
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="service-box">
-                        <div class="service-icon orange">
-                            <span class="fa-stack fa-4x mb-4">
-                                <i class="fas fa-circle fa-stack-2x text-primary";></i>
-                                <i class="fas fa-dollar-sign fa-stack-1x fa-inverse"></i>
-                    </span>
-                    <h4>Economy</h4>
-                        </div>
-                        <div class="service-content">
-                            <h3>Economy</h3>
-                            <div id="economicRadios"  style="display: block;margin-left:35%;">
-            <div>
-              <input type="radio" id="trade" name="topic_filter" value="4" autocomplete="off" checked="false" onchange="newSwitchShowAll();"/>
-              <label for="trade">Trade</label>
-            </div>
-            <div >
-              <input type="radio" id="finance" name="topic_filter" value="5" autocomplete="off" checked="false" onchange="newSwitchShowAll();"/>
-              <label for="finance">Finance</label>
-            </div>
-            <div >
-              <input type="radio" id="tax" name="topic_filter" value="6" autocomplete="off" checked="false" onchange="newSwitchShowAll();"/>
-              <label for="tax">Tax</label>
-            </div>
-            <div >
-              <input type="radio" id="welfare" name="topic_filter" value="7" autocomplete="off" checked="false" onchange="newSwitchShowAll();"/>
-              <label for="welfare">Welfare</label>
-            </div>
-        </div>
-                          
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="service-box ">
-                        <div class="service-icon red">
-                            <span class="fa-stack fa-4x mb-4">
-                                <i class="fas fa-circle fa-stack-2x text-primary";></i>
-                                <i class="fas fa-anchor fa-stack-1x fa-inverse"></i>
-                    </span>
-                    <h4>Military</h4>
-                        </div>
-                        <div class="service-content">
-                            <h3>Military</h3>
-                            <div id="militaryRadios"  style="margin-left:35%;display: block;">
-                                <div>
-                                  <input type="radio" id="combat" name="topic_filter" value="8" autocomplete="off" checked="false" onchange="newSwitchShowAll();"/>
-                                  <label for="combat">Combat</label>
-                                </div>
-                                <div>
-                                  <input type="radio" id="weapons" name="topic_filter" value="9" autocomplete="off" checked="false" onchange="newSwitchShowAll();"/>
-                                  <label for="weapons">Weapons</label>
-                                </div>
-                                <div style="display: block;">
-                                  <input type="radio" id="terrorism" name="topic_filter" value="10" autocomplete="off" checked="false" onchange="newSwitchShowAll();"/>
-                                  <label for="terrorism">Terrorism</label>
-                                </div>
-                                <div>
-                                  <input type="radio" id="ceasefire" name="topic_filter" value="11" autocomplete="off" checked="false" onchange="newSwitchShowAll();"/>
-                                  <label for="ceasefire">Ceasefire</label>
-                                </div>
-                            </div>
-                           
-                        </div>
-                    </div>
-                </div>
-               
-            </div>
-        </div>
-      </section>
-      
+		<input type="radio" class="topic" id="military.combat" name="topic_filter" value="1" autocomplete="off" checked="false"/>
+		<label for="military.combat">Combat</label>
 
+		<input type="radio" class="topic" id="military.terrorism" name="topic_filter" value="1" autocomplete="off" checked="false"/>
+		<label for="military.terrorism">Terrorism</label>
 
-          
-      <div class="row" id="visual">
-          <div class="col-lg-12 text-center">
-            <h2 class="section-heading text-uppercase" style="font-size:25px;margin-top:0;margin-bottom:15px;">VISUALIZATION</h2>
-            <h5 class="section-subheading text-muted" style="font-size:smaller;font-style: italic;font-family: 'Droid Serif';">It shows the distribution of news of different categories.</h5>
-          </div>
-  </div>
-      <form class="mt-5 col-xl-1">
-          <div class="row" style="margin-bottom: 15px; margin-right: 1px;">
+		<input type="radio" class="topic" id="politics.justice" name="topic_filter" value="1" autocomplete="off" checked="false"/>
+		<label for="politics.justice">Justice</label>
 
-            <div class="col">
-              <input type="text" class="form-control" id="cityinput" placeholder="City Name">
-            </div>
+		<input type="radio" class="topic" id="economic" name="topic_filter" value="1" autocomplete="off" checked="false"/>
+		<label for="economic">Economic</label>
 
-            <button type="button" class="btn btn-dark btn-email waves-light font-weight-bold" id="updatebutton" onclick="creategraph(); return false;" style="border-radius: 6px;">Update</button>
-  
-          </div>
+		<input type="radio" class="topic" id="military.weapons" name="topic_filter" value="1" autocomplete="off" checked="false"/>
+		<label for="military.weapons">Weapons</label>
 
-        </form>
-   
-        <div class="row">
-            <div class="col-lg-6" id="piechartgroup">
-                <div class="card shadow mb-4" style="border-radius: 30px;" >
-                  <!-- Card Header - Dropdown -->
-                  <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between" style="background-color: rgb(0,0,0,0);border: none;">
-                    <h6 class="m-0 font-weight-bold text-dark" style="margin:0 auto!important; font-family: 'Droid Serif';"></h6>
-                  </div>
-                  <!-- Card Body -->
-                  <div class="card-body">
-                      <h4 class="small font-weight-bold" style="text-align:center; margin-top:7px; margin-bottom: -5px;" id='category1'></h4>
-                    <div class="chart-area pt-4 pb-2" id="piechartContainer">
-                        
-                     
-                    </div>
-                  </div>
-                </div>
-              </div>
-             
+		<input type="radio" class="topic" id="military" name="topic_filter" value="1" autocomplete="off" checked="false"/>
+		<label for="military">Military</label>
 
+		<input type="radio" class="topic" id="ROOT" name="topic_filter" value="1" autocomplete="off" checked="false"/>
+		<label for="ROOT">ROOT</label>
 
-              <div class="col-lg-6" id="paper_de">
-                  <div class="card shadow mb-4" style="border-radius: 30px;">
-                    <!-- Card Header - Dropdown -->
-                    <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between"  style="background-color: rgb(0,0,0,0);border: none;">
-                      <h6 class="m-0 font-weight-bold text-dark" style="margin:0 auto!important; font-family: 'Droid Serif';" id="name2">News Details</h6>
-                      
-                    </div>
-                    <!-- Card Body -->
-                    
-                    <div class="card-body" style="margin:0 auto; height:300px;"  style="overflow:hidden; position: relative;">
-                        <ul class="list-group list-group-flush" style=" overflow-x:hidden!important; overflow-y: auto; height:250px;" id="paperdetail">
-                            
-                        </ul>
-                    </div>
-                  </div>
-                </div>
-             
+		<input type="radio" class="topic" id="economic.tax" name="topic_filter" value="1" autocomplete="off" checked="false"/>
+		<label for="economic.tax">Tax</label>
 
+		<input type="radio" class="topic" id="economic.trade" name="topic_filter" value="1" autocomplete="off" checked="false"/>
+		<label for="economic.trade">Trade</label>
 
+		<input type="radio" class="topic" id="military.ceasefire" name="topic_filter" value="1" autocomplete="off" checked="false"/>
+		<label for="military.ceasefire">Ceasefire</label>
 
-            </div>
+		<br>
+		<br>
 
+		<input type="checkbox" id="useTime" />
+		<label for="useTime">Use time dimension</label>
 
-            <div class="col-xl-12 mb-5" id="linechartgroup">
-                <div class="card shadow mb-4" style="border-radius: 30px;">
-                  <!-- Card Header - Dropdown -->
-                  <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between" style="background-color: rgb(0,0,0,0);border: none;">
-                    <h6 class="m-0 font-weight-bold text-dark" style="margin:0 auto!important;font-family: 'Droid Serif';"></h6>
-                  </div>
-                  <!-- Card Body -->
-                  <div class="card-body">
-                      <h4 class="small font-weight-bold" style="text-align:center; margin-top:7px; margin-bottom: -5px;" id='category2'></h4>
-                    <div class="chart-area" id="linechartContainer">
-                      <!-- <canvas id="myAreaChart"></canvas> -->
-                    </div>
-                  </div>
-                </div>
-              </div>
+		<input type="range" id="monthSlider" list="tickmarks" class="slider" value="0" step="1" min="0" max="72" />
 
-          
-              <div class="row mt-5" id="key">
-                  <div class="col-lg-12 text-center">
-                    <h2 class="section-heading text-uppercase" style="font-size:25px;margin-top:70px;margin-bottom:15px;">KEYWORDS & IMAGE</h2>
-                    <h5 class="section-subheading text-muted" style="font-size:smaller;font-style: italic;font-family: 'Droid Serif';">It shows the related image and keywords.</h5>
-                  </div>
-          </div>
-              <!-- The following is the keywords, keyphrase, and image section -->
-              <div class="row mt-5">
-                  <div class="col-lg-6" id="imagegroup">
-                     
-                          <div class="importantcontent" style="margin: 0 auto; ">
-                            <div href="#imagegroup" target="_blank">
-                              <div class="content-overlay" style="border-radius: 25px;"></div>
-                              <div id="image_container">
-                  
-                            </div>
-                              <div class="content-details" id="explain">
-                             
-                              </div>
-                            </div>
-                              
-                           
-                          </div>
+		<br>
+		<br>
 
-                        </div>
-          
-      
-                    <div class="col-lg-6" id="paper_de">
-                        <div class="card shadow mb-4" style="border-radius: 30px;">
-                          <!-- Card Header - Dropdown -->
-                          <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between"  style="background-color: rgb(0,0,0,0);border: none;">
-                            <h6 class="m-0 font-weight-bold text-dark" style="margin:0 auto!important; font-family: 'Droid Serif';" id="name2">Key Words & Phrases</h6>
-                            
-                          </div>
-                          <!-- Card Body -->
-                          
-                          <div class="card-body" style="margin:0 auto; height:350px;"  style="overflow:hidden; position: relative; ">
-                              <ul class="list-group list-group-flush" style=" overflow-x:hidden!important; overflow-y: auto; height:300px;" id="keywords">
-                                  
-                              </ul>
-                          </div>
-                        </div>
-                      </div>
-                   
-      
-      
-      
-                  </div>
-            
-                 
+		<p id="p_date"></p>
 
-
-                 
-  <!-- Time Naviation bar -->
-  
-  
-        
-
-    
-
-
+{#<section class="resume-section p-3 p-lg-5 d-flex align-items-center" id="about" >#}
+{#    <div class="w-100" style="height: 100%;">#}
+{#      <!-- <div class="row">#}
+{#      <h1 class="mb-50" >T#}
+{#        <!-- <span class="text-primary">Demo</span> -->#}
+{#      <!-- </h1>#}
+{#      <h1 class="mb-50" >H#}
+{#        </h1>#}
+{#        <h1 class="mb-50" >E#}
+{#          </h1>#}
+{#          <h1 class="mb-50" style="margin: 0.5%;">#}
+{#            </h1>#}
+{#            <h1 class="mb-50" >C#}
+{#              </h1>#}
+{#              <h1 class="mb-50">U#}
+{#                </h1>#}
+{#                <h1 class="mb-50">B#}
+{#                  </h1>#}
+{#                  <h1 class="mb-50" >E#}
+{#                    </h1>#}
+{#                    <h1 class="mb-50" style=" margin:0.5%;">#}
+{#                      </h1>#}
+{#                      <h1 class="mb-50 text-primary">D#}
+{#                        </h1>#}
+{#                        <h1 class="mb-50 text-primary">E#}
+{#                          </h1>#}
+{#                          <h1 class="mb-50 text-primary">M#}
+{#                            </h1>#}
+{#                            <h1 class="mb-50 text-primary">O#}
+{#                              </h1>#}
+{#    </div> -->#}
+{#     #}
+{#      #}
+{#      <!-- <div class="mt-1">#}
+{#        <div class="row">#}
+{#      <h5>B</h5>#}
+{#      <h5>Y</h5>#}
+{#      <h5 style="margin:0.5%;"></h5>#}
+{#      <h5>H</h5>#}
+{#      <h5>A</h5>#}
+{#      <h5>N</h5>#}
+{#      <h5>'</h5>#}
+{#      <h5>S</h5>#}
+{#      <h5 style="margin:0.5%;"></h5>#}
+{#      <h5>G</h5>#}
+{#      <h5>R</h5>#}
+{#      <h5>O</h5>#}
+{#      <h5>U</h5>#}
+{#      <h5>P</h5>#}
+{#     </div>#}
+{#    </div> -->#}
+{#    </div>#}
+{##}
+{#  </section>#}
+{##}
+{##}
+{##}
+{#    <!-- Time Navigation bar -->#}
+{##}
+{#   #}
+{#  <div id="map_visualization_container" class="mt-2">#}
+{##}
+{#      <section class="page-section" id="services">#}
+{#          <div class="container">#}
+{#              <div class="row">#}
+{#                  <div class="col-lg-12 text-center">#}
+{#                    <h2 class="section-heading text-uppercase" style="font-size:25px;margin-top:0;margin-bottom:15px;">MAP</h2>#}
+{#                    <h5 class="section-subheading text-muted" style="font-size:smaller;font-style: italic;font-family: 'Droid Serif';">Please click each city to update information.</h5>#}
+{#                  </div>#}
+{#          </div>#}
+{##}
+{##}
+{#            <div class="mt-5 mb-5" style="width500px;">#}
+{#               <object id="russia_ukraine_map" data="{% static 'img/Russia_Ukraine.svg' %}" type="image/svg+xml" style="max-width: 100vw; max-height: 100vh;"></object>#}
+{#             </div>#}
+{##}
+{#             <div class="row" id="selector">#}
+{#                <div class="col-lg-12 text-center">#}
+{#                  <h2 class="section-heading text-uppercase" style="font-size:25px;margin-top:0;margin-bottom:15px;">TOPIC SELECTOR</h2>#}
+{#                  <h5 class="section-subheading text-muted" style="font-size:smaller;font-style: italic;font-family: 'Droid Serif';">Please select one topic from a category.</h5>#}
+{#                </div>#}
+{#        </div>#}
+{##}
+{#            <div class="row mt-5">#}
+{#                <div class="col-md-4">#}
+{#                    <div class="service-box">#}
+{#                        <div class="service-icon yellow">#}
+{#                            <span class="fa-stack fa-4x mb-4">#}
+{#                                <i class="fas fa-circle fa-stack-2x text-primary";></i>#}
+{#                                <i class="fas fa-briefcase fa-stack-1x fa-inverse"></i>#}
+{#                    </span>#}
+{#                    <h4>Politics</h4>#}
+{#                        </div>#}
+{#                        <div class="service-content">#}
+{#                            <h3>Politics</h3>#}
+{#                            <div id="politicsRadios" style="margin-left:35%;display: block;">#}
+{#                                <div>#}
+{#                                  <input type="radio" id="justice" name="topic_filter" value="0" autocomplete="off" checked="false" onchange="newSwitchShowAll();"/>#}
+{#                                  <label for="justice">Justice</label>#}
+{#                                </div>#}
+{##}
+{#                                <div>#}
+{#                                  <input type="radio" id="election" name="topic_filter" value="1" autocomplete="off" checked="false" onchange="newSwitchShowAll()"/>#}
+{#                                  <label for="election">Election</label>#}
+{#                                </div>#}
+{#                                <div>#}
+{#                                  <input type="radio" id="international_relation" name="topic_filter" value="2" autocomplete="off" checked="false" onchange="newSwitchShowAll()"/>#}
+{#                                  <label for="international_relation">International Relation</label>#}
+{#                                </div>#}
+{#                                <div>#}
+{#                                  <input type="radio" id="governance" name="topic_filter" value="3" autocomplete="off" checked="false" onchange="newSwitchShowAll()"/>#}
+{#                                  <label for="governance">Governance</label>#}
+{#                                </div>#}
+{#                            </div>#}
+{##}
+{#                        </div>#}
+{#                    </div>#}
+{#                </div>#}
+{#                <div class="col-md-4">#}
+{#                    <div class="service-box">#}
+{#                        <div class="service-icon orange">#}
+{#                            <span class="fa-stack fa-4x mb-4">#}
+{#                                <i class="fas fa-circle fa-stack-2x text-primary";></i>#}
+{#                                <i class="fas fa-dollar-sign fa-stack-1x fa-inverse"></i>#}
+{#                    </span>#}
+{#                    <h4>Economy</h4>#}
+{#                        </div>#}
+{#                        <div class="service-content">#}
+{#                            <h3>Economy</h3>#}
+{#                            <div id="economicRadios"  style="display: block;margin-left:35%;">#}
+{#            <div>#}
+{#              <input type="radio" id="trade" name="topic_filter" value="4" autocomplete="off" checked="false" onchange="newSwitchShowAll();"/>#}
+{#              <label for="trade">Trade</label>#}
+{#            </div>#}
+{#            <div >#}
+{#              <input type="radio" id="finance" name="topic_filter" value="5" autocomplete="off" checked="false" onchange="newSwitchShowAll();"/>#}
+{#              <label for="finance">Finance</label>#}
+{#            </div>#}
+{#            <div >#}
+{#              <input type="radio" id="tax" name="topic_filter" value="6" autocomplete="off" checked="false" onchange="newSwitchShowAll();"/>#}
+{#              <label for="tax">Tax</label>#}
+{#            </div>#}
+{#            <div >#}
+{#              <input type="radio" id="welfare" name="topic_filter" value="7" autocomplete="off" checked="false" onchange="newSwitchShowAll();"/>#}
+{#              <label for="welfare">Welfare</label>#}
+{#            </div>#}
+{#        </div>#}
+{##}
+{#                        </div>#}
+{#                    </div>#}
+{#                </div>#}
+{#                <div class="col-md-4">#}
+{#                    <div class="service-box ">#}
+{#                        <div class="service-icon red">#}
+{#                            <span class="fa-stack fa-4x mb-4">#}
+{#                                <i class="fas fa-circle fa-stack-2x text-primary";></i>#}
+{#                                <i class="fas fa-anchor fa-stack-1x fa-inverse"></i>#}
+{#                    </span>#}
+{#                    <h4>Military</h4>#}
+{#                        </div>#}
+{#                        <div class="service-content">#}
+{#                            <h3>Military</h3>#}
+{#                            <div id="militaryRadios"  style="margin-left:35%;display: block;">#}
+{#                                <div>#}
+{#                                  <input type="radio" id="combat" name="topic_filter" value="8" autocomplete="off" checked="false" onchange="newSwitchShowAll();"/>#}
+{#                                  <label for="combat">Combat</label>#}
+{#                                </div>#}
+{#                                <div>#}
+{#                                  <input type="radio" id="weapons" name="topic_filter" value="9" autocomplete="off" checked="false" onchange="newSwitchShowAll();"/>#}
+{#                                  <label for="weapons">Weapons</label>#}
+{#                                </div>#}
+{#                                <div style="display: block;">#}
+{#                                  <input type="radio" id="terrorism" name="topic_filter" value="10" autocomplete="off" checked="false" onchange="newSwitchShowAll();"/>#}
+{#                                  <label for="terrorism">Terrorism</label>#}
+{#                                </div>#}
+{#                                <div>#}
+{#                                  <input type="radio" id="ceasefire" name="topic_filter" value="11" autocomplete="off" checked="false" onchange="newSwitchShowAll();"/>#}
+{#                                  <label for="ceasefire">Ceasefire</label>#}
+{#                                </div>#}
+{#                            </div>#}
+{##}
+{#                        </div>#}
+{#                    </div>#}
+{#                </div>#}
+{##}
+{#            </div>#}
+{#        </div>#}
+{#      </section>#}
+{##}
+{##}
+{##}
+{##}
+{#      <div class="row" id="visual">#}
+{#          <div class="col-lg-12 text-center">#}
+{#            <h2 class="section-heading text-uppercase" style="font-size:25px;margin-top:0;margin-bottom:15px;">VISUALIZATION</h2>#}
+{#            <h5 class="section-subheading text-muted" style="font-size:smaller;font-style: italic;font-family: 'Droid Serif';">It shows the distribution of news of different categories.</h5>#}
+{#          </div>#}
+{#  </div>#}
+{#      <form class="mt-5 col-xl-1">#}
+{#          <div class="row" style="margin-bottom: 15px; margin-right: 1px;">#}
+{##}
+{#            <div class="col">#}
+{#              <input type="text" class="form-control" id="cityinput" placeholder="City Name">#}
+{#            </div>#}
+{##}
+{#            <button type="button" class="btn btn-dark btn-email waves-light font-weight-bold" id="updatebutton" onclick="creategraph(); return false;" style="border-radius: 6px;">Update</button>#}
+{##}
+{#          </div>#}
+{##}
+{#        </form>#}
+{##}
+{#        <div class="row">#}
+{#            <div class="col-lg-6" id="piechartgroup">#}
+{#                <div class="card shadow mb-4" style="border-radius: 30px;" >#}
+{#                  <!-- Card Header - Dropdown -->#}
+{#                  <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between" style="background-color: rgb(0,0,0,0);border: none;">#}
+{#                    <h6 class="m-0 font-weight-bold text-dark" style="margin:0 auto!important; font-family: 'Droid Serif';"></h6>#}
+{#                  </div>#}
+{#                  <!-- Card Body -->#}
+{#                  <div class="card-body">#}
+{#                      <h4 class="small font-weight-bold" style="text-align:center; margin-top:7px; margin-bottom: -5px;" id='category1'></h4>#}
+{#                    <div class="chart-area pt-4 pb-2" id="piechartContainer">#}
+{##}
+{##}
+{#                    </div>#}
+{#                  </div>#}
+{#                </div>#}
+{#              </div>#}
+{##}
+{##}
+{##}
+{#              <div class="col-lg-6" id="paper_de">#}
+{#                  <div class="card shadow mb-4" style="border-radius: 30px;">#}
+{#                    <!-- Card Header - Dropdown -->#}
+{#                    <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between"  style="background-color: rgb(0,0,0,0);border: none;">#}
+{#                      <h6 class="m-0 font-weight-bold text-dark" style="margin:0 auto!important; font-family: 'Droid Serif';" id="name2">News Details</h6>#}
+{##}
+{#                    </div>#}
+{#                    <!-- Card Body -->#}
+{##}
+{#                    <div class="card-body" style="margin:0 auto; height:300px;"  style="overflow:hidden; position: relative;">#}
+{#                        <ul class="list-group list-group-flush" style=" overflow-x:hidden!important; overflow-y: auto; height:250px;" id="paperdetail">#}
+{##}
+{#                        </ul>#}
+{#                    </div>#}
+{#                  </div>#}
+{#                </div>#}
+{##}
+{##}
+{##}
+{##}
+{#            </div>#}
+{##}
+{##}
+{#            <div class="col-xl-12 mb-5" id="linechartgroup">#}
+{#                <div class="card shadow mb-4" style="border-radius: 30px;">#}
+{#                  <!-- Card Header - Dropdown -->#}
+{#                  <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between" style="background-color: rgb(0,0,0,0);border: none;">#}
+{#                    <h6 class="m-0 font-weight-bold text-dark" style="margin:0 auto!important;font-family: 'Droid Serif';"></h6>#}
+{#                  </div>#}
+{#                  <!-- Card Body -->#}
+{#                  <div class="card-body">#}
+{#                      <h4 class="small font-weight-bold" style="text-align:center; margin-top:7px; margin-bottom: -5px;" id='category2'></h4>#}
+{#                    <div class="chart-area" id="linechartContainer">#}
+{#                      <!-- <canvas id="myAreaChart"></canvas> -->#}
+{#                    </div>#}
+{#                  </div>#}
+{#                </div>#}
+{#              </div>#}
+{##}
+{##}
+{#              <div class="row mt-5" id="key">#}
+{#                  <div class="col-lg-12 text-center">#}
+{#                    <h2 class="section-heading text-uppercase" style="font-size:25px;margin-top:70px;margin-bottom:15px;">KEYWORDS & IMAGE</h2>#}
+{#                    <h5 class="section-subheading text-muted" style="font-size:smaller;font-style: italic;font-family: 'Droid Serif';">It shows the related image and keywords.</h5>#}
+{#                  </div>#}
+{#          </div>#}
+{#              <!-- The following is the keywords, keyphrase, and image section -->#}
+{#              <div class="row mt-5">#}
+{#                  <div class="col-lg-6" id="imagegroup">#}
+{##}
+{#                          <div class="importantcontent" style="margin: 0 auto; ">#}
+{#                            <div href="#imagegroup" target="_blank">#}
+{#                              <div class="content-overlay" style="border-radius: 25px;"></div>#}
+{#                              <div id="image_container">#}
+{##}
+{#                            </div>#}
+{#                              <div class="content-details" id="explain">#}
+{##}
+{#                              </div>#}
+{#                            </div>#}
+{##}
+{##}
+{#                          </div>#}
+{##}
+{#                        </div>#}
+{##}
+{##}
+{#                    <div class="col-lg-6" id="paper_de">#}
+{#                        <div class="card shadow mb-4" style="border-radius: 30px;">#}
+{#                          <!-- Card Header - Dropdown -->#}
+{#                          <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between"  style="background-color: rgb(0,0,0,0);border: none;">#}
+{#                            <h6 class="m-0 font-weight-bold text-dark" style="margin:0 auto!important; font-family: 'Droid Serif';" id="name2">Key Words & Phrases</h6>#}
+{##}
+{#                          </div>#}
+{#                          <!-- Card Body -->#}
+{##}
+{#                          <div class="card-body" style="margin:0 auto; height:350px;"  style="overflow:hidden; position: relative; ">#}
+{#                              <ul class="list-group list-group-flush" style=" overflow-x:hidden!important; overflow-y: auto; height:300px;" id="keywords">#}
+{##}
+{#                              </ul>#}
+{#                          </div>#}
+{#                        </div>#}
+{#                      </div>#}
+{##}
+{##}
+{##}
+{##}
+{#                  </div>#}
+{##}
+{##}
+{##}
+{##}
+{##}
+{#  <!-- Time Naviation bar -->#}
+{##}
+{##}
+{##}
+{##}
+{##}
+{##}
+{##}
 {#     <div class="map_container">#}
 {#	     <object id="map_prev" class="my_map" data="{% static "img/cal_map.svg"%}" type="image/svg+xml"></object>#}
 {#     </div>#}
@@ -1139,90 +1136,90 @@ h1{
 {#          </div>#}
 {#        </div>#}
 {#      </div>#}
- </div>
-
-<!-- Footer, don't delete it -->
- <div class="temp">
-  <div id="button"></div>
-<div id="container" style="border-radius: 25px;">
-<div id="cont" >
-<div class="temp_center">
-  
-  <h4 style="margin-top:60px; color: white;">TIME NAVIGATION</h4>
-  <form class="range-field custom-range" style=" margin-top:18px;">
-      <input type="range"  class="custom-range col-xl-13" id="days" name="rangeInput"  list="tickmarks"  value="1" step="1" min="1" max="120" oninput="date();">
-      <output name="amount" id="monthText" class="font-weight-bold" for="rangeInput" style="color:white;">2008-08</output>
-    </form>
-    <script>
-      var days = document.getElementById("days");
-      var output = document.getElementById("monthText");
-      var year = 2008;
-var month = 8;
-  var temp = (days.value-1) % 12;
-   month = month + temp;
-  var k = Math.floor((days.value-1)/12);
-  year = year + k;
-  if (month < 10) {
-  output.innerHTML=year.toString()+"-0"+month.toString();
-  } else {
-  if (month <=12) {
-  output.innerHTML=year.toString()+"-"+month.toString();
-  } else {
-   output.innerHTML=(year+1).toString()+"-0"+(month-12).toString();
-  }
-  }
-
-       function date() {
-  var year = 2008;
-var month = 8;
-  var temp = (days.value-1) % 12;
-   month = month + temp;
-  var k = Math.floor((days.value-1)/12);
-  year = year + k;
-  if (month < 10) {
-  output.innerHTML=year.toString()+"-0"+month.toString();
-  } else {
-  if (month <=12) {
-  output.innerHTML=year.toString()+"-"+month.toString();
-  } else {
-   output.innerHTML=(year+1).toString()+"-0"+(month-12).toString();
-  }
-  }
-  
-}
-    </script>
-    
-</div>
-</div>
-</div>
-</div>
-
-<footer class="footer text-center" style="background-color: white;">
-    <div class="container" style="margin: 0 auto;"
-      <ul class="list-inline mb-5">
-        <li class="list-inline-item">
-          <a class="social-link rounded-circle text-white mr-3" href="https://www.facebook.com/">
-            <i class="fa fa-facebook"></i>
-          </a>
-        </li>
-        <li class="list-inline-item">
-          <a class="social-link rounded-circle text-white mr-3" href="https://twitter.com/">
-            <i class="fa fa-twitter"></i>
-          </a>
-        </li>
-        <li class="list-inline-item">
-          <a class="social-link rounded-circle text-white mr-3" href="https://github.com/chenyuf2/Cube_Demo">
-            <i class="fa fa-github"></i>
-          </a>
-        </li>
-        <li class="list-inline-item">
-            <a class="social-link rounded-circle text-white" href="https://www.instagram.com/">
-              <i class="fa fa-instagram"></i>
-            </a>
-          </li>
-      </ul>
-      <p class="text-muted mb-0 mt-5">Copyright &copy; Han's Group 2019</p>
-    </div>
-</footer>
+{# </div>#}
+{##}
+{#<!-- Footer, don't delete it -->#}
+{# <div class="temp">#}
+{#  <div id="button"></div>#}
+{#<div id="container" style="border-radius: 25px;">#}
+{#<div id="cont" >#}
+{#<div class="temp_center">#}
+{#  #}
+{#  <h4 style="margin-top:60px; color: white;">TIME NAVIGATION</h4>#}
+{#  <form class="range-field custom-range" style=" margin-top:18px;">#}
+{#      <input type="range"  class="custom-range col-xl-13" id="days" name="rangeInput"  list="tickmarks"  value="1" step="1" min="1" max="120" oninput="date();">#}
+{#      <output name="amount" id="monthText" class="font-weight-bold" for="rangeInput" style="color:white;">2008-08</output>#}
+{#    </form>#}
+{#    <script>#}
+{#      var days = document.getElementById("days");#}
+{#      var output = document.getElementById("monthText");#}
+{#      var year = 2008;#}
+{#var month = 8;#}
+{#  var temp = (days.value-1) % 12;#}
+{#   month = month + temp;#}
+{#  var k = Math.floor((days.value-1)/12);#}
+{#  year = year + k;#}
+{#  if (month < 10) {#}
+{#  output.innerHTML=year.toString()+"-0"+month.toString();#}
+{#  } else {#}
+{#  if (month <=12) {#}
+{#  output.innerHTML=year.toString()+"-"+month.toString();#}
+{#  } else {#}
+{#   output.innerHTML=(year+1).toString()+"-0"+(month-12).toString();#}
+{#  }#}
+{#  }#}
+{##}
+{#       function date() {#}
+{#  var year = 2008;#}
+{#var month = 8;#}
+{#  var temp = (days.value-1) % 12;#}
+{#   month = month + temp;#}
+{#  var k = Math.floor((days.value-1)/12);#}
+{#  year = year + k;#}
+{#  if (month < 10) {#}
+{#  output.innerHTML=year.toString()+"-0"+month.toString();#}
+{#  } else {#}
+{#  if (month <=12) {#}
+{#  output.innerHTML=year.toString()+"-"+month.toString();#}
+{#  } else {#}
+{#   output.innerHTML=(year+1).toString()+"-0"+(month-12).toString();#}
+{#  }#}
+{#  }#}
+{#  #}
+{#}#}
+{#    </script>#}
+{#    #}
+{#</div>#}
+{#</div>#}
+{#</div>#}
+{#</div>#}
+{##}
+{#<footer class="footer text-center" style="background-color: white;">#}
+{#    <div class="container" style="margin: 0 auto;"#}
+{#      <ul class="list-inline mb-5">#}
+{#        <li class="list-inline-item">#}
+{#          <a class="social-link rounded-circle text-white mr-3" href="https://www.facebook.com/">#}
+{#            <i class="fa fa-facebook"></i>#}
+{#          </a>#}
+{#        </li>#}
+{#        <li class="list-inline-item">#}
+{#          <a class="social-link rounded-circle text-white mr-3" href="https://twitter.com/">#}
+{#            <i class="fa fa-twitter"></i>#}
+{#          </a>#}
+{#        </li>#}
+{#        <li class="list-inline-item">#}
+{#          <a class="social-link rounded-circle text-white mr-3" href="https://github.com/chenyuf2/Cube_Demo">#}
+{#            <i class="fa fa-github"></i>#}
+{#          </a>#}
+{#        </li>#}
+{#        <li class="list-inline-item">#}
+{#            <a class="social-link rounded-circle text-white" href="https://www.instagram.com/">#}
+{#              <i class="fa fa-instagram"></i>#}
+{#            </a>#}
+{#          </li>#}
+{#      </ul>#}
+{#      <p class="text-muted mb-0 mt-5">Copyright &copy; Han's Group 2019</p>#}
+{#    </div>#}
+{#</footer>#}
 {% endblock %}
 

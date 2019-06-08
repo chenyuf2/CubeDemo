@@ -32,7 +32,7 @@ INSTALLED_APPS = [
     'django.contrib.admin', 'django.contrib.auth',
     'django.contrib.contenttypes', 'django.contrib.sessions',
     'django.contrib.messages', 'django.contrib.staticfiles',
-    'cube.apps.CubeConfig'
+    'cube.apps.CubeConfig', 'visualization.apps.VisualizationConfig'
 ]
 
 MIDDLEWARE = [
@@ -68,16 +68,16 @@ WSGI_APPLICATION = 'cube_demo_system.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/2.1/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'cube_demo',
-        'USER': 'cubedemo',
-        'PASSWORD': 'cubedemo',
-        'HOST': 'cube-demo-mysql',
-        'PORT': '3306'
-    }
-}
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.mysql',
+#         'NAME': 'cube_demo',
+#         'USER': 'cubedemo',
+#         'PASSWORD': 'cubedemo',
+#         'HOST': 'localhost',
+#         'PORT': '3306'
+#     }
+# }
 
 # Password validation
 # https://docs.djangoproject.com/en/2.1/ref/settings/#auth-password-validators
