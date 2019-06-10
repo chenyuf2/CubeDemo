@@ -1,3 +1,4 @@
+
 function creategraph() {
     function loadJSON(callback) {
             var xobj = new XMLHttpRequest();
@@ -101,11 +102,11 @@ function creategraph() {
                    var politics = ["justice", "election", "international_relation", "governance"];
                    var economy = ["trade", "finance", "tax", "welfare"];
                    var military = ["combat", "weapons", "terrorism", "ceasefire"];
-                   var all_radio_button_ids = ["justice", "election", "international_relation", "governance","trade", "finance", "tax", "welfare","combat", "weapons", "terrorism", "ceasefire"];
+                   var all_radio_button_ids = ["politics.justice", "politics.election", "politics.international_relation", "politics.governance","economic.trade", "economic.finance", "economic.tax", "economic.welfare","military.combat", "military.weapons", "military.terrorism", "military.ceasefire"];
                    var checked_button_id; // it stores which radio button is marked
                    for (var i = 0; i < all_radio_button_ids.length; i++) {
                        if (document.getElementById(all_radio_button_ids[i]).checked == true) {
-                           checked_button_id = all_radio_button_ids[i];
+                           checked_button_id = all_radio_button_ids[i].split(".")[1];
                        }
                    }
 
@@ -480,10 +481,10 @@ function creategraph() {
       var image_container = document.getElementById("image_container");
       var imagegroup = document.getElementById("imagegroup");
       if (src.length != 0) {
-      image_container.innerHTML = "<img  src=" + src +" style='width:"+(imagegroup.offsetWidth*0.89).toString()+"px!important; border-radius:25px;'>";
+      image_container.innerHTML = "<img  id = 'actual' src=" + src +" style='height:auto; width:"+(imagegroup.offsetWidth*0.95).toString()+"px!important; border-radius:25px;'>";
     } else {
       var temp_src = "static/img/notfound.png";
-      image_container.innerHTML = "<img  src=" + temp_src +" style='width:"+(imagegroup.offsetWidth*0.89).toString()+"px!important; border-radius:25px;'>";
+      image_container.innerHTML = "<img  id='actual' src=" + temp_src +" style='height:auto; width:"+(imagegroup.offsetWidth*0.95).toString()+"px!important; border-radius:25px;'>";
     }
       var explain = document.getElementById("explain");
       if (src.length != 0) {
@@ -491,7 +492,9 @@ function creategraph() {
       } else {
         explain.innerHTML = "<h3>No Relevant Image Found</h3><p></p>";
       }
-      
+      var actual = document.getElementById("actual");
+      var overlay = document.getElementById("overlay");
+      overlay.style.width = actual.offsetWidth.toString() + "px";
 
 
 

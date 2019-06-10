@@ -3,9 +3,10 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"> -->
     <meta name="description" content="">
     <meta name="author" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <!--<link rel="icon" href="../../../../favicon.ico">-->
 
     <title>Event Cube Demo</title>
@@ -70,309 +71,207 @@
 
     {% block extra_head %} {% endblock %}
   </head>
-{#  <style>#}
-{#      html, body {#}
-{#    overflow-x: hidden!important;#}
-{#    /* max-width: 100%; */#}
-{#    max-width: 100%;#}
-{#  }#}
-{#  .active li{#}
-{#    background-color:black!important;#}
-{#  }#}
-{#  .vertical-center {#}
-{#  margin: 0;#}
-{#  position: absolute;#}
-{#  top: 50%;#}
-{#  -ms-transform: translateY(-50%);#}
-{#  transform: translateY(-50%);#}
-{#}#}
-{#  .text-primary {#}
-{#    /* color: #007bff!important; */#}
-{#    color: #BD5D38 !important;#}
-{##}
-{#  }#}
-{##}
-{#  @import url('https://fonts.googleapis.com/css?family=Staatliches');#}
-{##}
-{#/* body {#}
-{#  margin: 0;#}
-{#  font-family: 'Staatliches', cursive;#}
-{#} */#}
-{##loader {#}
-{#  position: absolute;#}
-{#  left: 50%;#}
-{#  top: 50%;#}
-{#  z-index: 1;#}
-{#  margin: -75px 0 0 -75px;#}
-{##}
-{##}
-{#}#}
-{##}
-{##loader div {#}
-{#     width: 400px;#}
-{#    /* position: absolute; */ */#}
-{#    /* top: 50%;#}
-{#    left: 50%; */#}
-{#    font-family: 'Ubuntu', sans-serif;#}
-{#    transform: translateX(-50%) translateY(-50%);#}
-{#    margin:0 auto!important;#}
-{#    text-align: center;#}
-{#}#}
-{##}
-{##loader h1 {#}
-{#    font-size: 15px;#}
-{#    letter-spacing: 3px;#}
-{#    font-weight: 1200;#}
-{#    color: black;#}
-{#    text-align: center!important;#}
-{##}
-{#}#}
-{##}
-{#.cssanimation, .cssanimation span {#}
-{#    animation-duration: 1s;#}
-{#    animation-fill-mode: both;#}
-{#}#}
-{##}
-{#.cssanimation span { display: inline-block }#}
-{##}
-{#.leFadeInBottom span { animation-name: leFadeInBottom }#}
-{#@keyframes leFadeInBottom {#}
-{#    from {#}
-{#        opacity: 0;#}
-{#        transform: translateY(100%);#}
-{#    }#}
-{#    to { opacity: 1 }#}
-{#}#}
-{##}
-{##}
-{##}
-{##myDiv {#}
-{#  display: none;#}
-{#}#}
-{##}
-{#.temp #button{#}
-{#	width:35px;#}
-{#	height:35px;#}
-{#	border: #BD5D38 12px solid;#}
-{#	border-radius:35px;#}
-{#	margin:0 auto;#}
-{#	position:relative;#}
-{#	-webkit-transition: all 1s ease;#}
-{#    -moz-transition: all 1s ease;#}
-{#    -o-transition: all 1s ease;#}
-{#    -ms-transition: all 1s ease;#}
-{#    transition: all 1s ease;#}
-{#}#}
-{#.temp #button:hover{#}
-{#	width:35px;#}
-{#	height:35px;#}
-{#	border: lightblue 12px solid;#}
-{#	-webkit-transition: all 1s ease;#}
-{#    -moz-transition: all 1s ease;#}
-{#    -o-transition: all 1s ease;#}
-{#    -ms-transition: all 1s ease;#}
-{#    transition: all 1s ease;#}
-{#	position:relative;#}
-{#}#}
-{#.temp {#}
-{#	bottom:0;#}
-{#	left:0;#}
-{#	position:fixed;#}
-{#    width: 100%;#}
-{#    height: 2em;#}
-{#    overflow:hidden;#}
-{#    margin:0 auto;#}
-{#	-webkit-transition: all 1s ease;#}
-{#    -moz-transition: all 1s ease;#}
-{#    -o-transition: all 1s ease;#}
-{#    -ms-transition: all 1s ease;#}
-{#    transition: all 1s ease;#}
-{#	z-index:999;#}
-{#}#}
-{#.temp:hover {#}
-{#	-webkit-transition: all 1s ease;#}
-{#    -moz-transition: all 1s ease;#}
-{#    -o-transition: all 1s ease;#}
-{#    -ms-transition: all 1s ease;#}
-{#    transition: all 1s ease;#}
-{#	height: 13em;#}
-{#}#}
-{#.temp #container{#}
-{#	margin-top:5px;#}
-{#	width:100%;#}
-{#height:100%;#}
-{#  position:relative;#}
-{#  top:0;#}
-{#  left:0;#}
-{#	background: #3A3A3A;#}
-{#}#}
-{#.temp #cont{#}
-{#  position:relative;#}
-{#  top:-45px;#}
-{#  right:190px;#}
-{#	width:150px;#}
-{#	height:auto;#}
-{#	margin:0 auto;#}
-{#}#}
-{#.temp_center{#}
-{#	width:500px;#}
-{#	float:left;#}
-{#  text-align:center;#}
-{#}#}
-{#.temp h3{#}
-{#	font-size: 12px;#}
-{#	font-weight: 90;#}
-{#	margin: 0 auto;#}
-{#  color:white;#}
-{#}#}
-{#footer.footer {#}
-{#  padding-top: 5rem!important;#}
-{#  padding-bottom: 5rem!important;#}
-{#}#}
-{##}
-{#footer.footer .social-link {#}
-{#  display: block!important;#}
-{#  height: 4rem!important;#}
-{#  width: 4rem!important;#}
-{#  line-height: 4.3rem!important;#}
-{#  font-size: 1.5rem!important;#}
-{#  background-color: #1D809F!important;#}
-{#  -webkit-transition: background-color 0.15s ease-in-out;#}
-{#  transition: background-color 0.15s ease-in-out;#}
-{#  -webkit-box-shadow: 0 3px 3px 0 rgba(0, 0, 0, 0.1);#}
-{#  box-shadow: 0 3px 3px 0 rgba(0, 0, 0, 0.1);#}
-{#}#}
-{##}
-{#footer.footer .social-link:hover {#}
-{#  background-color: #155d74;#}
-{#  text-decoration: none;#}
-{#}#}
-{##}
-{#.mastheadtemp {#}
-{#  min-height: 30rem;#}
-{#  position: relative;#}
-{#  display: table;#}
-{#  width: 100%;#}
-{#  height: auto;#}
-{#  padding-top: 8rem;#}
-{#  padding-bottom: 8rem;#}
-{#  background: -webkit-gradient(linear, left top, right top, from(rgba(255, 255, 255, 0.1)), to(rgba(255, 255, 255, 0.1))), url("{% static 'img/back.jpg' %}")!important;#}
-{#  background: linear-gradient(90deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.1) 100%), url("{% static 'img/back.jpg' %}")!important;#}
-{#  background-position: center center;#}
-{#  background-repeat: no-repeat;#}
-{#  background-size: cover;#}
-{#}#}
-{##}
-{#.mastheadtemp h1 {#}
-{#  font-size: 4rem;#}
-{#  margin: 0;#}
-{#  padding: 0;#}
-{#}#}
-{##}
-{#@media (min-width: 992px) {#}
-{#  .mastheadtemp {#}
-{#    height: 100vh;#}
-{#  }#}
-{#  .mastheadtemp h1 {#}
-{#    font-size: 5.5rem;#}
-{#  }#}
-{#}#}
-{##}
-{##}
-{##}
-{##}
-{#  {% block extra_css %}{% endblock %}#}
-{#  </style>#}
+ <style>
+  
+     html, body {
+  overflow-x: hidden!important;
+   /* max-width: 100%; */
+   
+  }
+  .active li{
+    background-color:black!important;
+  }
+  .vertical-center {
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+  .text-primary {
 
-  <body id="wholebody">
-{#      <div class="mt-1" id="loader">#}
-{#          <div>#}
-{#              <h1 class="cssanimation sequence leFadeInBottom" id="text">BY HAN'S GROUP </h1>#}
-{#            </div>#}
-{#      </div>#}
-{#      <script>#}
-{##}
-{#// window.onload = function() {#}
-{#//     animateSequence();#}
-{#//     animateRandom();#}
-{#// };#}
-{#var wholebody = document.getElementById("wholebody");#}
-{#var text = document.getElementById("text");#}
-{#var loader = document.getElementById("loader");#}
-{#loader.style.width = (wholebody.offsetWidth/2).toString() + 'px';#}
-{#wholebody.style.overflow = "hidden";#}
-{#// text.style.marginLeft = (wholebody.offsetWidth/4).toString() + "px";#}
-{#function animateSequence() {#}
-{#    var a = document.getElementsByClassName('sequence');#}
-{#    for (var i = 0; i < a.length; i++) {#}
-{#        var $this = a[i];#}
-{#        var letter = $this.innerHTML;#}
-{#        letter = letter.trim();#}
-{#        var str = '';#}
-{#        var delay = 100;#}
-{#        for (l = 0; l < letter.length; l++) {#}
-{#            if (letter[l] != ' ') {#}
-{#                str += '<span style="animation-delay:' + delay + 'ms; -moz-animation-delay:' + delay + 'ms; -webkit-animation-delay:' + delay + 'ms; ">' + letter[l] + '</span>';#}
-{#                delay += 150;#}
-{#            } else#}
-{#                str += letter[l];#}
-{#        }#}
-{#        $this.innerHTML = str;#}
-{#    }#}
-{#}#}
-{##}
-{#function animateRandom() {#}
-{#    var a = document.getElementsByClassName('random');#}
-{#    for (var i = 0; i < a.length; i++) {#}
-{#        var $this = a[i];#}
-{#        var letter = $this.innerHTML;#}
-{#        letter = letter.trim();#}
-{#        var delay = 70;#}
-{#        var delayArray = new Array;#}
-{#        var randLetter = new Array;#}
-{#        for (j = 0; j < letter.length; j++) {#}
-{#            while (1) {#}
-{#                var random = getRandomInt(0, (letter.length - 1));#}
-{#                if (delayArray.indexOf(random) == -1)#}
-{#                    break;#}
-{#            }#}
-{#            delayArray[j] = random;#}
-{#        }#}
-{#        for (l = 0; l < delayArray.length; l++) {#}
-{#            var str = '';#}
-{#            var index = delayArray[l];#}
-{#            if (letter[index] != ' ') {#}
-{#                str = '<span style="animation-delay:' + delay + 'ms; -moz-animation-delay:' + delay + 'ms; -webkit-animation-delay:' + delay + 'ms; ">' + letter[index] + '</span>';#}
-{#                randLetter[index] = str;#}
-{#            } else#}
-{#                randLetter[index] = letter[index];#}
-{#            delay += 80;#}
-{#        }#}
-{#        randLetter = randLetter.join("");#}
-{#        $this.innerHTML = randLetter;#}
-{#    }#}
-{#}#}
-{#window.onbeforeunload = function () {#}
-{#  window.scrollTo(0, 0);#}
-{#}#}
-{##}
-{#function getRandomInt(min, max) {#}
-{#    return Math.floor(Math.random() * (max - min + 1)) + min;#}
-{#}#}
-{#          var myVar;#}
-{##}
-{#          function myFunction() {#}
-{#            myVar = setTimeout(showPage, 3500);#}
-{#          }#}
-{##}
-{#          function showPage() {#}
-{#            document.getElementById("loader").style.display = "none";#}
-{#            document.getElementById("myDiv").style.display = "block";#}
-{#            var wholebody = document.getElementById("wholebody");#}
-{#            wholebody.style.overflow = "auto";#}
-{#          }#}
-{#          </script>#}
+    color: #BD5D38 !important;
+    
+  }
+  @import url('https://fonts.googleapis.com/css?family=Staatliches');
 
+
+#loader {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  z-index: 1;
+  margin: -75px 0 0 -75px;
+  
+  
+}
+
+#loader div {
+     width: 400px;
+    font-family: 'Ubuntu', sans-serif;
+    transform: translateX(-50%) translateY(-50%);
+    margin:0 auto!important;
+    text-align: center;
+}
+
+#loader h1 {
+    font-size: 15px;
+    letter-spacing: 3px;
+    font-weight: 1200;
+    color: black;
+    text-align: center!important;
+    
+}
+
+.cssanimation, .cssanimation span {
+    animation-duration: 1s;
+    animation-fill-mode: both;
+}
+
+.cssanimation span { display: inline-block }
+
+.leFadeInBottom span { animation-name: leFadeInBottom }
+@keyframes leFadeInBottom {
+    from {
+        opacity: 0;
+        transform: translateY(100%);
+    }
+    to { opacity: 1 }
+}
+
+
+
+.temp #button{
+	width:35px;
+	height:35px;
+	border: #BD5D38 12px solid;
+	border-radius:35px;
+	margin:0 auto;
+	position:relative;
+	-webkit-transition: all 1s ease;
+    -moz-transition: all 1s ease;
+    -o-transition: all 1s ease;
+    -ms-transition: all 1s ease;
+    transition: all 1s ease;
+}
+.temp #button:hover{
+	width:35px;
+	height:35px;
+	border: lightblue 12px solid;
+	-webkit-transition: all 1s ease;
+    -moz-transition: all 1s ease;
+    -o-transition: all 1s ease;
+    -ms-transition: all 1s ease;
+    transition: all 1s ease;
+	position:relative;
+}
+.temp {
+	bottom:0;
+	left:0;
+	position:fixed;
+    width: 100%;
+    height: 2em;
+    overflow:hidden;
+    margin:0 auto;
+	-webkit-transition: all 1s ease;
+    -moz-transition: all 1s ease;
+    -o-transition: all 1s ease;
+    -ms-transition: all 1s ease;
+    transition: all 1s ease;
+	z-index:999;
+}
+.temp:hover {
+	-webkit-transition: all 1s ease;
+    -moz-transition: all 1s ease;
+    -o-transition: all 1s ease;
+    -ms-transition: all 1s ease;
+    transition: all 1s ease;
+	height: 13em;
+}
+.temp #container{
+	margin-top:5px;
+	width:100%;
+height:100%;
+  position:relative;
+  top:0;
+  left:0;
+	background: #3A3A3A;
+}
+.temp #cont{
+  position:relative;
+  top:-45px;
+  right:190px;
+	width:150px;
+	height:auto;
+	margin:0 auto;
+}
+.temp_center{
+	width:500px;
+	float:left;
+  text-align:center;
+}
+.temp h3{
+	font-size: 12px;
+	font-weight: 90;
+	margin: 0 auto;
+  color:white;
+}
+footer.footer {
+  padding-top: 5rem!important;
+  padding-bottom: 5rem!important;
+}
+
+footer.footer .social-link {
+  display: block!important;
+  height: 4rem!important;
+  width: 4rem!important;
+  line-height: 4.3rem!important;
+  font-size: 1.5rem!important;
+  background-color: #1D809F!important;
+  -webkit-transition: background-color 0.15s ease-in-out;
+  transition: background-color 0.15s ease-in-out;
+  -webkit-box-shadow: 0 3px 3px 0 rgba(0, 0, 0, 0.1);
+  box-shadow: 0 3px 3px 0 rgba(0, 0, 0, 0.1);
+}
+
+footer.footer .social-link:hover {
+  background-color: #155d74;
+  text-decoration: none;
+}
+.mastheadtemp {
+  min-height: 30rem;
+  position: relative;
+  display: table;
+  width: 100%;
+  height: auto;
+  padding-top: 8rem;
+  padding-bottom: 8rem;
+  background: -webkit-gradient(linear, left top, right top, from(rgba(255, 255, 255, 0.1)), to(rgba(255, 255, 255, 0.1))), url("{% static 'img/back.jpg' %}")!important;
+  background: linear-gradient(90deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.1) 100%), url("{% static 'img/back.jpg' %}")!important;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.mastheadtemp h1 {
+  font-size: 4rem;
+  margin: 0;
+  padding: 0;
+}
+
+@media (min-width: 992px) {
+  .mastheadtemp {
+    height: 100vh;
+  }
+  .mastheadtemp h1 {
+    font-size: 5.5rem;
+  }
+}
+{% block extra_css %}{% endblock %}
+  </style>
+
+<body id="wholebody" onload="temp();  defaultvalue()">
+    
 <div id="myDiv">
       <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
         <div class="container" style="float: left;">
@@ -419,51 +318,82 @@
     {% block content %} {% endblock content %}
 
 
-     <!-- <footer class="text-muted">
-      <div class="container">
-        <p class="float-right">
-          <a href="#">Back to top</a>
-        </p>
-        <p>Album example is &copy; Bootstrap, but please download and customize it for yourself!</p>
-        <p>New to Bootstrap? <a href="../../">Visit the homepage</a> or read our <a href="../../getting-started/">getting started guide</a>.</p>
-      </div>
-    </footer>  -->
+    
 
   </div>
+  <footer class="footer text-center mt-5 " style="background-color: white;">
+      <div class="container" style="margin: 0 auto;">
+        <!-- <ul class="row" style="margin: 0 auto;" id="icons">
+          <div id="interesting">
+          <li class="list-inline-item">
+            <a class="social-link rounded-circle text-white mr-3" href="https://www.facebook.com/">
+              <i class="fa fa-facebook"></i>
+            </a>
+          </li>
+          <li class="list-inline-item">
+            <a class="social-link rounded-circle text-white mr-3" href="https://twitter.com/">
+              <i class="fa fa-twitter"></i>
+            </a>
+          </li>
+          <li class="list-inline-item">
+            <a class="social-link rounded-circle text-white mr-3" href="https://github.com/chenyuf2/Cube_Demo">
+              <i class="fa fa-github"></i>
+            </a>
+          </li>
+          <li class="list-inline-item">
+              <a class="social-link rounded-circle text-white" href="https://www.instagram.com/">
+                <i class="fa fa-instagram"></i>
+              </a>
+            </li>
+          </div>
+        </ul> -->
+        
+            <div class="social-icons spinned">
+                <a class="item facebook" href="https://www.facebook.com/"><em class="fa fa-facebook"></em></a>
+                <a class="item twitter" href="https://twitter.com/"><em class="fa fa-twitter"></em></a>
+                <a class="item google" href="https://www.google.com/"><em class="fa fa-google"></em></a>
+                <a class="item linkedin" href="https://www.linkedin.com/"><em class="fa fa-linkedin"></em></a>
+                <a class="item instagram" href="https://www.instagram.com/"><em class="fa fa-instagram"></em></a>
+            </div>
+        
+        <p class="text-muted mb-0 mt-5">Copyright &copy; Han's Group 2019</p>
+      </div>
+  </footer>
+  
   <div id="modal_group">
     </div>
-    <!-- Updated Version -->
+   <script>
+   var wholebody = document.getElementById("icons");
+   var widthlength = wholebody.offsetWidth;
+   var icons = document.getElementById("icons");
+   var hey = document.getElementById("interesting").offsetWidth;
+   icons.style.marginLeft = (widthlength/2-hey/2).toString() + "px";
+   </script>
+   
     <script src="{% static 'update/vendor/jquery/jquery.min.js' %}"></script>
     <script src="{% static 'update/vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
-
-    <!-- Core plugin JavaScript-->
+  
+    
     <script src="{% static 'update/vendor/jquery-easing/jquery.easing.min.js' %}"></script>
-
-    <!-- Page level plugin JavaScript-->
+  
     <script src="{% static 'update/vendor/chart.js/Chart.min.js' %}"></script>
     <script src="{% static 'update/vendor/datatables/jquery.dataTables.js' %}"></script>
     <script src="{% static 'update/vendor/datatables/dataTables.bootstrap4.js' %}"></script>
 
-    <!-- Custom scripts for all pages-->
     <script src="{% static 'update/js/sb-admin.min.js' %}"></script>
-
-    <!-- Demo scripts for this page-->
+  
     <script src="{% static 'update/js/demo/datatables-demo.js' %}"></script>
     <script src="{% static 'update/js/demo/chart-area-demo.js' %}"></script>
 
     <script src="{% static 'navigation/vendor/jquery/jquery.min.js' %}"></script>
     <script src="{% static 'navigation/vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
-
-    <!-- Plugin JavaScript -->
+  
     <script src="{% static 'navigation/vendor/jquery-easing/jquery.easing.min.js' %}"></script>
-
-    <!-- Contact form JavaScript -->
+  
     <script src="{% static 'navigation/js/jqBootstrapValidation.js' %}"></script>
     <script src="{% static 'navigation/js/contact_me.js' %}"></script>
-
-    <!-- Custom scripts for this template -->
+  
     <script src="{% static 'navigation/js/agency.min.js' %}"></script>
-
 
   </body>
 </html>
@@ -471,52 +401,3 @@
 
 
 
-<!--
-<nav class="navbar-expand navbar navbar-dark bg-dark static-top " style="height:20px;">
-  <div class="container-fluid">
-
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-      <a class="navbar-brand" style="font-size: 20px; margin-top:10px;" href="/">Cube Demo</a>
-    </div>
-
-    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-      <ul class="nav navbar-nav">
-        <li class="active"><a href="/" class="nav-link font-weight-bold text-white nav-item">Home<span class="sr-only">(current)</span></a></li>
-        <li class="dropdown">
-<a href="#" class="dropdown-toggle font-weight-bold text-white" data-toggle="dropdown" role="button aria-haspopup="true aria-expanded="false">Visualization<span class="caret"></span></a>
-          <ul class="dropdown-menu">
-            <li><a href="/visualization/county" class="font-weight-bold text-dark">County</a></li>
-            <li><a href="/visualization/city" class="font-weight-bold text-dark" >City</a></li>
-          </ul>
-  </li>
-        <li class="dropdown">
-          <a href="#" class="dropdown-toggle  font-weight-bold text-white" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Cube<span class="caret"></span></a>
-          <ul class="dropdown-menu">
-            <li><a href="/cube/upload"class="font-weight-bold text-white" >Upload</a></li>
-            <li><a href="/cube/query"class="font-weight-bold text-white" >Query</a></li>
-
-          </ul>
-        </li>
-      </ul>
-      <ul class="nav navbar-nav navbar-right">
-        <li><a class="  font-weight-bold text-white" href="#">Link</a></li>
-        <li class="dropdown">
-          <a href="#" class="dropdown-toggle font-weight-bold text-white" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
-          <ul class="dropdown-menu">
-            <li><a href="#">Action</a></li>
-            <li><a href="#">Another action</a></li>
-            <li><a href="#">Something else here</a></li>
-            <li role="separator" class="divider"></li>
-            <li><a href="#">Separated link</a></li>
-          </ul>
-        </li>
-      </ul>
-    </div>
-  </div>
-</nav> -->
