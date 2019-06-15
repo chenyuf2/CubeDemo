@@ -1,5 +1,5 @@
 
-function creategraph() {
+function creategraph(city_name) {
     function loadJSON(callback) {
             var xobj = new XMLHttpRequest();
             xobj.overrideMimeType("application/json");
@@ -46,11 +46,11 @@ function creategraph() {
           }
           function loadJSON5(callback) {
             var xobj = new XMLHttpRequest();
-            xobj.overrideMimeType("text/plain");
-            xobj.open('GET', "static/jsonData/phrase_text_700_code.txt", true);
+            xobj.overrideMimeType("application/json");
+            xobj.open('GET', 'static/jsonData/phrase_text_700_code.json', true);
             xobj.onreadystatechange = function () {
               if (xobj.readyState == 4 && xobj.status == "200") {
-                callback(xobj.responseText);
+                callback(JSON.parse(xobj.responseText));
               }
             };
             xobj.send(null);
@@ -58,7 +58,7 @@ function creategraph() {
           function loadJSON6(callback) {
             var xobj = new XMLHttpRequest();
             xobj.overrideMimeType("application/json");
-            xobj.open('GET', 'static/jsonData/cell_key_sentence.json', true);
+            xobj.open('GET', 'static/jsonData/phrase.json', true);
             xobj.onreadystatechange = function () {
               if (xobj.readyState == 4 && xobj.status == "200") {
                 callback(JSON.parse(xobj.responseText));
@@ -91,13 +91,16 @@ function creategraph() {
                    var locations = json2;
                    var times = json3;
                    var topics = json4;
-                   var ids = json5.split("\n");
+                   var ids = json5;
                    var key_phrase = json6;
                    var image = json7;
                   
                    var input_time = document.getElementById("monthText").innerHTML;
-                   var input_city = document.getElementById("cityinput").value;
-
+                   var input_city = city_name;
+                   var current_input_city = document.getElementById("current_input_city");
+                   current_input_city.innerHTML = "Current: " + input_city.toString();
+                   var hidden_input_city = document.getElementById("hidden_input_city");
+                   hidden_input_city.innerHTML = input_city;
                    //Define radio button list
                    var politics = ["justice", "election", "international_relation", "governance"];
                    var economy = ["trade", "finance", "tax", "welfare"];
@@ -109,8 +112,17 @@ function creategraph() {
                            checked_button_id = all_radio_button_ids[i].split(".")[1];
                        }
                    }
+                   if (document.getElementById("economic").checked == true) {
+                     checked_button_id = "economic";
+                   }
+                   if (document.getElementById("military").checked == true) {
+                     checked_button_id = "military";
+                   }
+                   if (document.getElementById("politics").checked == true) {
+                     checked_button_id = "politics";
+                   }
 
-                   
+                  
                    // Let's prepare data for the pie chart, currently the pie chart is selected only based on years
                    var piechart_dict={};
                    var piechart_news_dict={};
@@ -122,10 +134,14 @@ function creategraph() {
                        }
                    }
                 }
+               
                 var locations_keys = Object.keys(locations);
+                // console.log(times_id_list);
                 for (var i = 0; i < locations_keys.length; i++) {
                     var temp_key = locations_keys[i];
+                
                     if (times_id_list.includes(temp_key)) {
+                      // console.log(locations[temp_key]);
                     if (locations[temp_key].includes(input_city)) {
                         var temp_topic = topics[i].split(".");
                        
@@ -142,6 +158,8 @@ function creategraph() {
                 }
             }
         }
+        // console.log(piechart_news_dict);
+
                 // Now, piechart_dict is already be completed, we need to draw the graph;
                 var piechartContainer = document.getElementById("piechartContainer");
                 piechartContainer.innerHTML='<canvas id="myAreaChart"></canvas>';
@@ -152,6 +170,7 @@ function creategraph() {
                   for (var i = 0; i < piechart_label.length; i++) {
                     piechart_label[i] = piechart_label[i].toUpperCase();
                   }
+                 
                   // Pie Chart Example
                   var ctx = document.getElementById("myAreaChart");
                   var myPieChart = new Chart(ctx, {
@@ -194,10 +213,15 @@ function creategraph() {
               var modal_group_html = "";
             //   var keywords_html = "";
               var points = myPieChart.getElementsAtEvent(evt);
-              console.log(points);
+              // console.log(points);
               var graph_index = points[0]._index;
               var topic_name = Object.keys(piechart_dict)[graph_index];
-              var news_list = piechart_news_dict[topic_name]; // This stores the news id for each clicked category;
+              var news_list = [];
+              if (Object.keys(piechart_dict).length!= 0) {
+              news_list = piechart_news_dict[topic_name];
+            }  else {
+              news_list = [];
+            }// This stores the news id for each clicked category;
               var paper_detail_width = document.getElementById("paper_de").offsetWidth;
               var name2 = document.getElementById("name2");
               name2.innerHTML = "News Details of " + topic_name;
@@ -216,18 +240,25 @@ function creategraph() {
                          }
                     },
                   });
-
-                  //Even the pie chart is built, we then set the default value for news detail. We don't want it to be empty
-                  var paperdetail = document.getElementById("paperdetail");
+                   //Even the pie chart is built, we then set the default value for news detail. We don't want it to be empty
+                   var paperdetail = document.getElementById("paperdetail");
                   var paperdetail_html = "";
                   var modal_group = document.getElementById("modal_group");
                   var modal_group_html = "";
+                  paperdetail.innerHTML = "";
+                  modal_group.innerHTML = "";
                 //   var keywords_html = "";
-                  var default_category = Object.keys(piechart_dict)[0];
+                var default_category="";
+                if (Object.keys(piechart_dict).length != 0) {
+                  default_category = Object.keys(piechart_dict)[0];
+                }
                   var name2 = document.getElementById("name2");
               name2.innerHTML = "News Details of " + default_category;
-                  console.log(default_category);
-                  var news_list = piechart_news_dict[default_category]; // This stores the news id for each clicked category;
+                  // console.log(default_category);
+                  var news_list=[];
+                  if (default_category != "") {
+                  news_list = piechart_news_dict[default_category]; 
+                  }// This stores the news id for each clicked category;
                   var paper_detail_width = document.getElementById("paper_de").offsetWidth;
                   for (var i = 0; i < news_list.length; i++) {
                       var temp_title = titles[news_list[i]]["title"];
@@ -242,7 +273,7 @@ function creategraph() {
                   //Then, let's build the line chart. but we need to do somethind for the data
                   var linechart_dict={};
                   var name;
-                  if (politics.includes(checked_button_id) == true) {
+                  if (politics.includes(checked_button_id) == true || checked_button_id == "politics") {
                       linechart_dict["justice"] = {"January":0, "Feburary":0, "March":0, "April":0, "May":0, "June":0, "July":0, "August":0, "September":0, "October":0, "November":0, "December":0};
                       linechart_dict["election"] = {"January":0, "Feburary":0, "March":0, "April":0, "May":0, "June":0, "July":0, "August":0,"September":0, "October":0, "November":0, "December":0};
                       linechart_dict["international_relation"]= {"January":0, "Feburary":0, "March":0, "April":0, "May":0, "June":0, "July":0, "August":0,"September":0, "October":0, "November":0, "December":0};
@@ -250,7 +281,7 @@ function creategraph() {
                       linechart_dict["miss"] =  {"January":0, "Feburary":0, "March":0, "April":0, "May":0, "June":0, "July":0,"August":0, "September":0, "October":0, "November":0, "December":0};
                       name = "politics";
                   }
-                  if (military.includes(checked_button_id)) {
+                  if (military.includes(checked_button_id) == true || checked_button_id == "military") {
                     linechart_dict["combat"] = {"January":0, "Feburary":0, "March":0, "April":0, "May":0, "June":0, "July":0, "August":0, "September":0, "October":0, "November":0, "December":0};
                     linechart_dict["weapons"] = {"January":0, "Feburary":0, "March":0, "April":0, "May":0, "June":0, "July":0, "August":0,"September":0, "October":0, "November":0, "December":0};
                     linechart_dict["terrorism"]= {"January":0, "Feburary":0, "March":0, "April":0, "May":0, "June":0, "July":0, "August":0,"September":0, "October":0, "November":0, "December":0};
@@ -258,7 +289,7 @@ function creategraph() {
                     linechart_dict["miss"] =  {"January":0, "Feburary":0, "March":0, "April":0, "May":0, "June":0, "July":0,"August":0, "September":0, "October":0, "November":0, "December":0};
                     name = "military";
                 }
-                  if (economy.includes(checked_button_id)) {
+                  if (economy.includes(checked_button_id)==true || checked_button_id == "economic") {
                     linechart_dict["trade"] = {"January":0, "Feburary":0, "March":0, "April":0, "May":0, "June":0, "July":0, "August":0, "September":0, "October":0, "November":0, "December":0};
                     linechart_dict["finance"] = {"January":0, "Feburary":0, "March":0, "April":0, "May":0, "June":0, "July":0, "August":0,"September":0, "October":0, "November":0, "December":0};
                     linechart_dict["tax"]= {"January":0, "Feburary":0, "March":0, "April":0, "May":0, "June":0, "July":0, "August":0,"September":0, "October":0, "November":0, "December":0};
@@ -277,7 +308,7 @@ function creategraph() {
             
                   for (var i = 0; i < ids.length; i++) {
                       if (location_list_ids.includes(ids[i])) {
-                          if (times[i].length >= 5) {
+                          if (times[i].length >= 5 && times[i].includes(input_time.substr(0,4))) {
                           var temp_time = times[i].split("-")[1];
                          
                           var temp_month = month_dict[temp_time];
@@ -402,26 +433,31 @@ function creategraph() {
       //Next part is the keywords and phrases and image
       var keyword_sentence = document.getElementById("keywords");
       keyword_sentence.innerHTML = "";
+      // console.log(key_phrase);
       var key_phrase_list = [];
       var key_sentence_list=[];
       var phrase_html = "";
       var category_name = "";
-      if (military.includes(checked_button_id)) {
+      if (military.includes(checked_button_id) || checked_button_id == "military") {
         category_name = "military";
       }
-      if (economy.includes(checked_button_id)) {
+      if (economy.includes(checked_button_id) || checked_button_id == "economic") {
         category_name = "economics";
       }
-      if (politics.includes(checked_button_id)) {
+      if (politics.includes(checked_button_id) || checked_button_id == "politics") {
         category_name = "politics";
       }
+      
       var paper_detail_width = document.getElementById("paper_de").offsetWidth;
       for(var key in key_phrase){
+        if (checked_button_id == "politics" || checked_button_id == "military" || checked_button_id == "economic") {
+          checked_button_id = checked_button_id+".";
+        }
         if(key.includes(checked_button_id)){
           if(key.includes(input_time)){
             if(key.includes(input_city)){
               var content = key_phrase[key];
-              console.log(content);
+              // console.log(content);
               for(var words in content){    
                 var sentence = content[words];
                 phrase_html += '<a class="list-group-item list-group-item-action flex-column align-items-start" style="border-radius:16px; width:'+(paper_detail_width*0.84).toString()+'px!important; border-style:none;"><li class="font-weight-bold text-primary" style="text-transform: uppercase;font-size:15px;">'+words.substr(0,3)+'<span class="text-dark" style="text-transform:upperclass;">'+words.substr(3,words.length)+'</span></li><li class="section-subheading text-muted font-weight-bold" style="font-size:smaller;font-family: "Droid Serif"; font-style: italic!important;">'+sentence+'</li></a>';
@@ -434,7 +470,7 @@ function creategraph() {
         }
       }     
       keyword_sentence.innerHTML = phrase_html;
-
+    //  console.log(key_phrase["politics.governance_SEP_Donets'k_SEP_2014-05"]);
 
       //Keywords is done, we need to do the image part
       var src = "";
@@ -445,6 +481,9 @@ function creategraph() {
             if(temp_city.includes(input_city) && src.length == 0){
               var temp_topic = location[temp_city];
               for(var topic_name in temp_topic){
+                if (checked_button_id == "politics" || checked_button_id == "economic" ||checked_button_id == "military") {
+                  checked_button_id = checked_button_id + ".";
+                }
                 if(topic_name.includes(checked_button_id) && src.length == 0){
                   src = temp_topic[topic_name];
                   break;
@@ -471,13 +510,14 @@ function creategraph() {
       //   }
       // }
       //Complete the src of image, then put innerhtml in the index
+      // console.log(src);
       if(src.includes("jpg")){
         src = "static/jsonData/pics/pics/jpg/"+src;
       }
       else if (src.includes("png")){
         src = "static/jsonData/pics/pics/png/"+src;
       }
-      console.log(src);
+      // console.log(src);
       var image_container = document.getElementById("image_container");
       var imagegroup = document.getElementById("imagegroup");
       if (src.length != 0) {
@@ -495,7 +535,10 @@ function creategraph() {
       var actual = document.getElementById("actual");
       var overlay = document.getElementById("overlay");
       overlay.style.width = actual.offsetWidth.toString() + "px";
+      var search = document.getElementById("search");
+      search.value= "";
 
+  
 
 
               

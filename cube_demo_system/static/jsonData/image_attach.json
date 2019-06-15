@@ -4,8 +4,8 @@
             "politics": "IC0015S89.jpg",
             "politics.international_relation": "IC0015S89.jpg",
             "military": "IC001HVND.jpg",
-            "economics": "IC001HSVS.jpg",
-            "economics.finance": "IC001HSVS.jpg",
+            "economic": "IC001HSVS.jpg",
+            "economic.finance": "IC001HSVS.jpg",
             "politics.governance": "N/A_IMG",
             "politics.justice": "N/A_IMG",
             "military.combat": "IC001HXZM.jpg"
@@ -14,8 +14,8 @@
             "politics": "IC001I95L.jpg",
             "politics.international_relation": "IC0015S89.jpg",
             "military": "IC001HVND.jpg",
-            "economics": "IC001HSVS.jpg",
-            "economics.finance": "IC001HSVS.jpg",
+            "economic": "IC001HSVS.jpg",
+            "economic.finance": "IC001HSVS.jpg",
             "military.ceasefire": "HC000ZISO.jpg",
             "politics.governance": "N/A_IMG",
             "politics.justice": "N/A_IMG",
@@ -25,9 +25,9 @@
             "politics": "IC001I95L.jpg",
             "politics.international_relation": "IC0015S89.jpg",
             "military": "IC001HVND.jpg",
-            "economics": "HC0000I1T.jpg",
+            "economic": "HC0000I1T.jpg",
             "military.ceasefire": "HC000ZISO.jpg",
-            "economics.trade": "HC0000I1T.jpg",
+            "economic.trade": "HC0000I1T.jpg",
             "politics.governance": "N/A_IMG",
             "politics.justice": "N/A_IMG"
         },
@@ -36,7 +36,7 @@
             "politics.international_relation": "IC0015S89.jpg",
             "politics.governance": "N/A_IMG"
         },
-        "Donetsk": {
+        "Donets'k": {
             "politics": "N/A_IMG",
             "military": "IC001HVND.jpg",
             "politics.governance": "N/A_IMG",
@@ -59,15 +59,15 @@
             "politics": "IC001J35V.jpg",
             "politics.international_relation": "IC001J35V.jpg",
             "military": "IC001HVND.jpg",
-            "economics": "HC0000I1T.jpg",
-            "economics.finance": "IC001HSVS.jpg",
+            "economic": "HC0000I1T.jpg",
+            "economic.finance": "IC001HSVS.jpg",
             "military.ceasefire": "HC000ZISO.jpg",
-            "economics.trade": "HC0000I1T.jpg",
+            "economic.trade": "HC0000I1T.jpg",
             "politics.governance": "N/A_IMG",
             "politics.justice": "N/A_IMG",
             "military.combat": "IC001HXZM.jpg"
         },
-        "Luhansk": {
+        "Luhans'k": {
             "politics": "IC001I95L.jpg"
         },
         "Stavropol'": {
@@ -83,8 +83,8 @@
             "politics": "IC001IGLO.png",
             "politics.international_relation": "IC001IEY3.png",
             "military": "IC001IIPJ.png",
-            "economics": "IC001IFD3.jpg",
-            "economics.finance": "IC001IFD3.jpg",
+            "economic": "IC001IFD3.jpg",
+            "economic.finance": "IC001IFD3.jpg",
             "politics.governance": "IC001IDDZ.jpg",
             "politics.justice": "IC001IGLO.png",
             "military.combat": "IC001IIPJ.png",
@@ -93,10 +93,10 @@
         "Cherkasy": {
             "politics": "IC001IGLO.png",
             "military": "IC001IGV1.jpg",
-            "economics": "IC001II2M.jpg",
-            "economics.finance": "IC001IFQ9.jpg",
+            "economic": "IC001II2M.jpg",
+            "economic.finance": "IC001IFQ9.jpg",
             "military.ceasefire": "IC001IGOS.png",
-            "economics.trade": "IC001II2M.jpg",
+            "economic.trade": "IC001II2M.jpg",
             "politics.governance": "IC001IDDZ.jpg",
             "politics.justice": "IC001IGLO.png",
             "military.combat": "IC001IGV1.jpg",
@@ -105,19 +105,19 @@
         "Kiev City": {
             "politics": "IC001IGLO.png",
             "military": "IC001IFNU.jpg",
-            "economics": "IC001II2M.jpg",
-            "economics.finance": "IC001IFD3.jpg",
+            "economic": "IC001II2M.jpg",
+            "economic.finance": "IC001IFD3.jpg",
             "military.ceasefire": "IC001IFNU.jpg",
-            "economics.trade": "IC001II2M.jpg",
+            "economic.trade": "IC001II2M.jpg",
             "politics.justice": "IC001IGLO.png",
             "ROOT": "IC001IFSJ.png",
-            "economics.tax": "IC001IF3Q.jpg"
+            "economic.tax": "IC001IF3Q.jpg"
         },
-        "Donetsk": {
+        "Donets'k": {
             "politics": "IC001IGLO.png",
             "military": "IC001IGV1.jpg",
-            "economics": "IC001II2M.jpg",
-            "economics.trade": "IC001II2M.jpg",
+            "economic": "IC001II2M.jpg",
+            "economic.trade": "IC001II2M.jpg",
             "politics.justice": "IC001IGLO.png",
             "military.combat": "IC001IGV1.jpg"
         },
@@ -128,9 +128,9 @@
         "Krasnoyarsk": {
             "politics": "IC001IGLO.png",
             "politics.international_relation": "IC001IEY3.png",
-            "economics": "IC001II2M.jpg",
-            "economics.finance": "IC001IFD3.jpg",
-            "economics.trade": "IC001II2M.jpg",
+            "economic": "IC001II2M.jpg",
+            "economic.finance": "IC001IFD3.jpg",
+            "economic.trade": "IC001II2M.jpg",
             "politics.governance": "IC001IDDZ.jpg",
             "politics.justice": "IC001IGLO.png",
             "ROOT": "IC001IFSJ.png"
@@ -138,7 +138,7 @@
         "Tyumen'": {
             "politics": "IC001ICFW.jpg"
         },
-        "Luhansk": {
+        "Luhans'k": {
             "politics": "IC001IGLO.png",
             "politics.justice": "IC001IGLO.png"
         },
@@ -155,41 +155,41 @@
             "military.combat": "IC001ICD4.png"
         },
         "Odessa": {
-            "economics": "IC001IEEZ.jpg",
-            "economics.finance": "IC001IEEZ.jpg"
+            "economic": "IC001IEEZ.jpg",
+            "economic.finance": "IC001IEEZ.jpg"
         },
         "Rostov": {
-            "economics": "IC001IEEZ.jpg",
-            "economics.finance": "IC001IEEZ.jpg"
+            "economic": "IC001IEEZ.jpg",
+            "economic.finance": "IC001IEEZ.jpg"
         },
         "Zaporizhzhya": {
-            "economics": "IC001II2M.jpg",
-            "economics.trade": "IC001II2M.jpg"
+            "economic": "IC001II2M.jpg",
+            "economic.trade": "IC001II2M.jpg"
         },
         "Chelyabinsk": {
-            "economics": "IC001IFD3.jpg",
-            "economics.finance": "IC001IFD3.jpg"
+            "economic": "IC001IFD3.jpg",
+            "economic.finance": "IC001IFD3.jpg"
         },
         "L'viv": {
-            "economics": "IC001IF3Q.jpg",
-            "economics.tax": "IC001IF3Q.jpg"
+            "economic": "IC001IF3Q.jpg",
+            "economic.tax": "IC001IF3Q.jpg"
         },
         "Kiev": {
-            "economics": "IC001II2M.jpg",
-            "economics.finance": "IC001IFD3.jpg",
-            "economics.trade": "IC001II2M.jpg"
+            "economic": "IC001II2M.jpg",
+            "economic.finance": "IC001IFD3.jpg",
+            "economic.trade": "IC001II2M.jpg"
         },
         "Transcarpathia": {
-            "economics": "IC001IFD3.jpg",
-            "economics.finance": "IC001IFD3.jpg"
+            "economic": "IC001IFD3.jpg",
+            "economic.finance": "IC001IFD3.jpg"
         },
         "Kirovohrad": {
-            "economics": "IC001II2M.jpg",
-            "economics.trade": "IC001II2M.jpg"
+            "economic": "IC001II2M.jpg",
+            "economic.trade": "IC001II2M.jpg"
         },
         "Chechnya": {
-            "economics": "IC001IGRT.jpg",
-            "economics.finance": "IC001IGRT.jpg"
+            "economic": "IC001IGRT.jpg",
+            "economic.finance": "IC001IGRT.jpg"
         },
         "Kaliningrad": {
             "ROOT": "IC001IFSJ.png"
@@ -205,8 +205,8 @@
         "Cherkasy": {
             "politics": "IC001GWP3.jpg",
             "politics.international_relation": "IC001GWP3.jpg",
-            "economics": "HC000R2OM.jpg",
-            "economics.finance": "HC000R2OM.jpg"
+            "economic": "HC000R2OM.jpg",
+            "economic.finance": "HC000R2OM.jpg"
         },
         "Kiev City": {
             "politics": "IC001GWP3.jpg",
@@ -233,8 +233,8 @@
             "politics.international_relation": "HC0003O2U.jpg"
         },
         "Tyumen'": {
-            "economics": "HC000TIIQ.jpg",
-            "economics.finance": "HC000TIIQ.jpg"
+            "economic": "HC000TIIQ.jpg",
+            "economic.finance": "HC000TIIQ.jpg"
         },
         "L'viv": {
             "ROOT": "IC001GXH7.jpg"
@@ -255,8 +255,8 @@
             "politics": "IC001GTK5.jpg",
             "politics.international_relation": "IC001GTK5.jpg",
             "military": "IC001F9N9.jpg",
-            "economics": "IC001F7ST.jpg",
-            "economics.finance": "IC001F7ST.jpg",
+            "economic": "IC001F7ST.jpg",
+            "economic.finance": "IC001F7ST.jpg",
             "military.ceasefire": "IC001F91G.jpg",
             "military.combat": "IC001F609.jpg",
             "ROOT": "IC001FC90.jpg"
@@ -265,8 +265,8 @@
             "politics": "IC001GTNV.jpg",
             "politics.international_relation": "IC001GTL2.jpg",
             "military": "IC001FGBA.jpg",
-            "economics": "IC001GSVB.jpg",
-            "economics.finance": "IC001GSVB.jpg",
+            "economic": "IC001GSVB.jpg",
+            "economic.finance": "IC001GSVB.jpg",
             "military.ceasefire": "IC001FGBA.jpg",
             "politics.governance": "IC001GTC0.jpg",
             "politics.justice": "IC001GTNV.jpg"
@@ -275,8 +275,8 @@
             "politics": "IC001J5M9.jpg",
             "politics.international_relation": "IC001J5M9.jpg",
             "military": "IC001FGBA.jpg",
-            "economics": "IC001GSVB.jpg",
-            "economics.finance": "IC001GSVB.jpg",
+            "economic": "IC001GSVB.jpg",
+            "economic.finance": "IC001GSVB.jpg",
             "military.ceasefire": "IC001FGBA.jpg",
             "politics.governance": "IC001F2QZ.jpg",
             "military.weapons": "IC001GRUO.jpg",
@@ -297,8 +297,8 @@
             "politics": "IC001GTK5.jpg",
             "politics.international_relation": "IC001GTK5.jpg",
             "military": "IC001F91G.jpg",
-            "economics": "IC001GSI7.jpg",
-            "economics.finance": "IC001GSI7.jpg",
+            "economic": "IC001GSI7.jpg",
+            "economic.finance": "IC001GSI7.jpg",
             "military.ceasefire": "IC001F91G.jpg",
             "politics.governance": "IC001GTFH.jpg",
             "military.combat": "IC001F609.jpg",
@@ -313,8 +313,8 @@
             "politics": "IC001GTRN.jpg",
             "politics.international_relation": "IC001GTRN.jpg",
             "military": "IC001GTIK.jpg",
-            "economics": "IC001F7ST.jpg",
-            "economics.finance": "IC001F7ST.jpg",
+            "economic": "IC001F7ST.jpg",
+            "economic.finance": "IC001F7ST.jpg",
             "military.ceasefire": "IC001GTIK.jpg"
         },
         "Kherson": {
@@ -333,7 +333,7 @@
             "politics": "IC001FAN0.jpg",
             "politics.international_relation": "IC001FAN0.jpg"
         },
-        "Donetsk": {
+        "Donets'k": {
             "military": "IC001FGBA.jpg",
             "military.ceasefire": "IC001FGBA.jpg",
             "military.combat": "IC001FBCN.jpg"
@@ -346,18 +346,18 @@
             "military": "IC001F609.jpg",
             "military.combat": "IC001F609.jpg"
         },
-        "Luhansk": {
+        "Luhans'k": {
             "military": "IC001FGBA.jpg",
             "military.ceasefire": "IC001FGBA.jpg",
             "military.weapons": "IC001GRUO.jpg"
         },
         "Kiev": {
-            "economics": "IC001GSVB.jpg",
-            "economics.finance": "IC001GSVB.jpg"
+            "economic": "IC001GSVB.jpg",
+            "economic.finance": "IC001GSVB.jpg"
         },
         "Tatarstan": {
-            "economics": "IC001F7ST.jpg",
-            "economics.finance": "IC001F7ST.jpg"
+            "economic": "IC001F7ST.jpg",
+            "economic.finance": "IC001F7ST.jpg"
         },
         "Kaliningrad": {
             "ROOT": "IC001F7CO.jpg"
@@ -372,8 +372,8 @@
             "politics": "IC001IDSH.jpg",
             "politics.international_relation": "N/A_IMG",
             "military": "IC0019XWF.jpg",
-            "economics": "N/A_IMG",
-            "economics.finance": "N/A_IMG",
+            "economic": "N/A_IMG",
+            "economic.finance": "N/A_IMG",
             "military.ceasefire": "IC0019XWF.jpg",
             "politics.governance": "IC001IDSH.jpg",
             "military.combat": "HC000ZJLX.jpg"
@@ -382,8 +382,8 @@
             "politics": "IC001IDSH.jpg",
             "politics.international_relation": "N/A_IMG",
             "military": "HC000ZJLX.jpg",
-            "economics": "N/A_IMG",
-            "economics.finance": "N/A_IMG",
+            "economic": "N/A_IMG",
+            "economic.finance": "N/A_IMG",
             "politics.governance": "IC001IDSH.jpg",
             "military.combat": "HC000ZJLX.jpg"
         },
@@ -391,12 +391,12 @@
             "politics": "IC0019XY1.jpg",
             "politics.international_relation": "N/A_IMG",
             "military": "IC0019XWF.jpg",
-            "economics": "N/A_IMG",
-            "economics.finance": "N/A_IMG",
+            "economic": "N/A_IMG",
+            "economic.finance": "N/A_IMG",
             "military.ceasefire": "IC0019XWF.jpg",
             "military.combat": "HC000ZJPN.jpg"
         },
-        "Donetsk": {
+        "Donets'k": {
             "military": "HC000ZJPN.jpg",
             "military.combat": "HC000ZJPN.jpg"
         },
@@ -408,10 +408,10 @@
             "military": "IC0019XWF.jpg",
             "military.ceasefire": "IC0019XWF.jpg"
         },
-        "Luhansk": {
+        "Luhans'k": {
             "military": "HC000ZJLX.jpg",
-            "economics": "N/A_IMG",
-            "economics.finance": "N/A_IMG",
+            "economic": "N/A_IMG",
+            "economic.finance": "N/A_IMG",
             "military.combat": "HC000ZJLX.jpg"
         },
         "Tyumen'": {
@@ -419,12 +419,12 @@
             "military.combat": "HC000ZJPN.jpg"
         },
         "Odessa": {
-            "economics": "N/A_IMG",
-            "economics.finance": "N/A_IMG"
+            "economic": "N/A_IMG",
+            "economic.finance": "N/A_IMG"
         },
         "Krasnodar": {
-            "economics": "N/A_IMG",
-            "economics.finance": "N/A_IMG"
+            "economic": "N/A_IMG",
+            "economic.finance": "N/A_IMG"
         }
     },
     "2014-03": {
@@ -432,8 +432,8 @@
             "politics": "IC001IP8M.jpg",
             "politics.international_relation": "IC001IP8M.jpg",
             "military": "IC001I0SK.jpg",
-            "economics": "N/A_IMG",
-            "economics.trade": "N/A_IMG",
+            "economic": "N/A_IMG",
+            "economic.trade": "N/A_IMG",
             "politics.governance": "IC001IDZI.jpg",
             "military.weapons": "IC001I0SK.jpg"
         },
@@ -441,9 +441,9 @@
             "politics": "IC001IDZI.jpg",
             "politics.international_relation": "IC001IP8M.jpg",
             "military": "HC000ZBA8.jpg",
-            "economics": "HC000ZC8P.jpg",
-            "economics.finance": "HC000ZC8P.jpg",
-            "economics.trade": "N/A_IMG",
+            "economic": "HC000ZC8P.jpg",
+            "economic.finance": "HC000ZC8P.jpg",
+            "economic.trade": "N/A_IMG",
             "politics.governance": "IC001IDZI.jpg",
             "military.weapons": "IC001I0SK.jpg",
             "military.combat": "HC000ZBA8.jpg"
@@ -452,8 +452,8 @@
             "politics": "IC001IDZI.jpg",
             "politics.international_relation": "IC001IP8M.jpg",
             "military": "HC000ZBA8.jpg",
-            "economics": "HC000ZC8P.jpg",
-            "economics.finance": "HC000ZC8P.jpg",
+            "economic": "HC000ZC8P.jpg",
+            "economic.finance": "HC000ZC8P.jpg",
             "politics.governance": "IC001IDZI.jpg",
             "military.combat": "HC000ZBA8.jpg",
             "politics.election": "N/A_IMG"
@@ -462,9 +462,9 @@
             "politics": "IC001IDZI.jpg",
             "politics.international_relation": "IC001IP8M.jpg",
             "military": "HC000ZBA8.jpg",
-            "economics": "HC000ZC8P.jpg",
-            "economics.finance": "HC000ZC8P.jpg",
-            "economics.trade": "N/A_IMG",
+            "economic": "HC000ZC8P.jpg",
+            "economic.finance": "HC000ZC8P.jpg",
+            "economic.trade": "N/A_IMG",
             "politics.governance": "IC001IDZI.jpg",
             "military.weapons": "IC001I0SK.jpg",
             "military.combat": "HC000ZBA8.jpg"
@@ -473,16 +473,16 @@
             "politics": "IC001IDZI.jpg",
             "politics.international_relation": "IC001IP8M.jpg",
             "military": "HC000ZBA8.jpg",
-            "economics": "HC000ZC8P.jpg",
-            "economics.finance": "HC000ZC8P.jpg",
-            "economics.trade": "N/A_IMG",
+            "economic": "HC000ZC8P.jpg",
+            "economic.finance": "HC000ZC8P.jpg",
+            "economic.trade": "N/A_IMG",
             "politics.governance": "IC001IDZI.jpg",
             "military.combat": "HC000ZBA8.jpg"
         },
         "Odessa": {
             "politics": "IC001IDZI.jpg",
-            "economics": "HC000ZC8P.jpg",
-            "economics.finance": "HC000ZC8P.jpg",
+            "economic": "HC000ZC8P.jpg",
+            "economic.finance": "HC000ZC8P.jpg",
             "politics.governance": "IC001IDZI.jpg"
         },
         "Poltava": {
@@ -492,8 +492,8 @@
         "L'viv": {
             "politics": "IC001IDZI.jpg",
             "politics.international_relation": "IC001IP8M.jpg",
-            "economics": "N/A_IMG",
-            "economics.trade": "N/A_IMG",
+            "economic": "N/A_IMG",
+            "economic.trade": "N/A_IMG",
             "politics.governance": "IC001IDZI.jpg"
         },
         "Kiev": {
@@ -507,8 +507,8 @@
         "Kharkiv": {
             "politics": "N/A_IMG",
             "military": "N/A_IMG",
-            "economics": "HC000ZC8P.jpg",
-            "economics.finance": "HC000ZC8P.jpg",
+            "economic": "HC000ZC8P.jpg",
+            "economic.finance": "HC000ZC8P.jpg",
             "military.weapons": "N/A_IMG",
             "military.combat": "N/A_IMG"
         },
@@ -517,14 +517,14 @@
             "politics.international_relation": "IC001IP8M.jpg",
             "politics.governance": "N/A_IMG"
         },
-        "Donetsk": {
+        "Donets'k": {
             "military": "HC000ZBA8.jpg",
-            "economics": "HC000ZC8P.jpg",
-            "economics.finance": "HC000ZC8P.jpg",
+            "economic": "HC000ZC8P.jpg",
+            "economic.finance": "HC000ZC8P.jpg",
             "military.weapons": "N/A_IMG",
             "military.combat": "HC000ZBA8.jpg"
         },
-        "Luhansk": {
+        "Luhans'k": {
             "military": "N/A_IMG",
             "military.combat": "N/A_IMG"
         },
@@ -533,34 +533,34 @@
             "military.weapons": "IC001I0SK.jpg"
         },
         "Krasnodar": {
-            "economics": "HC000ZC8P.jpg",
-            "economics.finance": "HC000ZC8P.jpg"
+            "economic": "HC000ZC8P.jpg",
+            "economic.finance": "HC000ZC8P.jpg"
         },
         "Tatarstan": {
-            "economics": "HC000ZC8P.jpg",
-            "economics.finance": "HC000ZC8P.jpg"
+            "economic": "HC000ZC8P.jpg",
+            "economic.finance": "HC000ZC8P.jpg"
         },
         "Chechnya": {
-            "economics": "HC000ZC8P.jpg",
-            "economics.finance": "HC000ZC8P.jpg",
-            "economics.trade": "N/A_IMG"
+            "economic": "HC000ZC8P.jpg",
+            "economic.finance": "HC000ZC8P.jpg",
+            "economic.trade": "N/A_IMG"
         }
     },
     "2016-04": {
         "Moscow City": {
             "politics": "IC001ICL4.jpg",
             "politics.international_relation": "IC001IFGU.jpg",
-            "economics": "IC001IG77.jpg",
-            "economics.finance": "IC001IG77.jpg",
-            "economics.trade": "IC001IHCP.jpg",
+            "economic": "IC001IG77.jpg",
+            "economic.finance": "IC001IG77.jpg",
+            "economic.trade": "IC001IHCP.jpg",
             "politics.justice": "IC001ICL4.jpg"
         },
         "Cherkasy": {
             "politics": "IC001IDM8.jpg",
             "politics.international_relation": "IC001IIN2.jpg",
             "military": "IC001GU6O.jpg",
-            "economics": "IC001IG77.jpg",
-            "economics.finance": "IC001IG77.jpg",
+            "economic": "IC001IG77.jpg",
+            "economic.finance": "IC001IG77.jpg",
             "military.ceasefire": "IC001IDWZ.jpg",
             "politics.governance": "IC001IDM8.jpg",
             "military.weapons": "IC001IBYA.jpg",
@@ -571,18 +571,18 @@
             "politics": "IC001IBV6.jpg",
             "politics.international_relation": "IC001IIN2.jpg",
             "military": "IC001IDWZ.jpg",
-            "economics": "IC001ICNW.jpg",
-            "economics.finance": "IC001ICNW.jpg",
+            "economic": "IC001ICNW.jpg",
+            "economic.finance": "IC001ICNW.jpg",
             "military.ceasefire": "IC001IDWZ.jpg",
             "politics.governance": "IC001IDM8.jpg",
             "politics.justice": "N/A_IMG",
             "military.combat": "IC001IHNV.jpg"
         },
-        "Donetsk": {
+        "Donets'k": {
             "politics": "IC001II7F.jpg",
             "military": "IC001IEL1.jpg",
-            "economics": "IC001IDQA.jpg",
-            "economics.finance": "IC001IDQA.jpg",
+            "economic": "IC001IDQA.jpg",
+            "economic.finance": "IC001IDQA.jpg",
             "military.weapons": "IC001IFY7.jpg",
             "politics.justice": "N/A_IMG",
             "military.combat": "IC001IEL1.jpg"
@@ -599,17 +599,17 @@
             "politics": "IC001IHZJ.jpg",
             "politics.international_relation": "IC001IHZJ.jpg",
             "military": "IC001IIBJ.png",
-            "economics": "IC001ICNW.jpg",
-            "economics.finance": "IC001ICNW.jpg",
-            "economics.trade": "IC001IHCP.jpg",
+            "economic": "IC001ICNW.jpg",
+            "economic.finance": "IC001ICNW.jpg",
+            "economic.trade": "IC001IHCP.jpg",
             "politics.governance": "IC001IG37.jpg",
             "politics.justice": "IC001IEQ3.jpg",
             "military.combat": "IC001IIBJ.png"
         },
         "Odessa": {
             "politics": "IC001ICL4.jpg",
-            "economics": "IC001II5C.jpg",
-            "economics.finance": "IC001II5C.jpg",
+            "economic": "IC001II5C.jpg",
+            "economic.finance": "IC001II5C.jpg",
             "politics.governance": "IC001IFIQ.jpg",
             "politics.justice": "IC001ICL4.jpg"
         },
@@ -628,7 +628,7 @@
             "politics.governance": "IC001IFIQ.jpg",
             "politics.justice": "IC001ICL4.jpg"
         },
-        "Luhansk": {
+        "Luhans'k": {
             "politics": "N/A_IMG",
             "military": "IC001IG0K.jpg",
             "military.ceasefire": "IC001IG0K.jpg",
@@ -637,8 +637,8 @@
         },
         "Kharkiv": {
             "politics": "N/A_IMG",
-            "economics": "IC001IHAD.jpg",
-            "economics.finance": "IC001IHAD.jpg",
+            "economic": "IC001IHAD.jpg",
+            "economic.finance": "IC001IHAD.jpg",
             "politics.justice": "N/A_IMG"
         },
         "Krasnodar": {
@@ -671,36 +671,36 @@
             "military.combat": "IC001IIBJ.png"
         },
         "N/A": {
-            "economics": "IC001IHCP.jpg",
-            "economics.trade": "IC001IHCP.jpg"
+            "economic": "IC001IHCP.jpg",
+            "economic.trade": "IC001IHCP.jpg"
         },
         "Moskva": {
-            "economics": "IC001IG77.jpg",
-            "economics.finance": "IC001IG77.jpg"
+            "economic": "IC001IG77.jpg",
+            "economic.finance": "IC001IG77.jpg"
         },
         "Kiev": {
-            "economics": "IC001IG77.jpg",
-            "economics.finance": "IC001IG77.jpg"
+            "economic": "IC001IG77.jpg",
+            "economic.finance": "IC001IG77.jpg"
         },
         "Adygey": {
-            "economics": "IC001IHCP.jpg",
-            "economics.trade": "IC001IHCP.jpg"
+            "economic": "IC001IHCP.jpg",
+            "economic.trade": "IC001IHCP.jpg"
         },
         "Perm'": {
-            "economics": "N/A_IMG",
-            "economics.finance": "N/A_IMG"
+            "economic": "N/A_IMG",
+            "economic.finance": "N/A_IMG"
         },
         "Kabardin-Balkar": {
-            "economics": "IC001IHCP.jpg",
-            "economics.trade": "IC001IHCP.jpg"
+            "economic": "IC001IHCP.jpg",
+            "economic.trade": "IC001IHCP.jpg"
         }
     },
     "2017-01": {
         "Moscow City": {
             "politics": "N/A_IMG",
             "politics.international_relation": "N/A_IMG",
-            "economics": "N/A_IMG",
-            "economics.finance": "N/A_IMG"
+            "economic": "N/A_IMG",
+            "economic.finance": "N/A_IMG"
         },
         "Cherkasy": {
             "politics": "N/A_IMG",
@@ -713,85 +713,85 @@
         "Krasnoyarsk": {
             "politics": "N/A_IMG",
             "politics.international_relation": "N/A_IMG",
-            "economics": "N/A_IMG",
-            "economics.finance": "N/A_IMG"
+            "economic": "N/A_IMG",
+            "economic.finance": "N/A_IMG"
         }
     },
     "2015-02": {
         "Moscow City": {
             "politics": "IC001J2ER.jpg",
             "politics.international_relation": "IC001J2ER.jpg",
-            "economics": "N/A_IMG",
-            "economics.trade": "N/A_IMG"
+            "economic": "N/A_IMG",
+            "economic.trade": "N/A_IMG"
         },
         "Cherkasy": {
             "politics": "IC001J2ER.jpg",
             "politics.international_relation": "IC001J2ER.jpg",
-            "economics": "N/A_IMG",
-            "economics.trade": "N/A_IMG"
+            "economic": "N/A_IMG",
+            "economic.trade": "N/A_IMG"
         },
         "Kiev City": {
             "politics": "HC000SX9F.jpg",
             "politics.international_relation": "IC001J2ER.jpg",
-            "economics": "N/A_IMG",
-            "economics.trade": "N/A_IMG",
+            "economic": "N/A_IMG",
+            "economic.trade": "N/A_IMG",
             "politics.justice": "HC000SX9F.jpg"
         },
         "Crimea": {
             "politics": "IC001J2ER.jpg",
             "politics.international_relation": "IC001J2ER.jpg",
-            "economics": "N/A_IMG",
-            "economics.trade": "N/A_IMG"
+            "economic": "N/A_IMG",
+            "economic.trade": "N/A_IMG"
         },
         "Krasnoyarsk": {
             "politics": "IC001J2ER.jpg",
             "politics.international_relation": "IC001J2ER.jpg",
-            "economics": "N/A_IMG",
-            "economics.trade": "N/A_IMG"
+            "economic": "N/A_IMG",
+            "economic.trade": "N/A_IMG"
         },
         "Odessa": {
-            "economics": "N/A_IMG",
-            "economics.trade": "N/A_IMG"
+            "economic": "N/A_IMG",
+            "economic.trade": "N/A_IMG"
         },
         "N/A": {
-            "economics": "N/A_IMG",
-            "economics.trade": "N/A_IMG"
+            "economic": "N/A_IMG",
+            "economic.trade": "N/A_IMG"
         },
-        "Donetsk": {
-            "economics": "N/A_IMG",
-            "economics.trade": "N/A_IMG"
+        "Donets'k": {
+            "economic": "N/A_IMG",
+            "economic.trade": "N/A_IMG"
         },
         "Rostov": {
-            "economics": "N/A_IMG",
-            "economics.trade": "N/A_IMG"
+            "economic": "N/A_IMG",
+            "economic.trade": "N/A_IMG"
         },
         "Chelyabinsk": {
-            "economics": "N/A_IMG",
-            "economics.trade": "N/A_IMG"
+            "economic": "N/A_IMG",
+            "economic.trade": "N/A_IMG"
         },
         "Kirov": {
-            "economics": "IC001J0KO.jpg",
-            "economics.finance": "IC001J0KO.jpg"
+            "economic": "IC001J0KO.jpg",
+            "economic.finance": "IC001J0KO.jpg"
         },
         "Chechnya": {
-            "economics": "N/A_IMG",
-            "economics.trade": "N/A_IMG"
+            "economic": "N/A_IMG",
+            "economic.trade": "N/A_IMG"
         },
         "Kherson": {
-            "economics": "N/A_IMG",
-            "economics.trade": "N/A_IMG"
+            "economic": "N/A_IMG",
+            "economic.trade": "N/A_IMG"
         },
         "Leningrad": {
-            "economics": "N/A_IMG",
-            "economics.trade": "N/A_IMG"
+            "economic": "N/A_IMG",
+            "economic.trade": "N/A_IMG"
         },
         "Voronezh": {
-            "economics": "N/A_IMG",
-            "economics.trade": "N/A_IMG"
+            "economic": "N/A_IMG",
+            "economic.trade": "N/A_IMG"
         },
         "Pskov": {
-            "economics": "N/A_IMG",
-            "economics.trade": "N/A_IMG"
+            "economic": "N/A_IMG",
+            "economic.trade": "N/A_IMG"
         },
         "Karelia": {
             "ROOT": "HC000RLXB.jpg"
@@ -811,7 +811,7 @@
         "Kiev City": {
             "politics": "N/A_IMG"
         },
-        "Donetsk": {
+        "Donets'k": {
             "politics": "N/A_IMG"
         },
         "Crimea": {
@@ -822,7 +822,7 @@
             "politics": "HC0003O2U.jpg",
             "politics.international_relation": "HC0003O2U.jpg"
         },
-        "Luhansk": {
+        "Luhans'k": {
             "politics": "N/A_IMG"
         },
         "Sverdlovsk": {
@@ -862,7 +862,7 @@
             "politics": "HC000025V.jpg",
             "politics.justice": "HC000025V.jpg"
         },
-        "Donetsk": {
+        "Donets'k": {
             "politics": "HC000025V.jpg",
             "military": "HC000UK4J.jpg",
             "military.ceasefire": "HC000UK4J.jpg",
@@ -901,7 +901,7 @@
             "politics": "HC000025V.jpg",
             "politics.justice": "HC000025V.jpg"
         },
-        "Luhansk": {
+        "Luhans'k": {
             "politics": "HC000025V.jpg",
             "military": "HC000UK4J.jpg",
             "military.ceasefire": "HC000UK4J.jpg",
@@ -986,7 +986,7 @@
         "Krasnodar": {
             "politics": "IC00137GM.jpg"
         },
-        "Donetsk": {
+        "Donets'k": {
             "military": "HC000ZJ7C.jpg",
             "military.weapons": "HC000ZJ7C.jpg"
         },
@@ -997,14 +997,14 @@
     "2010-03": {
         "Moscow City": {
             "politics": "HC000XUN1.jpg",
-            "economics": "N/A_IMG",
-            "economics.finance": "N/A_IMG",
+            "economic": "N/A_IMG",
+            "economic.finance": "N/A_IMG",
             "politics.governance": "HC000XUN1.jpg"
         },
         "Krasnoyarsk": {
             "politics": "N/A_IMG",
-            "economics": "N/A_IMG",
-            "economics.finance": "N/A_IMG",
+            "economic": "N/A_IMG",
+            "economic.finance": "N/A_IMG",
             "politics.governance": "N/A_IMG"
         },
         "Kaluga": {
@@ -1031,19 +1031,19 @@
         "Kiev City": {
             "politics": "IC0016354.jpg",
             "military": "IC001JBDK.jpg",
-            "economics": "HC000SV63.jpg",
-            "economics.finance": "HC000SV63.jpg",
+            "economic": "HC000SV63.jpg",
+            "economic.finance": "HC000SV63.jpg",
             "politics.governance": "HC000SX5U.png",
             "military.weapons": "IC001JBDK.jpg",
             "politics.justice": "N/A_IMG",
             "military.combat": "IC0015S89.jpg",
             "ROOT": "IC0015SDU.jpg"
         },
-        "Donetsk": {
+        "Donets'k": {
             "politics": "IC0016354.jpg",
             "military": "IC001JBDK.jpg",
-            "economics": "HC000SV63.jpg",
-            "economics.finance": "HC000SV63.jpg",
+            "economic": "HC000SV63.jpg",
+            "economic.finance": "HC000SV63.jpg",
             "military.weapons": "IC001JBDK.jpg"
         },
         "Crimea": {
@@ -1061,8 +1061,8 @@
         "Odessa": {
             "politics": "N/A_IMG",
             "military": "HC00000FM.png",
-            "economics": "HC000SV63.jpg",
-            "economics.finance": "HC000SV63.jpg",
+            "economic": "HC000SV63.jpg",
+            "economic.finance": "HC000SV63.jpg",
             "military.weapons": "HC00000FM.png",
             "politics.justice": "N/A_IMG",
             "ROOT": "N/A_IMG"
@@ -1078,15 +1078,15 @@
         },
         "Kharkiv": {
             "politics": "HC00027V8.jpg",
-            "economics": "HC000SWYZ.jpg",
-            "economics.finance": "HC000SWYZ.jpg",
+            "economic": "HC000SWYZ.jpg",
+            "economic.finance": "HC000SWYZ.jpg",
             "politics.justice": "N/A_IMG"
         },
         "Zaporizhzhya": {
             "politics": "IC0016354.jpg",
             "military": "IC0015S89.jpg",
-            "economics": "HC000SWYZ.jpg",
-            "economics.finance": "HC000SWYZ.jpg",
+            "economic": "HC000SWYZ.jpg",
+            "economic.finance": "HC000SWYZ.jpg",
             "military.combat": "IC0015S89.jpg"
         },
         "Saratov": {
@@ -1102,8 +1102,8 @@
             "politics": "HC00050IL.jpg"
         },
         "Transcarpathia": {
-            "economics": "HC00037FF.jpg",
-            "economics.finance": "HC00037FF.jpg"
+            "economic": "HC00037FF.jpg",
+            "economic.finance": "HC00037FF.jpg"
         }
     },
     "2014-02": {
@@ -1111,9 +1111,9 @@
             "politics": "HC000025I.jpg",
             "politics.international_relation": "IC001IUSF.png",
             "military": "N/A_IMG",
-            "economics": "IC001HYII.jpg",
-            "economics.finance": "IC001IM88.jpg",
-            "economics.trade": "IC001HYII.jpg",
+            "economic": "IC001HYII.jpg",
+            "economic.finance": "IC001IM88.jpg",
+            "economic.trade": "IC001HYII.jpg",
             "politics.governance": "HC000025I.jpg",
             "military.combat": "N/A_IMG"
         },
@@ -1121,9 +1121,9 @@
             "politics": "IC001IUSF.png",
             "politics.international_relation": "IC001IUSF.png",
             "military": "IC001IW1U.jpg",
-            "economics": "IC001HYII.jpg",
-            "economics.finance": "IC001IM88.jpg",
-            "economics.trade": "IC001HYII.jpg",
+            "economic": "IC001HYII.jpg",
+            "economic.finance": "IC001IM88.jpg",
+            "economic.trade": "IC001HYII.jpg",
             "politics.governance": "HC000025I.jpg",
             "military.weapons": "IC001IW1U.jpg",
             "politics.justice": "IC001IVS9.jpg",
@@ -1134,43 +1134,43 @@
             "politics": "IC001IUSF.png",
             "politics.international_relation": "IC001IUSF.png",
             "military": "N/A_IMG",
-            "economics": "IC001HYII.jpg",
-            "economics.finance": "IC001IM88.jpg",
-            "economics.trade": "IC001HYII.jpg",
+            "economic": "IC001HYII.jpg",
+            "economic.finance": "IC001IM88.jpg",
+            "economic.trade": "IC001HYII.jpg",
             "politics.governance": "IC001IUXD.jpg",
             "military.weapons": "N/A_IMG",
             "politics.justice": "IC001IVS9.jpg",
             "military.combat": "N/A_IMG",
             "ROOT": "N/A_IMG"
         },
-        "Donetsk": {
+        "Donets'k": {
             "politics": "HC000025I.jpg",
-            "economics": "IC001IUVG.png",
-            "economics.finance": "N/A_IMG",
-            "economics.trade": "IC001IUVG.png",
+            "economic": "IC001IUVG.png",
+            "economic.finance": "N/A_IMG",
+            "economic.trade": "IC001IUVG.png",
             "politics.governance": "HC000025I.jpg",
             "politics.justice": "N/A_IMG"
         },
         "Crimea": {
             "politics": "IC001IUSF.png",
             "politics.international_relation": "IC001IUSF.png",
-            "economics": "IC001HYII.jpg",
-            "economics.finance": "N/A_IMG",
-            "economics.trade": "IC001HYII.jpg",
+            "economic": "IC001HYII.jpg",
+            "economic.finance": "N/A_IMG",
+            "economic.trade": "IC001HYII.jpg",
             "politics.governance": "N/A_IMG"
         },
         "N/A": {
             "politics": "IC001IW2E.jpg",
-            "economics": "N/A_IMG",
-            "economics.finance": "N/A_IMG"
+            "economic": "N/A_IMG",
+            "economic.finance": "N/A_IMG"
         },
         "Krasnoyarsk": {
             "politics": "IC001IUSF.png",
             "politics.international_relation": "IC001IUSF.png",
             "military": "N/A_IMG",
-            "economics": "IC001HYII.jpg",
-            "economics.finance": "IC001IM88.jpg",
-            "economics.trade": "IC001HYII.jpg",
+            "economic": "IC001HYII.jpg",
+            "economic.finance": "IC001IM88.jpg",
+            "economic.trade": "IC001HYII.jpg",
             "politics.governance": "HC000025I.jpg",
             "politics.justice": "IC001IVS9.jpg",
             "military.combat": "N/A_IMG"
@@ -1183,8 +1183,8 @@
         "L'viv": {
             "politics": "IC001IUXD.jpg",
             "military": "N/A_IMG",
-            "economics": "IC001IM88.jpg",
-            "economics.finance": "IC001IM88.jpg",
+            "economic": "IC001IM88.jpg",
+            "economic.finance": "IC001IM88.jpg",
             "politics.governance": "IC001IUXD.jpg",
             "military.weapons": "N/A_IMG",
             "ROOT": "N/A_IMG"
@@ -1200,16 +1200,16 @@
         "Kharkiv": {
             "politics": "IC001IUSF.png",
             "politics.international_relation": "IC001IUSF.png",
-            "economics": "IC001IM88.jpg",
-            "economics.finance": "IC001IM88.jpg",
+            "economic": "IC001IM88.jpg",
+            "economic.finance": "IC001IM88.jpg",
             "politics.governance": "N/A_IMG",
             "politics.justice": "N/A_IMG"
         },
         "Krasnodar": {
             "politics": "N/A_IMG",
-            "economics": "IC001IUVG.png",
-            "economics.finance": "N/A_IMG",
-            "economics.trade": "IC001IUVG.png"
+            "economic": "IC001IUVG.png",
+            "economic.finance": "N/A_IMG",
+            "economic.trade": "IC001IUVG.png"
         },
         "Kherson": {
             "politics": "N/A_IMG"
@@ -1234,7 +1234,7 @@
             "military": "N/A_IMG",
             "military.combat": "N/A_IMG"
         },
-        "Luhansk": {
+        "Luhans'k": {
             "military": "IC001IW1U.jpg",
             "military.weapons": "IC001IW1U.jpg"
         },
@@ -1243,12 +1243,12 @@
             "military.weapons": "N/A_IMG"
         },
         "Sevastopol'": {
-            "economics": "IC001HYII.jpg",
-            "economics.trade": "IC001HYII.jpg"
+            "economic": "IC001HYII.jpg",
+            "economic.trade": "IC001HYII.jpg"
         },
         "Bashkortostan": {
-            "economics": "IC001IUVG.png",
-            "economics.trade": "IC001IUVG.png"
+            "economic": "IC001IUVG.png",
+            "economic.trade": "IC001IUVG.png"
         }
     },
     "2014-05": {
@@ -1256,9 +1256,9 @@
             "politics": "IC0015PTX.jpg",
             "politics.international_relation": "IC0015PTX.jpg",
             "military": "HC00000FM.png",
-            "economics": "HC000027A.jpg",
-            "economics.finance": "HC000027A.jpg",
-            "economics.trade": "N/A_IMG",
+            "economic": "HC000027A.jpg",
+            "economic.finance": "HC000027A.jpg",
+            "economic.trade": "N/A_IMG",
             "politics.governance": "HC000023U.png",
             "military.weapons": "HC00000FM.png",
             "military.combat": "N/A_IMG",
@@ -1268,9 +1268,9 @@
             "politics": "IC0015PTX.jpg",
             "politics.international_relation": "IC0015PTX.jpg",
             "military": "HC00000FM.png",
-            "economics": "IC001I9DT.jpg",
-            "economics.finance": "HC000SY5N.jpg",
-            "economics.trade": "IC001I9DT.jpg",
+            "economic": "IC001I9DT.jpg",
+            "economic.finance": "HC000SY5N.jpg",
+            "economic.trade": "IC001I9DT.jpg",
             "politics.governance": "HC00000F8.jpg",
             "military.weapons": "HC00000FM.png",
             "military.combat": "IC00160XH.jpg",
@@ -1280,10 +1280,10 @@
             "politics": "IC0015PTX.jpg",
             "politics.international_relation": "IC0015PTX.jpg",
             "military": "HC00000FM.png",
-            "economics": "IC001I9DT.jpg",
-            "economics.finance": "HC000SY5N.jpg",
+            "economic": "IC001I9DT.jpg",
+            "economic.finance": "HC000SY5N.jpg",
             "military.ceasefire": "N/A_IMG",
-            "economics.trade": "IC001I9DT.jpg",
+            "economic.trade": "IC001I9DT.jpg",
             "politics.governance": "HC00000F8.jpg",
             "military.weapons": "HC00000FM.png",
             "military.combat": "IC00160XA.jpg",
@@ -1292,19 +1292,19 @@
         "Chechnya": {
             "politics": "HC000SY0H.jpg",
             "military": "HC000Q8LX.jpg",
-            "economics": "N/A_IMG",
-            "economics.trade": "N/A_IMG",
+            "economic": "N/A_IMG",
+            "economic.trade": "N/A_IMG",
             "politics.governance": "HC000SY0H.jpg",
             "military.combat": "HC000SUNX.jpg"
         },
-        "Donetsk": {
+        "Donets'k": {
             "politics": "IC0015PTX.jpg",
             "politics.international_relation": "IC0015PTX.jpg",
             "military": "IC001JAHH.jpg",
-            "economics": "IC001I9DT.jpg",
-            "economics.finance": "N/A_IMG",
+            "economic": "IC001I9DT.jpg",
+            "economic.finance": "N/A_IMG",
             "military.ceasefire": "N/A_IMG",
-            "economics.trade": "IC001I9DT.jpg",
+            "economic.trade": "IC001I9DT.jpg",
             "politics.governance": "HC00000F8.jpg",
             "military.weapons": "HC00000FM.png",
             "military.combat": "IC001JAHH.jpg",
@@ -1314,9 +1314,9 @@
             "politics": "IC0015PTX.jpg",
             "politics.international_relation": "IC0015PTX.jpg",
             "military": "HC000ZJBI.jpg",
-            "economics": "HC000027A.jpg",
-            "economics.finance": "HC000027A.jpg",
-            "economics.trade": "N/A_IMG",
+            "economic": "HC000027A.jpg",
+            "economic.finance": "HC000027A.jpg",
+            "economic.trade": "N/A_IMG",
             "politics.governance": "HC000023U.png",
             "military.weapons": "HC00029A5.jpg",
             "military.combat": "N/A_IMG",
@@ -1326,18 +1326,18 @@
             "politics": "HC000SXZJ.jpg",
             "politics.international_relation": "HC000SXZJ.jpg",
             "military": "IC001JA7M.jpg",
-            "economics": "HC000027A.jpg",
-            "economics.finance": "HC000027A.jpg",
-            "economics.trade": "N/A_IMG",
+            "economic": "HC000027A.jpg",
+            "economic.finance": "HC000027A.jpg",
+            "economic.trade": "N/A_IMG",
             "military.combat": "IC001JA7M.jpg"
         },
         "Krasnoyarsk": {
             "politics": "IC0015PTX.jpg",
             "politics.international_relation": "IC0015PTX.jpg",
             "military": "HC00000FM.png",
-            "economics": "IC001I9DT.jpg",
-            "economics.finance": "HC000SY5N.jpg",
-            "economics.trade": "IC001I9DT.jpg",
+            "economic": "IC001I9DT.jpg",
+            "economic.finance": "HC000SY5N.jpg",
+            "economic.trade": "IC001I9DT.jpg",
             "politics.governance": "HC00000F8.jpg",
             "military.weapons": "HC00000FM.png",
             "military.combat": "IC001JAHH.jpg",
@@ -1347,9 +1347,9 @@
             "politics": "IC0015PTX.jpg",
             "politics.international_relation": "IC0015PTX.jpg",
             "military": "HC00000FM.png",
-            "economics": "IC001I9DT.jpg",
-            "economics.finance": "HC000027A.jpg",
-            "economics.trade": "IC001I9DT.jpg",
+            "economic": "IC001I9DT.jpg",
+            "economic.finance": "HC000027A.jpg",
+            "economic.trade": "IC001I9DT.jpg",
             "politics.governance": "HC00000F8.jpg",
             "military.weapons": "HC00000FM.png",
             "military.combat": "IC00160XA.jpg",
@@ -1363,19 +1363,19 @@
             "politics": "IC0015PTX.jpg",
             "politics.international_relation": "IC0015PTX.jpg",
             "military": "N/A_IMG",
-            "economics": "HC000027A.jpg",
-            "economics.finance": "HC000027A.jpg",
+            "economic": "HC000027A.jpg",
+            "economic.finance": "HC000027A.jpg",
             "politics.governance": "HC000SY0H.jpg",
             "military.combat": "N/A_IMG",
             "ROOT": "HC000ZJ3E.png"
         },
-        "Luhansk": {
+        "Luhans'k": {
             "politics": "HC00000F8.jpg",
             "politics.international_relation": "HC000SXZJ.jpg",
             "military": "IC001JAHH.jpg",
-            "economics": "IC001I9DT.jpg",
-            "economics.finance": "N/A_IMG",
-            "economics.trade": "IC001I9DT.jpg",
+            "economic": "IC001I9DT.jpg",
+            "economic.finance": "N/A_IMG",
+            "economic.trade": "IC001I9DT.jpg",
             "politics.governance": "HC00000F8.jpg",
             "military.weapons": "HC000SY67.jpg",
             "military.combat": "IC001JAHH.jpg",
@@ -1389,8 +1389,8 @@
             "politics": "IC0015PTX.jpg",
             "politics.international_relation": "IC0015PTX.jpg",
             "military": "IC001I5Z0.jpg",
-            "economics": "IC001I9DT.jpg",
-            "economics.trade": "IC001I9DT.jpg",
+            "economic": "IC001I9DT.jpg",
+            "economic.trade": "IC001I9DT.jpg",
             "politics.governance": "HC00000F8.jpg",
             "military.weapons": "IC001I5Z0.jpg",
             "military.combat": "N/A_IMG",
@@ -1400,8 +1400,8 @@
             "politics": "IC0015PTX.jpg",
             "politics.international_relation": "IC0015PTX.jpg",
             "military": "HC000SRVX.jpg",
-            "economics": "N/A_IMG",
-            "economics.trade": "N/A_IMG",
+            "economic": "N/A_IMG",
+            "economic.trade": "N/A_IMG",
             "military.weapons": "IC0015PKL.jpg",
             "military.combat": "IC00160XA.jpg",
             "ROOT": "HC000ZJ3E.png"
@@ -1425,13 +1425,13 @@
         "Dagestan": {
             "politics": "IC0015PTX.jpg",
             "politics.international_relation": "IC0015PTX.jpg",
-            "economics": "N/A_IMG",
-            "economics.trade": "N/A_IMG"
+            "economic": "N/A_IMG",
+            "economic.trade": "N/A_IMG"
         },
         "Sevastopol'": {
             "politics": "HC000SY5G.jpg",
-            "economics": "N/A_IMG",
-            "economics.trade": "N/A_IMG",
+            "economic": "N/A_IMG",
+            "economic.trade": "N/A_IMG",
             "politics.governance": "HC000SY5G.jpg"
         },
         "Primor'ye": {
@@ -1447,8 +1447,8 @@
         },
         "Dnipropetrovs'k": {
             "military": "IC0015PKL.jpg",
-            "economics": "IC001I9DT.jpg",
-            "economics.trade": "IC001I9DT.jpg",
+            "economic": "IC001I9DT.jpg",
+            "economic.trade": "IC001I9DT.jpg",
             "military.weapons": "IC0015PKL.jpg",
             "military.combat": "N/A_IMG",
             "ROOT": "HC000SY6O.jpg"
@@ -1466,12 +1466,12 @@
             "military.combat": "N/A_IMG"
         },
         "Ternopil'": {
-            "economics": "HC000027A.jpg",
-            "economics.finance": "HC000027A.jpg"
+            "economic": "HC000027A.jpg",
+            "economic.finance": "HC000027A.jpg"
         },
         "Sverdlovsk": {
-            "economics": "N/A_IMG",
-            "economics.finance": "N/A_IMG"
+            "economic": "N/A_IMG",
+            "economic.finance": "N/A_IMG"
         },
         "Chernihiv": {
             "ROOT": "HC000SY6O.jpg"
@@ -1483,20 +1483,20 @@
     "2015-11": {
         "Moscow City": {
             "politics": "HC00029EP.jpg",
-            "economics": "IC001GYGM.jpg",
-            "economics.trade": "IC001GYGM.jpg"
+            "economic": "IC001GYGM.jpg",
+            "economic.trade": "IC001GYGM.jpg"
         },
         "Cherkasy": {
             "politics": "HC00029EP.jpg",
             "military": "HC000RPI0.jpg",
-            "economics": "IC001GYGM.jpg",
+            "economic": "IC001GYGM.jpg",
             "military.ceasefire": "HC000RPI0.jpg",
-            "economics.trade": "IC001GYGM.jpg"
+            "economic.trade": "IC001GYGM.jpg"
         },
         "Kiev City": {
             "politics": "IC0015PQU.jpg",
-            "economics": "IC001GYGM.jpg",
-            "economics.trade": "IC001GYGM.jpg"
+            "economic": "IC001GYGM.jpg",
+            "economic.trade": "IC001GYGM.jpg"
         },
         "Odessa": {
             "politics": "HC00029EP.jpg"
@@ -1510,38 +1510,38 @@
         },
         "Krasnoyarsk": {
             "military": "HC000RPI0.jpg",
-            "economics": "IC001H3I5.jpg",
+            "economic": "IC001H3I5.jpg",
             "military.ceasefire": "HC000RPI0.jpg",
-            "economics.trade": "IC001H3I5.jpg"
+            "economic.trade": "IC001H3I5.jpg"
         },
         "Sevastopol'": {
-            "economics": "IC001GYGM.jpg",
-            "economics.trade": "IC001GYGM.jpg"
+            "economic": "IC001GYGM.jpg",
+            "economic.trade": "IC001GYGM.jpg"
         },
-        "Donetsk": {
-            "economics": "IC001GYGM.jpg",
-            "economics.trade": "IC001GYGM.jpg"
+        "Donets'k": {
+            "economic": "IC001GYGM.jpg",
+            "economic.trade": "IC001GYGM.jpg"
         }
     },
     "2017-06": {
         "Moscow City": {
             "politics": "IC001F5GR.jpg",
             "politics.international_relation": "IC001F5GR.jpg",
-            "economics": "IC001FBO8.jpg",
-            "economics.finance": "IC001FBO8.jpg"
+            "economic": "IC001FBO8.jpg",
+            "economic.finance": "IC001FBO8.jpg"
         },
         "Cherkasy": {
             "politics": "IC001FAXC.jpg",
             "military": "IC001GROT.jpg",
-            "economics": "IC001F9EC.jpg",
-            "economics.finance": "IC001F9EC.jpg",
+            "economic": "IC001F9EC.jpg",
+            "economic.finance": "IC001F9EC.jpg",
             "military.ceasefire": "N/A_IMG"
         },
         "Kiev City": {
             "politics": "IC001FAXC.jpg",
             "military": "N/A_IMG",
-            "economics": "IC001F7P1.jpg",
-            "economics.finance": "IC001F7P1.jpg",
+            "economic": "IC001F7P1.jpg",
+            "economic.finance": "IC001F7P1.jpg",
             "military.ceasefire": "N/A_IMG"
         },
         "Crimea": {
@@ -1551,49 +1551,49 @@
             "politics": "IC001FAXC.jpg",
             "politics.international_relation": "IC001GRWK.jpg",
             "military": "IC001GRRL.jpg",
-            "economics": "IC001F7P1.jpg",
-            "economics.finance": "IC001F7P1.jpg",
+            "economic": "IC001F7P1.jpg",
+            "economic.finance": "IC001F7P1.jpg",
             "military.ceasefire": "IC001F93V.jpg",
             "military.combat": "IC001GS3G.jpg"
         },
-        "Donetsk": {
+        "Donets'k": {
             "military": "N/A_IMG",
-            "economics": "IC001FBO8.jpg",
-            "economics.finance": "IC001FBO8.jpg",
+            "economic": "IC001FBO8.jpg",
+            "economic.finance": "IC001FBO8.jpg",
             "military.ceasefire": "N/A_IMG"
         },
-        "Luhansk": {
+        "Luhans'k": {
             "military": "N/A_IMG",
-            "economics": "IC001FBO8.jpg",
-            "economics.finance": "IC001FBO8.jpg",
+            "economic": "IC001FBO8.jpg",
+            "economic.finance": "IC001FBO8.jpg",
             "military.ceasefire": "N/A_IMG"
         },
         "N/A": {
             "military": "N/A_IMG",
-            "economics": "IC001FBO8.jpg",
-            "economics.finance": "IC001FBO8.jpg",
+            "economic": "IC001FBO8.jpg",
+            "economic.finance": "IC001FBO8.jpg",
             "military.ceasefire": "N/A_IMG"
         },
         "Rostov": {
-            "economics": "IC001FBO8.jpg",
-            "economics.finance": "IC001FBO8.jpg"
+            "economic": "IC001FBO8.jpg",
+            "economic.finance": "IC001FBO8.jpg"
         },
         "L'viv": {
-            "economics": "IC001F7NS.jpg",
-            "economics.finance": "IC001F7NS.jpg"
+            "economic": "IC001F7NS.jpg",
+            "economic.finance": "IC001F7NS.jpg"
         },
         "Kiev": {
-            "economics": "IC001F7P1.jpg",
-            "economics.finance": "IC001F7P1.jpg"
+            "economic": "IC001F7P1.jpg",
+            "economic.finance": "IC001F7P1.jpg"
         },
         "City of St. Petersburg": {
-            "economics": "HC0000P4S.jpg",
-            "economics.finance": "IC001F9EC.jpg",
-            "economics.trade": "HC0000P4S.jpg"
+            "economic": "HC0000P4S.jpg",
+            "economic.finance": "IC001F9EC.jpg",
+            "economic.trade": "HC0000P4S.jpg"
         },
         "Kirovohrad": {
-            "economics": "IC001FAHM.jpg",
-            "economics.finance": "IC001FAHM.jpg"
+            "economic": "IC001FAHM.jpg",
+            "economic.finance": "IC001FAHM.jpg"
         }
     },
     "2014-07": {
@@ -1601,8 +1601,8 @@
             "politics": "IC001I8NB.jpg",
             "politics.international_relation": "IC001I8NB.jpg",
             "military": "IC001HTYX.jpg",
-            "economics": "HC000ZJOF.jpg",
-            "economics.finance": "HC000ZJOF.jpg",
+            "economic": "HC000ZJOF.jpg",
+            "economic.finance": "HC000ZJOF.jpg",
             "military.ceasefire": "IC001I0AE.jpg",
             "ROOT": "N/A_IMG"
         },
@@ -1610,10 +1610,10 @@
             "politics": "IC001I8NB.jpg",
             "politics.international_relation": "IC001I8NB.jpg",
             "military": "IC001HTYX.jpg",
-            "economics": "IC001HYN5.jpg",
-            "economics.finance": "IC001HSD9.jpg",
+            "economic": "IC001HYN5.jpg",
+            "economic.finance": "IC001HSD9.jpg",
             "military.ceasefire": "IC001HTYX.jpg",
-            "economics.trade": "IC001HYN5.jpg",
+            "economic.trade": "IC001HYN5.jpg",
             "military.weapons": "IC001I00L.jpg",
             "military.combat": "IC001HU6P.jpg",
             "ROOT": "N/A_IMG"
@@ -1622,21 +1622,21 @@
             "politics": "IC001I8NB.jpg",
             "politics.international_relation": "IC001I8NB.jpg",
             "military": "IC001I0AE.jpg",
-            "economics": "IC001HYN5.jpg",
-            "economics.finance": "N/A_IMG",
+            "economic": "IC001HYN5.jpg",
+            "economic.finance": "N/A_IMG",
             "military.ceasefire": "IC001I0AE.jpg",
-            "economics.trade": "IC001HYN5.jpg",
+            "economic.trade": "IC001HYN5.jpg",
             "military.combat": "IC001HU6P.jpg",
             "ROOT": "N/A_IMG"
         },
-        "Donetsk": {
+        "Donets'k": {
             "politics": "IC001I8NB.jpg",
             "politics.international_relation": "IC001I8NB.jpg",
             "military": "IC001HTYX.jpg",
-            "economics": "HC000ZJOF.jpg",
-            "economics.finance": "HC000ZJOF.jpg",
+            "economic": "HC000ZJOF.jpg",
+            "economic.finance": "HC000ZJOF.jpg",
             "military.ceasefire": "IC001HTYX.jpg",
-            "economics.trade": "IC001HYN5.jpg",
+            "economic.trade": "IC001HYN5.jpg",
             "military.combat": "IC001HU6P.jpg",
             "ROOT": "N/A_IMG"
         },
@@ -1649,10 +1649,10 @@
             "politics": "IC001I8NB.jpg",
             "politics.international_relation": "IC001I8NB.jpg",
             "military": "IC001HU6P.jpg",
-            "economics": "IC001HYN5.jpg",
-            "economics.finance": "IC001HSD9.jpg",
+            "economic": "IC001HYN5.jpg",
+            "economic.finance": "IC001HSD9.jpg",
             "military.ceasefire": "IC001HTYX.jpg",
-            "economics.trade": "IC001HYN5.jpg",
+            "economic.trade": "IC001HYN5.jpg",
             "military.combat": "IC001HU6P.jpg",
             "ROOT": "N/A_IMG"
         },
@@ -1668,14 +1668,14 @@
             "military.combat": "IC001I5EL.jpg",
             "ROOT": "N/A_IMG"
         },
-        "Luhansk": {
+        "Luhans'k": {
             "politics": "IC001I8NB.jpg",
             "politics.international_relation": "IC001I8NB.jpg",
             "military": "IC001HU6P.jpg",
-            "economics": "HC000ZJOF.jpg",
-            "economics.finance": "HC000ZJOF.jpg",
+            "economic": "HC000ZJOF.jpg",
+            "economic.finance": "HC000ZJOF.jpg",
             "military.ceasefire": "IC001HTYX.jpg",
-            "economics.trade": "HC000U3BC.jpg",
+            "economic.trade": "HC000U3BC.jpg",
             "military.combat": "IC001HU6P.jpg",
             "ROOT": "N/A_IMG"
         },
@@ -1709,29 +1709,29 @@
             "military.combat": "IC001I5EL.jpg"
         },
         "Crimea": {
-            "economics": "HC000ZJOF.jpg",
-            "economics.finance": "HC000ZJOF.jpg",
-            "economics.trade": "HC000U3BC.jpg"
+            "economic": "HC000ZJOF.jpg",
+            "economic.finance": "HC000ZJOF.jpg",
+            "economic.trade": "HC000U3BC.jpg"
         },
         "Altay": {
-            "economics": "IC001HYN5.jpg",
-            "economics.trade": "IC001HYN5.jpg"
+            "economic": "IC001HYN5.jpg",
+            "economic.trade": "IC001HYN5.jpg"
         },
         "Sakhalin": {
-            "economics": "IC001HYN5.jpg",
-            "economics.trade": "IC001HYN5.jpg"
+            "economic": "IC001HYN5.jpg",
+            "economic.trade": "IC001HYN5.jpg"
         },
         "Orel": {
-            "economics": "HC000ZJOF.jpg",
-            "economics.finance": "HC000ZJOF.jpg"
+            "economic": "HC000ZJOF.jpg",
+            "economic.finance": "HC000ZJOF.jpg"
         },
         "Rivne": {
-            "economics": "HC000U2KH.jpg",
-            "economics.finance": "HC000U2KH.jpg"
+            "economic": "HC000U2KH.jpg",
+            "economic.finance": "HC000U2KH.jpg"
         },
         "Dnipropetrovs'k": {
-            "economics": "IC001HSD9.jpg",
-            "economics.finance": "IC001HSD9.jpg"
+            "economic": "IC001HSD9.jpg",
+            "economic.finance": "IC001HSD9.jpg"
         },
         "Ryazan'": {
             "ROOT": "N/A_IMG"
@@ -1749,17 +1749,17 @@
         "Cherkasy": {
             "politics": "IC001IP6W.jpg",
             "politics.international_relation": "IC001IP6W.jpg",
-            "economics": "IC001IPDO.jpg",
-            "economics.finance": "IC001IPDO.jpg"
+            "economic": "IC001IPDO.jpg",
+            "economic.finance": "IC001IPDO.jpg"
         },
         "Kiev City": {
             "politics": "IC001IP6W.jpg",
             "politics.international_relation": "IC001IP6W.jpg",
-            "economics": "IC001IPDO.jpg",
-            "economics.finance": "IC001IPDO.jpg",
+            "economic": "IC001IPDO.jpg",
+            "economic.finance": "IC001IPDO.jpg",
             "politics.justice": "IC001I6ZV.jpg"
         },
-        "Donetsk": {
+        "Donets'k": {
             "politics": "IC001IP6W.jpg",
             "politics.international_relation": "IC001IP6W.jpg"
         },
@@ -1770,8 +1770,8 @@
         "Krasnoyarsk": {
             "politics": "IC001IP6W.jpg",
             "politics.international_relation": "IC001IP6W.jpg",
-            "economics": "IC001IPDO.jpg",
-            "economics.finance": "IC001IPDO.jpg"
+            "economic": "IC001IPDO.jpg",
+            "economic.finance": "IC001IPDO.jpg"
         },
         "Odessa": {
             "politics": "IC001I6ZV.jpg",
@@ -1801,32 +1801,32 @@
         },
         "Cherkasy": {
             "politics": "HC000295P.jpg",
-            "economics": "N/A_IMG",
-            "economics.trade": "N/A_IMG",
+            "economic": "N/A_IMG",
+            "economic.trade": "N/A_IMG",
             "politics.governance": "HC000295P.jpg"
         },
         "Kiev City": {
             "politics": "HC000295P.jpg",
-            "economics": "N/A_IMG",
-            "economics.trade": "N/A_IMG",
+            "economic": "N/A_IMG",
+            "economic.trade": "N/A_IMG",
             "politics.governance": "HC000295P.jpg"
         },
         "Odessa": {
             "politics": "HC000295P.jpg",
-            "economics": "N/A_IMG",
-            "economics.trade": "N/A_IMG",
+            "economic": "N/A_IMG",
+            "economic.trade": "N/A_IMG",
             "politics.governance": "HC000295P.jpg"
         },
         "Tyumen'": {
             "politics": "HC000330D.jpg",
             "politics.international_relation": "HC000330D.jpg",
-            "economics": "N/A_IMG",
-            "economics.trade": "N/A_IMG"
+            "economic": "N/A_IMG",
+            "economic.trade": "N/A_IMG"
         },
         "Vologda": {
             "politics": "HC000295P.jpg",
-            "economics": "N/A_IMG",
-            "economics.trade": "N/A_IMG",
+            "economic": "N/A_IMG",
+            "economic.trade": "N/A_IMG",
             "politics.governance": "HC000295P.jpg"
         },
         "Kiev": {
@@ -1835,8 +1835,8 @@
         },
         "Mykolayiv": {
             "politics": "HC000295P.jpg",
-            "economics": "N/A_IMG",
-            "economics.trade": "N/A_IMG",
+            "economic": "N/A_IMG",
+            "economic.trade": "N/A_IMG",
             "politics.governance": "HC000295P.jpg"
         },
         "Krasnodar": {
@@ -1845,8 +1845,8 @@
         },
         "City of St. Petersburg": {
             "politics": "HC000295P.jpg",
-            "economics": "N/A_IMG",
-            "economics.trade": "N/A_IMG",
+            "economic": "N/A_IMG",
+            "economic.trade": "N/A_IMG",
             "politics.governance": "HC000295P.jpg"
         },
         "Chernihiv": {
@@ -1863,48 +1863,48 @@
         },
         "Perm'": {
             "politics": "HC000295P.jpg",
-            "economics": "N/A_IMG",
-            "economics.trade": "N/A_IMG",
+            "economic": "N/A_IMG",
+            "economic.trade": "N/A_IMG",
             "politics.governance": "HC000295P.jpg"
         },
         "Samara": {
             "military": "HC000TLQY.jpg"
         },
         "Krasnoyarsk": {
-            "economics": "N/A_IMG",
-            "economics.trade": "N/A_IMG"
+            "economic": "N/A_IMG",
+            "economic.trade": "N/A_IMG"
         },
-        "Luhansk": {
-            "economics": "N/A_IMG",
-            "economics.trade": "N/A_IMG"
+        "Luhans'k": {
+            "economic": "N/A_IMG",
+            "economic.trade": "N/A_IMG"
         },
         "Crimea": {
-            "economics": "N/A_IMG",
-            "economics.trade": "N/A_IMG"
+            "economic": "N/A_IMG",
+            "economic.trade": "N/A_IMG"
         },
-        "Donetsk": {
-            "economics": "N/A_IMG",
-            "economics.trade": "N/A_IMG"
+        "Donets'k": {
+            "economic": "N/A_IMG",
+            "economic.trade": "N/A_IMG"
         },
         "Kharkiv": {
-            "economics": "N/A_IMG",
-            "economics.trade": "N/A_IMG"
+            "economic": "N/A_IMG",
+            "economic.trade": "N/A_IMG"
         },
         "Kherson": {
-            "economics": "N/A_IMG",
-            "economics.trade": "N/A_IMG"
+            "economic": "N/A_IMG",
+            "economic.trade": "N/A_IMG"
         },
         "Sakhalin": {
-            "economics": "N/A_IMG",
-            "economics.trade": "N/A_IMG"
+            "economic": "N/A_IMG",
+            "economic.trade": "N/A_IMG"
         },
         "Khabarovsk": {
-            "economics": "N/A_IMG",
-            "economics.trade": "N/A_IMG"
+            "economic": "N/A_IMG",
+            "economic.trade": "N/A_IMG"
         },
         "Khmel'nyts'kyy": {
-            "economics": "N/A_IMG",
-            "economics.trade": "N/A_IMG"
+            "economic": "N/A_IMG",
+            "economic.trade": "N/A_IMG"
         }
     },
     "2016-01": {
@@ -1914,7 +1914,7 @@
             "military": "N/A_IMG",
             "military.weapons": "N/A_IMG"
         },
-        "Donetsk": {
+        "Donets'k": {
             "military": "HC000SYGP.jpg",
             "military.weapons": "N/A_IMG",
             "military.combat": "HC000SYGP.jpg"
@@ -1990,8 +1990,8 @@
             "military.weapons": "N/A_IMG"
         },
         "Dagestan": {
-            "economics": "N/A_IMG",
-            "economics.finance": "N/A_IMG"
+            "economic": "N/A_IMG",
+            "economic.finance": "N/A_IMG"
         }
     },
     "2017-05": {
@@ -2029,7 +2029,7 @@
             "military.weapons": "N/A_IMG",
             "politics.justice": "IC0015NIW.jpg"
         },
-        "Luhansk": {
+        "Luhans'k": {
             "politics": "IC0015NIW.jpg",
             "politics.justice": "IC0015NIW.jpg"
         },
@@ -2046,8 +2046,8 @@
         "Cherkasy": {
             "politics": "IC001F6GY.jpg",
             "politics.international_relation": "IC001F6GY.jpg",
-            "economics": "IC001J4ZO.jpg",
-            "economics.finance": "IC001J4ZO.jpg"
+            "economic": "IC001J4ZO.jpg",
+            "economic.finance": "IC001J4ZO.jpg"
         },
         "Krasnoyarsk": {
             "politics": "IC001IZL4.jpg",
@@ -2062,18 +2062,18 @@
             "politics": "IC0011XEO.jpg"
         },
         "Krasnodar": {
-            "economics": "HC000QN2X.jpg",
-            "economics.finance": "HC000QN2X.jpg"
+            "economic": "HC000QN2X.jpg",
+            "economic.finance": "HC000QN2X.jpg"
         }
     },
     "2014-04": {
         "Moscow City": {
             "politics": "N/A_IMG",
             "military": "HC000SUP7.png",
-            "economics": "HC00001RZ.jpg",
-            "economics.finance": "HC00001RZ.jpg",
+            "economic": "HC00001RZ.jpg",
+            "economic.finance": "HC00001RZ.jpg",
             "military.ceasefire": "HC000SUP7.png",
-            "economics.trade": "N/A_IMG",
+            "economic.trade": "N/A_IMG",
             "military.weapons": "HC00001F6.png",
             "military.combat": "IC00161JG.jpg",
             "ROOT": "IC001I1WJ.jpg"
@@ -2081,10 +2081,10 @@
         "Cherkasy": {
             "politics": "N/A_IMG",
             "military": "HC000SUP7.png",
-            "economics": "HC000Q8L5.jpg",
-            "economics.finance": "HC000Q8L5.jpg",
+            "economic": "HC000Q8L5.jpg",
+            "economic.finance": "HC000Q8L5.jpg",
             "military.ceasefire": "HC000SUP7.png",
-            "economics.trade": "IC00167BW.jpg",
+            "economic.trade": "IC00167BW.jpg",
             "military.weapons": "HC00001F6.png",
             "military.combat": "IC00161JG.jpg",
             "ROOT": "IC001I1WJ.jpg"
@@ -2092,21 +2092,21 @@
         "Kiev City": {
             "politics": "N/A_IMG",
             "military": "HC00001F6.png",
-            "economics": "HC000Q8L5.jpg",
-            "economics.finance": "HC000Q8L5.jpg",
+            "economic": "HC000Q8L5.jpg",
+            "economic.finance": "HC000Q8L5.jpg",
             "military.ceasefire": "HC000SUP7.png",
-            "economics.trade": "IC00167BW.jpg",
+            "economic.trade": "IC00167BW.jpg",
             "military.weapons": "HC00001F6.png",
             "military.combat": "IC00161JG.jpg",
             "ROOT": "IC001I1WJ.jpg"
         },
-        "Donetsk": {
+        "Donets'k": {
             "politics": "N/A_IMG",
             "military": "HC000SUP7.png",
-            "economics": "HC00001RZ.jpg",
-            "economics.finance": "HC00001RZ.jpg",
+            "economic": "HC00001RZ.jpg",
+            "economic.finance": "HC00001RZ.jpg",
             "military.ceasefire": "HC000ZINH.jpg",
-            "economics.trade": "IC00167BW.jpg",
+            "economic.trade": "IC00167BW.jpg",
             "military.weapons": "HC00001F6.png",
             "military.combat": "HC00001UV.jpg",
             "ROOT": "IC001I1WJ.jpg"
@@ -2114,10 +2114,10 @@
         "Crimea": {
             "politics": "N/A_IMG",
             "military": "HC000SUP7.png",
-            "economics": "HC00001RZ.jpg",
-            "economics.finance": "HC00001RZ.jpg",
+            "economic": "HC00001RZ.jpg",
+            "economic.finance": "HC00001RZ.jpg",
             "military.ceasefire": "HC000SUP7.png",
-            "economics.trade": "IC00167BW.jpg",
+            "economic.trade": "IC00167BW.jpg",
             "military.weapons": "HC00001F6.png",
             "military.combat": "IC00161JG.jpg",
             "ROOT": "IC001I1WJ.jpg"
@@ -2125,10 +2125,10 @@
         "Krasnoyarsk": {
             "politics": "N/A_IMG",
             "military": "HC000SUP7.png",
-            "economics": "HC000Q8L5.jpg",
-            "economics.finance": "HC000Q8L5.jpg",
+            "economic": "HC000Q8L5.jpg",
+            "economic.finance": "HC000Q8L5.jpg",
             "military.ceasefire": "HC000SUP7.png",
-            "economics.trade": "IC00167BW.jpg",
+            "economic.trade": "IC00167BW.jpg",
             "military.weapons": "HC00001F6.png",
             "military.combat": "IC00161JG.jpg",
             "ROOT": "IC001I1WJ.jpg"
@@ -2136,9 +2136,9 @@
         "L'viv": {
             "politics": "N/A_IMG",
             "military": "IC0015LB2.jpg",
-            "economics": "N/A_IMG",
+            "economic": "N/A_IMG",
             "military.ceasefire": "HC000ZINH.jpg",
-            "economics.trade": "N/A_IMG",
+            "economic.trade": "N/A_IMG",
             "military.combat": "IC00161JG.jpg"
         },
         "City of St. Petersburg": {
@@ -2159,17 +2159,17 @@
         },
         "Kharkiv": {
             "military": "HC000SUP7.png",
-            "economics": "N/A_IMG",
-            "economics.finance": "N/A_IMG",
+            "economic": "N/A_IMG",
+            "economic.finance": "N/A_IMG",
             "military.ceasefire": "HC000SUP7.png",
             "military.weapons": "HC000286T.jpg",
             "military.combat": "N/A_IMG"
         },
         "Krasnodar": {
             "military": "HC000SUP7.png",
-            "economics": "IC00167BW.jpg",
+            "economic": "IC00167BW.jpg",
             "military.ceasefire": "HC000SUP7.png",
-            "economics.trade": "IC00167BW.jpg",
+            "economic.trade": "IC00167BW.jpg",
             "military.weapons": "HC000286T.jpg",
             "military.combat": "HC00000FM.png"
         },
@@ -2189,7 +2189,7 @@
             "military.weapons": "HC00001F6.png",
             "military.combat": "HC00001UV.jpg"
         },
-        "Luhansk": {
+        "Luhans'k": {
             "military": "HC000SUP7.png",
             "military.ceasefire": "HC000SUP7.png",
             "military.weapons": "HC00000FM.png",
@@ -2206,9 +2206,9 @@
         },
         "Poltava": {
             "military": "HC000SUP7.png",
-            "economics": "IC00167BW.jpg",
+            "economic": "IC00167BW.jpg",
             "military.ceasefire": "HC000SUP7.png",
-            "economics.trade": "IC00167BW.jpg",
+            "economic.trade": "IC00167BW.jpg",
             "military.combat": "N/A_IMG"
         },
         "Sumy": {
@@ -2228,54 +2228,54 @@
             "military.ceasefire": "HC000SUP7.png"
         },
         "Chelyabinsk": {
-            "economics": "N/A_IMG",
-            "economics.finance": "N/A_IMG"
+            "economic": "N/A_IMG",
+            "economic.finance": "N/A_IMG"
         },
         "Tver'": {
-            "economics": "N/A_IMG",
-            "economics.trade": "N/A_IMG"
+            "economic": "N/A_IMG",
+            "economic.trade": "N/A_IMG"
         },
         "Kaliningrad": {
-            "economics": "N/A_IMG",
-            "economics.trade": "N/A_IMG"
+            "economic": "N/A_IMG",
+            "economic.trade": "N/A_IMG"
         },
         "Adygey": {
-            "economics": "N/A_IMG",
-            "economics.trade": "N/A_IMG"
+            "economic": "N/A_IMG",
+            "economic.trade": "N/A_IMG"
         }
     },
     "2015-05": {
         "Moscow City": {
             "politics": "HC000520S.jpg",
             "military": "IC001GZ0R.jpg",
-            "economics": "IC001H1O3.jpg",
+            "economic": "IC001H1O3.jpg",
             "military.ceasefire": "N/A_IMG",
-            "economics.trade": "IC001H1O3.jpg"
+            "economic.trade": "IC001H1O3.jpg"
         },
         "Cherkasy": {
             "politics": "IC001J2NL.jpg",
             "politics.international_relation": "IC001J2NL.jpg",
             "military": "IC001GWSA.jpg",
-            "economics": "IC001H07O.jpg",
-            "economics.finance": "N/A_IMG",
+            "economic": "IC001H07O.jpg",
+            "economic.finance": "N/A_IMG",
             "military.ceasefire": "N/A_IMG",
-            "economics.trade": "IC001H07O.jpg",
+            "economic.trade": "IC001H07O.jpg",
             "military.weapons": "N/A_IMG"
         },
         "Kiev City": {
             "politics": "HC000520S.jpg",
             "military": "N/A_IMG",
-            "economics": "IC001H6D3.png",
+            "economic": "IC001H6D3.png",
             "military.ceasefire": "N/A_IMG",
-            "economics.trade": "IC001H6D3.png",
+            "economic.trade": "IC001H6D3.png",
             "military.weapons": "N/A_IMG"
         },
         "Krasnoyarsk": {
             "politics": "HC000520S.jpg",
             "military": "IC001GWSA.jpg",
-            "economics": "IC001H07O.jpg",
+            "economic": "IC001H07O.jpg",
             "military.ceasefire": "N/A_IMG",
-            "economics.trade": "IC001H07O.jpg",
+            "economic.trade": "IC001H07O.jpg",
             "military.weapons": "N/A_IMG"
         },
         "Odessa": {
@@ -2286,15 +2286,15 @@
         "City of St. Petersburg": {
             "politics": "HC000520S.jpg"
         },
-        "Donetsk": {
+        "Donets'k": {
             "military": "IC001GWSA.jpg",
             "military.ceasefire": "N/A_IMG"
         },
         "Crimea": {
             "military": "N/A_IMG",
-            "economics": "IC001H6D3.png",
+            "economic": "IC001H6D3.png",
             "military.ceasefire": "N/A_IMG",
-            "economics.trade": "IC001H6D3.png",
+            "economic.trade": "IC001H6D3.png",
             "military.weapons": "N/A_IMG"
         },
         "Tomsk": {
@@ -2308,31 +2308,31 @@
         "Moskva": {
             "military": "IC001GWSA.jpg"
         },
-        "Luhansk": {
+        "Luhans'k": {
             "military": "IC001GWSA.jpg",
-            "economics": "IC001H1O3.jpg",
+            "economic": "IC001H1O3.jpg",
             "military.ceasefire": "N/A_IMG",
-            "economics.trade": "IC001H1O3.jpg"
+            "economic.trade": "IC001H1O3.jpg"
         },
         "N/A": {
             "military": "N/A_IMG",
             "military.ceasefire": "N/A_IMG"
         },
         "Sevastopol'": {
-            "economics": "IC001H6D3.png",
-            "economics.trade": "IC001H6D3.png"
+            "economic": "IC001H6D3.png",
+            "economic.trade": "IC001H6D3.png"
         },
         "L'viv": {
-            "economics": "IC001H6D3.png",
-            "economics.trade": "IC001H6D3.png"
+            "economic": "IC001H6D3.png",
+            "economic.trade": "IC001H6D3.png"
         },
         "Volgograd": {
-            "economics": "IC001H6D3.png",
-            "economics.trade": "IC001H6D3.png"
+            "economic": "IC001H6D3.png",
+            "economic.trade": "IC001H6D3.png"
         },
         "Khabarovsk": {
-            "economics": "N/A_IMG",
-            "economics.finance": "N/A_IMG"
+            "economic": "N/A_IMG",
+            "economic.finance": "N/A_IMG"
         }
     },
     "2013-08": {
@@ -2370,16 +2370,16 @@
         "Moscow City": {
             "politics": "N/A_IMG",
             "military": "HC0002XYR.jpg",
-            "economics": "N/A_IMG",
-            "economics.finance": "N/A_IMG",
+            "economic": "N/A_IMG",
+            "economic.finance": "N/A_IMG",
             "military.ceasefire": "HC0002XYR.jpg",
             "military.combat": "IC0019O9G.jpg"
         },
         "Krasnoyarsk": {
             "politics": "N/A_IMG",
             "military": "HC0002XYR.jpg",
-            "economics": "N/A_IMG",
-            "economics.finance": "N/A_IMG",
+            "economic": "N/A_IMG",
+            "economic.finance": "N/A_IMG",
             "military.ceasefire": "HC0002XYR.jpg",
             "military.weapons": "IC0011UEZ.jpg",
             "military.combat": "IC0019O9G.jpg"
@@ -2393,7 +2393,7 @@
         "Chukot": {
             "politics": "N/A_IMG"
         },
-        "Donetsk": {
+        "Donets'k": {
             "military": "HC000QNOI.jpg",
             "military.ceasefire": "HC000QNOI.jpg"
         },
@@ -2407,7 +2407,7 @@
             "military": "IC0019O9G.jpg",
             "military.combat": "IC0019O9G.jpg"
         },
-        "Luhansk": {
+        "Luhans'k": {
             "military": "HC000QNOI.jpg",
             "military.ceasefire": "HC000QNOI.jpg"
         },
@@ -2429,8 +2429,8 @@
             "politics": "HC000ZG2J.jpg",
             "politics.international_relation": "HC000ZG2J.jpg",
             "military": "HC000ZG1D.jpg",
-            "economics": "IC00161V3.jpg",
-            "economics.finance": "IC00161V3.jpg",
+            "economic": "IC00161V3.jpg",
+            "economic.finance": "IC00161V3.jpg",
             "military.weapons": "HC000ZG1D.jpg"
         },
         "Krasnodar": {
@@ -2453,7 +2453,7 @@
             "military": "HC000ZG1D.jpg",
             "military.weapons": "HC000ZG1D.jpg"
         },
-        "Luhansk": {
+        "Luhans'k": {
             "military": "HC000ZG1D.jpg",
             "military.weapons": "HC000ZG1D.jpg"
         },
@@ -2475,8 +2475,8 @@
             "politics": "N/A_IMG",
             "politics.international_relation": "N/A_IMG",
             "military": "N/A_IMG",
-            "economics": "N/A_IMG",
-            "economics.finance": "N/A_IMG",
+            "economic": "N/A_IMG",
+            "economic.finance": "N/A_IMG",
             "military.ceasefire": "N/A_IMG",
             "politics.governance": "N/A_IMG",
             "military.weapons": "N/A_IMG",
@@ -2489,15 +2489,15 @@
             "politics": "N/A_IMG",
             "politics.international_relation": "N/A_IMG",
             "military": "N/A_IMG",
-            "economics": "N/A_IMG",
-            "economics.finance": "N/A_IMG",
+            "economic": "N/A_IMG",
+            "economic.finance": "N/A_IMG",
             "politics.governance": "N/A_IMG",
             "military.weapons": "N/A_IMG",
             "politics.justice": "N/A_IMG",
             "military.combat": "N/A_IMG",
             "ROOT": "N/A_IMG"
         },
-        "Donetsk": {
+        "Donets'k": {
             "politics": "N/A_IMG",
             "military": "N/A_IMG",
             "military.ceasefire": "N/A_IMG",
@@ -2514,10 +2514,10 @@
             "politics": "N/A_IMG",
             "politics.international_relation": "N/A_IMG",
             "military": "N/A_IMG",
-            "economics": "N/A_IMG",
-            "economics.finance": "N/A_IMG",
+            "economic": "N/A_IMG",
+            "economic.finance": "N/A_IMG",
             "military.ceasefire": "N/A_IMG",
-            "economics.trade": "N/A_IMG",
+            "economic.trade": "N/A_IMG",
             "politics.governance": "N/A_IMG",
             "military.weapons": "N/A_IMG",
             "politics.justice": "N/A_IMG",
@@ -2582,12 +2582,12 @@
             "military": "N/A_IMG"
         },
         "Tomsk": {
-            "economics": "N/A_IMG",
-            "economics.finance": "N/A_IMG"
+            "economic": "N/A_IMG",
+            "economic.finance": "N/A_IMG"
         },
         "Volyn": {
-            "economics": "N/A_IMG",
-            "economics.trade": "N/A_IMG"
+            "economic": "N/A_IMG",
+            "economic.trade": "N/A_IMG"
         }
     },
     "2014-12": {
@@ -2595,10 +2595,10 @@
             "politics": "IC001GWXT.jpg",
             "politics.international_relation": "IC001GZ2S.jpg",
             "military": "HC000ZISO.jpg",
-            "economics": "IC001GURR.jpg",
-            "economics.finance": "IC001GURR.jpg",
+            "economic": "IC001GURR.jpg",
+            "economic.finance": "IC001GURR.jpg",
             "military.ceasefire": "HC000ZISO.jpg",
-            "economics.trade": "IC001GYY9.jpg",
+            "economic.trade": "IC001GYY9.jpg",
             "politics.governance": "IC001H4IK.jpg",
             "politics.justice": "IC001GVKN.jpg",
             "ROOT": "IC001GWCK.jpg",
@@ -2606,79 +2606,79 @@
         },
         "Crimea": {
             "politics": "IC001H04E.jpg",
-            "economics": "HC000TZS0.jpg",
-            "economics.trade": "HC000TZS0.jpg"
+            "economic": "HC000TZS0.jpg",
+            "economic.trade": "HC000TZS0.jpg"
         },
         "Krasnoyarsk": {
             "politics": "HC000TVXA.jpg",
             "politics.international_relation": "HC000TVXA.jpg",
             "military": "HC000ZISO.jpg",
-            "economics": "IC001GYY9.jpg",
-            "economics.finance": "HC000U30G.jpg",
+            "economic": "IC001GYY9.jpg",
+            "economic.finance": "HC000U30G.jpg",
             "military.ceasefire": "HC000ZISO.jpg",
-            "economics.trade": "IC001GYY9.jpg"
+            "economic.trade": "IC001GYY9.jpg"
         },
         "L'viv": {
             "politics": "IC001GWXT.jpg",
-            "economics": "HC000TZS0.jpg",
-            "economics.finance": "N/A_IMG",
-            "economics.trade": "HC000TZS0.jpg"
+            "economic": "HC000TZS0.jpg",
+            "economic.finance": "N/A_IMG",
+            "economic.trade": "HC000TZS0.jpg"
         },
         "Tomsk": {
             "politics": "IC001GWXT.jpg",
-            "economics": "N/A_IMG",
-            "economics.finance": "N/A_IMG"
+            "economic": "N/A_IMG",
+            "economic.finance": "N/A_IMG"
         },
         "Kiev City": {
             "military": "HC000ZISO.jpg",
-            "economics": "HC000TZS0.jpg",
+            "economic": "HC000TZS0.jpg",
             "military.ceasefire": "HC000ZISO.jpg",
-            "economics.trade": "HC000TZS0.jpg"
+            "economic.trade": "HC000TZS0.jpg"
         },
         "Odessa": {
             "military": "HC000ZISO.jpg",
-            "economics": "HC000TZS0.jpg",
-            "economics.finance": "N/A_IMG",
+            "economic": "HC000TZS0.jpg",
+            "economic.finance": "N/A_IMG",
             "military.ceasefire": "HC000ZISO.jpg",
-            "economics.trade": "HC000TZS0.jpg"
+            "economic.trade": "HC000TZS0.jpg"
         },
         "Moscow City": {
-            "economics": "HC000TZS0.jpg",
-            "economics.finance": "HC000U30G.jpg",
-            "economics.trade": "IC001H2ZN.jpg"
+            "economic": "HC000TZS0.jpg",
+            "economic.finance": "HC000U30G.jpg",
+            "economic.trade": "IC001H2ZN.jpg"
         },
         "N/A": {
-            "economics": "HC000TZS0.jpg",
-            "economics.trade": "HC000TZS0.jpg"
+            "economic": "HC000TZS0.jpg",
+            "economic.trade": "HC000TZS0.jpg"
         },
         "Sevastopol'": {
-            "economics": "HC000TZS0.jpg",
-            "economics.trade": "HC000TZS0.jpg"
+            "economic": "HC000TZS0.jpg",
+            "economic.trade": "HC000TZS0.jpg"
         },
-        "Luhansk": {
-            "economics": "HC000TZS0.jpg",
-            "economics.trade": "HC000TZS0.jpg"
+        "Luhans'k": {
+            "economic": "HC000TZS0.jpg",
+            "economic.trade": "HC000TZS0.jpg"
         },
-        "Donetsk": {
-            "economics": "HC000TZS0.jpg",
-            "economics.finance": "N/A_IMG",
-            "economics.trade": "HC000TZS0.jpg"
+        "Donets'k": {
+            "economic": "HC000TZS0.jpg",
+            "economic.finance": "N/A_IMG",
+            "economic.trade": "HC000TZS0.jpg"
         },
         "Kharkiv": {
-            "economics": "HC000TZS0.jpg",
-            "economics.trade": "HC000TZS0.jpg"
+            "economic": "HC000TZS0.jpg",
+            "economic.trade": "HC000TZS0.jpg"
         },
         "Kherson": {
-            "economics": "N/A_IMG",
-            "economics.finance": "N/A_IMG"
+            "economic": "N/A_IMG",
+            "economic.finance": "N/A_IMG"
         },
         "Samara": {
-            "economics": "HC0003AIN.jpg",
-            "economics.finance": "HC0003AIN.jpg"
+            "economic": "HC0003AIN.jpg",
+            "economic.finance": "HC0003AIN.jpg"
         },
         "Dnipropetrovs'k": {
-            "economics": "N/A_IMG",
-            "economics.finance": "N/A_IMG"
+            "economic": "N/A_IMG",
+            "economic.finance": "N/A_IMG"
         }
     },
     "2016-06": {
@@ -2707,8 +2707,8 @@
             "military.combat": "IC001HYPM.jpg"
         },
         "Tomsk": {
-            "economics": "HC000QL7T.jpg",
-            "economics.finance": "HC000QL7T.jpg"
+            "economic": "HC000QL7T.jpg",
+            "economic.finance": "HC000QL7T.jpg"
         }
     },
     "2018-06": {
@@ -2716,66 +2716,66 @@
             "politics": "IC001K2J3.jpg",
             "politics.international_relation": "IC001K2J3.jpg",
             "military": "N/A_IMG",
-            "economics": "IC001J7QT.png",
-            "economics.finance": "IC001J7QT.png",
-            "economics.trade": "N/A_IMG",
+            "economic": "IC001J7QT.png",
+            "economic.finance": "IC001J7QT.png",
+            "economic.trade": "N/A_IMG",
             "military.combat": "N/A_IMG",
             "politics.election": "HC000SRCH.jpg"
         },
         "Kiev City": {
             "politics": "IC001K2J3.jpg",
             "politics.international_relation": "IC001K2J3.jpg",
-            "economics": "N/A_IMG",
-            "economics.trade": "N/A_IMG",
+            "economic": "N/A_IMG",
+            "economic.trade": "N/A_IMG",
             "politics.governance": "HC000Q87O.jpg"
         },
         "Krasnoyarsk": {
             "politics": "IC001K2J3.jpg",
             "politics.international_relation": "IC001K2J3.jpg",
-            "economics": "IC001J7QT.png",
-            "economics.finance": "IC001J7QT.png",
-            "economics.trade": "N/A_IMG"
+            "economic": "IC001J7QT.png",
+            "economic.finance": "IC001J7QT.png",
+            "economic.trade": "N/A_IMG"
         },
         "Kiev": {
             "politics": "IC001K2J3.jpg",
             "politics.international_relation": "IC001K2J3.jpg"
         },
-        "Donetsk": {
+        "Donets'k": {
             "military": "N/A_IMG"
         },
         "Moscow City": {
             "military": "N/A_IMG",
-            "economics": "N/A_IMG",
-            "economics.trade": "N/A_IMG",
+            "economic": "N/A_IMG",
+            "economic.trade": "N/A_IMG",
             "military.combat": "N/A_IMG"
         },
-        "Luhansk": {
-            "economics": "N/A_IMG",
-            "economics.trade": "N/A_IMG"
+        "Luhans'k": {
+            "economic": "N/A_IMG",
+            "economic.trade": "N/A_IMG"
         },
         "Crimea": {
-            "economics": "N/A_IMG",
-            "economics.trade": "N/A_IMG"
+            "economic": "N/A_IMG",
+            "economic.trade": "N/A_IMG"
         },
         "Rostov": {
-            "economics": "N/A_IMG",
-            "economics.trade": "N/A_IMG"
+            "economic": "N/A_IMG",
+            "economic.trade": "N/A_IMG"
         },
         "Irkutsk": {
-            "economics": "N/A_IMG",
-            "economics.trade": "N/A_IMG"
+            "economic": "N/A_IMG",
+            "economic.trade": "N/A_IMG"
         },
         "Primor'ye": {
-            "economics": "N/A_IMG",
-            "economics.trade": "N/A_IMG"
+            "economic": "N/A_IMG",
+            "economic.trade": "N/A_IMG"
         }
     },
     "2014-10": {
         "Cherkasy": {
             "politics": "IC001I837.jpg",
             "military": "HC0003D9Z.jpg",
-            "economics": "IC001K6LR.jpg",
-            "economics.finance": "IC001K6LR.jpg",
+            "economic": "IC001K6LR.jpg",
+            "economic.finance": "IC001K6LR.jpg",
             "politics.governance": "IC001I837.jpg",
             "military.combat": "HC0003D9Z.jpg"
         },
@@ -2809,7 +2809,7 @@
             "politics": "IC001I837.jpg",
             "politics.governance": "IC001I837.jpg"
         },
-        "Donetsk": {
+        "Donets'k": {
             "military": "HC0003D9Z.jpg",
             "military.combat": "HC0003D9Z.jpg"
         },
@@ -2817,7 +2817,7 @@
             "military": "HC0003D9Z.jpg",
             "military.combat": "HC0003D9Z.jpg"
         },
-        "Luhansk": {
+        "Luhans'k": {
             "military": "IC001I0Q1.jpg",
             "military.combat": "IC001I0Q1.jpg"
         }
@@ -2840,43 +2840,43 @@
         "Cherkasy": {
             "politics": "HC000SSVU.jpg",
             "military": "IC00161WE.jpg",
-            "economics": "IC001IZPG.png",
-            "economics.finance": "IC001IZPG.png",
+            "economic": "IC001IZPG.png",
+            "economic.finance": "IC001IZPG.png",
             "politics.election": "HC000SSVU.jpg"
         },
         "Kiev City": {
             "politics": "IC0011WZN.jpg",
-            "economics": "IC001IZPG.png",
-            "economics.finance": "IC001IZPG.png",
+            "economic": "IC001IZPG.png",
+            "economic.finance": "IC001IZPG.png",
             "politics.governance": "IC0011WZN.jpg"
         },
         "Krasnoyarsk": {
             "politics": "IC001J243.jpg",
             "politics.international_relation": "IC001J243.jpg",
-            "economics": "IC001IZPG.png",
-            "economics.finance": "IC001IZPG.png"
+            "economic": "IC001IZPG.png",
+            "economic.finance": "IC001IZPG.png"
         },
         "Odessa": {
             "politics": "IC0011WZN.jpg",
             "politics.governance": "IC0011WZN.jpg"
         },
-        "Donetsk": {
+        "Donets'k": {
             "military": "HC000ZJP0.jpg",
-            "economics": "IC001IZPG.png",
-            "economics.finance": "IC001IZPG.png"
+            "economic": "IC001IZPG.png",
+            "economic.finance": "IC001IZPG.png"
         },
         "Moscow City": {
             "military": "HC000ZJP0.jpg",
-            "economics": "IC001J09D.png",
-            "economics.finance": "IC001J09D.png"
+            "economic": "IC001J09D.png",
+            "economic.finance": "IC001J09D.png"
         },
-        "Luhansk": {
-            "economics": "IC001IZPG.png",
-            "economics.finance": "IC001IZPG.png"
+        "Luhans'k": {
+            "economic": "IC001IZPG.png",
+            "economic.finance": "IC001IZPG.png"
         },
         "Crimea": {
-            "economics": "IC001IZPG.png",
-            "economics.finance": "IC001IZPG.png"
+            "economic": "IC001IZPG.png",
+            "economic.finance": "IC001IZPG.png"
         }
     },
     "2017-08": {
@@ -2903,21 +2903,21 @@
         "Cherkasy": {
             "politics": "HC000Q8QD.jpg",
             "military": "HC00029BE.jpg",
-            "economics": "IC0015MV8.jpg",
-            "economics.finance": "HC00050FV.jpg",
+            "economic": "IC0015MV8.jpg",
+            "economic.finance": "HC00050FV.jpg",
             "politics.justice": "HC000Q8QD.jpg"
         },
         "Kiev City": {
             "politics": "HC00000FM.png",
             "military": "HC00029BE.jpg",
-            "economics": "IC0015MV8.jpg",
-            "economics.finance": "HC00050FV.jpg",
+            "economic": "IC0015MV8.jpg",
+            "economic.finance": "HC00050FV.jpg",
             "politics.justice": "HC00000FM.png"
         },
-        "Donetsk": {
+        "Donets'k": {
             "politics": "IC001JCY2.jpg",
-            "economics": "HC000023U.png",
-            "economics.finance": "HC00050NW.jpg",
+            "economic": "HC000023U.png",
+            "economic.finance": "HC00050NW.jpg",
             "politics.justice": "IC001JCY2.jpg"
         },
         "Crimea": {
@@ -2929,41 +2929,41 @@
         },
         "Krasnoyarsk": {
             "politics": "HC000Q8QD.jpg",
-            "economics": "HC000023U.png",
+            "economic": "HC000023U.png",
             "politics.justice": "HC000Q8QD.jpg",
             "ROOT": "HC000R6AX.jpg"
         },
         "Odessa": {
             "politics": "HC000Q8Q6.jpg",
             "military": "HC00029BE.jpg",
-            "economics": "IC0015MV8.jpg",
+            "economic": "IC0015MV8.jpg",
             "politics.justice": "HC000SX1C.jpg"
         },
         "Zaporizhzhya": {
             "politics": "HC000Q8QD.jpg",
-            "economics": "IC0015MV8.jpg",
-            "economics.finance": "HC00050FV.jpg",
+            "economic": "IC0015MV8.jpg",
+            "economic.finance": "HC00050FV.jpg",
             "politics.justice": "HC000Q8QD.jpg"
         },
         "Kharkiv": {
-            "economics": "HC00050FV.jpg",
-            "economics.finance": "HC00050FV.jpg"
+            "economic": "HC00050FV.jpg",
+            "economic.finance": "HC00050FV.jpg"
         },
         "Kursk": {
-            "economics": "HC000023U.png"
+            "economic": "HC000023U.png"
         },
         "Chelyabinsk": {
-            "economics": "HC000023U.png"
+            "economic": "HC000023U.png"
         },
         "L'viv": {
-            "economics": "IC001JD0H.png",
-            "economics.finance": "IC001JD0H.png"
+            "economic": "IC001JD0H.png",
+            "economic.finance": "IC001JD0H.png"
         },
         "Kiev": {
-            "economics": "IC0015MV8.jpg"
+            "economic": "IC0015MV8.jpg"
         },
         "Sumy": {
-            "economics": "IC0015MV8.jpg"
+            "economic": "IC0015MV8.jpg"
         },
         "Moscow City": {
             "ROOT": "HC000R6AX.jpg"
@@ -2978,7 +2978,7 @@
             "politics": "HC000XI6O.jpg",
             "politics.international_relation": "HC000XI6O.jpg"
         },
-        "Donetsk": {
+        "Donets'k": {
             "politics": "HC000XI6O.jpg",
             "politics.international_relation": "HC000XI6O.jpg"
         },
@@ -3012,27 +3012,27 @@
     "2017-11": {
         "Cherkasy": {
             "politics": "N/A_IMG",
-            "economics": "IC001H0HK.png",
-            "economics.trade": "IC001H0HK.png"
+            "economic": "IC001H0HK.png",
+            "economic.trade": "IC001H0HK.png"
         },
         "Krasnoyarsk": {
             "politics": "IC001H0LT.jpg",
             "military": "IC001GYQR.png",
-            "economics": "IC001H0Y2.png",
-            "economics.trade": "IC001H0Y2.png",
+            "economic": "IC001H0Y2.png",
+            "economic.trade": "IC001H0Y2.png",
             "politics.governance": "IC001H0LT.jpg"
         },
         "L'viv": {
-            "economics": "IC001H0Y2.png",
-            "economics.trade": "IC001H0Y2.png"
+            "economic": "IC001H0Y2.png",
+            "economic.trade": "IC001H0Y2.png"
         }
     },
     "2016-12": {
         "Cherkasy": {
             "politics": "IC0013AAO.jpg",
             "politics.international_relation": "IC0013AAO.jpg",
-            "economics": "IC00143IC.jpg",
-            "economics.trade": "IC00143IC.jpg"
+            "economic": "IC00143IC.jpg",
+            "economic.trade": "IC00143IC.jpg"
         },
         "Krasnoyarsk": {
             "politics": "N/A_IMG",
@@ -3051,25 +3051,25 @@
         "Cherkasy": {
             "politics": "HC000SY5R.jpg",
             "military": "IC001K6XH.jpg",
-            "economics": "N/A_IMG",
-            "economics.finance": "N/A_IMG",
+            "economic": "N/A_IMG",
+            "economic.finance": "N/A_IMG",
             "military.ceasefire": "IC001I4Q9.png",
             "military.combat": "IC001K6XH.jpg"
         },
         "Kiev City": {
             "politics": "HC000SY5R.jpg",
             "military": "IC001K6XH.jpg",
-            "economics": "N/A_IMG",
-            "economics.finance": "N/A_IMG",
+            "economic": "N/A_IMG",
+            "economic.finance": "N/A_IMG",
             "military.combat": "IC001K6XH.jpg"
         },
         "Odessa": {
             "politics": "HC000SY5R.jpg"
         },
-        "Donetsk": {
+        "Donets'k": {
             "military": "IC001K6XH.jpg",
-            "economics": "N/A_IMG",
-            "economics.finance": "N/A_IMG",
+            "economic": "N/A_IMG",
+            "economic.finance": "N/A_IMG",
             "military.ceasefire": "IC001I4Q9.png",
             "military.combat": "IC001K6XH.jpg"
         },
@@ -3085,8 +3085,8 @@
         },
         "Crimea": {
             "military": "IC001K6XH.jpg",
-            "economics": "N/A_IMG",
-            "economics.finance": "N/A_IMG",
+            "economic": "N/A_IMG",
+            "economic.finance": "N/A_IMG",
             "military.ceasefire": "IC001I4Q9.png",
             "military.combat": "IC001K6XH.jpg"
         },
@@ -3099,10 +3099,10 @@
             "military.ceasefire": "IC001I4Q9.png",
             "military.combat": "IC001K6XH.jpg"
         },
-        "Luhansk": {
+        "Luhans'k": {
             "military": "IC001K6XH.jpg",
-            "economics": "N/A_IMG",
-            "economics.finance": "N/A_IMG",
+            "economic": "N/A_IMG",
+            "economic.finance": "N/A_IMG",
             "military.combat": "IC001K6XH.jpg"
         },
         "Nizhegorod": {
@@ -3145,7 +3145,7 @@
         }
     },
     "2015-10": {
-        "Donetsk": {
+        "Donets'k": {
             "politics": "HC0002XY4.jpg",
             "politics.international_relation": "HC0002XY4.jpg",
             "military": "IC001HXPZ.jpg"
@@ -3179,8 +3179,8 @@
             "politics.international_relation": "N/A_IMG"
         },
         "Cherkasy": {
-            "economics": "N/A_IMG",
-            "economics.finance": "N/A_IMG"
+            "economic": "N/A_IMG",
+            "economic.finance": "N/A_IMG"
         }
     },
     "2011-09": {
@@ -3188,16 +3188,16 @@
             "politics": "IC001FBB4.jpg"
         },
         "Moscow City": {
-            "economics": "IC001FBML.jpg",
-            "economics.finance": "IC001FBML.jpg"
+            "economic": "IC001FBML.jpg",
+            "economic.finance": "IC001FBML.jpg"
         },
         "Yaroslavl'": {
-            "economics": "IC001FBML.jpg",
-            "economics.finance": "IC001FBML.jpg"
+            "economic": "IC001FBML.jpg",
+            "economic.finance": "IC001FBML.jpg"
         },
         "Nizhegorod": {
-            "economics": "IC001FBML.jpg",
-            "economics.finance": "IC001FBML.jpg"
+            "economic": "IC001FBML.jpg",
+            "economic.finance": "IC001FBML.jpg"
         }
     },
     "2015-09": {
@@ -3207,26 +3207,26 @@
         }
     },
     "2013-11": {
-        "Donetsk": {
+        "Donets'k": {
             "military": "IC0015PS1.jpg",
             "military.weapons": "IC0015PS1.jpg"
         },
         "Krasnoyarsk": {
             "military": "IC0015PS1.jpg",
-            "economics": "IC001IP9I.jpg",
-            "economics.finance": "IC001IP9I.jpg",
+            "economic": "IC001IP9I.jpg",
+            "economic.finance": "IC001IP9I.jpg",
             "military.weapons": "IC0015PS1.jpg"
         },
         "Kiev City": {
             "military": "IC0015PS1.jpg",
-            "economics": "IC001IP9I.jpg",
-            "economics.finance": "IC001IP9I.jpg",
+            "economic": "IC001IP9I.jpg",
+            "economic.finance": "IC001IP9I.jpg",
             "military.weapons": "IC0015PS1.jpg"
         },
         "Cherkasy": {
             "military": "IC0015PS1.jpg",
-            "economics": "IC001IP9I.jpg",
-            "economics.finance": "IC001IP9I.jpg",
+            "economic": "IC001IP9I.jpg",
+            "economic.finance": "IC001IP9I.jpg",
             "military.weapons": "IC0015PS1.jpg"
         },
         "Odessa": {
@@ -3238,54 +3238,54 @@
             "military.weapons": "IC0015PS1.jpg"
         },
         "Moscow City": {
-            "economics": "IC001IP9I.jpg",
-            "economics.finance": "IC001IP9I.jpg"
+            "economic": "IC001IP9I.jpg",
+            "economic.finance": "IC001IP9I.jpg"
         }
     },
     "2014-08": {
-        "Donetsk": {
+        "Donets'k": {
             "military": "IC001I23X.jpg",
-            "economics": "HC000UFC3.jpg",
-            "economics.finance": "IC001HV4M.jpg",
-            "economics.trade": "HC000UFC3.jpg",
+            "economic": "HC000UFC3.jpg",
+            "economic.finance": "IC001HV4M.jpg",
+            "economic.trade": "HC000UFC3.jpg",
             "military.weapons": "IC001I23X.jpg"
         },
         "Moscow City": {
             "military": "IC001I23X.jpg",
-            "economics": "IC001HV4M.jpg",
-            "economics.finance": "IC001HV4M.jpg",
+            "economic": "IC001HV4M.jpg",
+            "economic.finance": "IC001HV4M.jpg",
             "military.weapons": "IC001I23X.jpg"
         },
         "Krasnoyarsk": {
             "military": "IC001HZWY.jpg",
-            "economics": "IC001HV4M.jpg",
-            "economics.finance": "IC001HV4M.jpg",
+            "economic": "IC001HV4M.jpg",
+            "economic.finance": "IC001HV4M.jpg",
             "military.weapons": "IC001HZWY.jpg",
             "military.combat": "IC0019XWV.jpg"
         },
         "Crimea": {
             "military": "IC001HZWY.jpg",
-            "economics": "IC001HV4M.jpg",
-            "economics.finance": "IC001HV4M.jpg",
+            "economic": "IC001HV4M.jpg",
+            "economic.finance": "IC001HV4M.jpg",
             "military.weapons": "IC001HZWY.jpg"
         },
         "Kiev City": {
             "military": "IC001HZWY.jpg",
-            "economics": "IC001HV4M.jpg",
-            "economics.finance": "IC001HV4M.jpg",
+            "economic": "IC001HV4M.jpg",
+            "economic.finance": "IC001HV4M.jpg",
             "military.weapons": "IC001HZWY.jpg"
         },
         "Cherkasy": {
             "military": "IC001HZWY.jpg",
-            "economics": "IC001HV4M.jpg",
-            "economics.finance": "IC001HV4M.jpg",
+            "economic": "IC001HV4M.jpg",
+            "economic.finance": "IC001HV4M.jpg",
             "military.weapons": "IC001HZWY.jpg",
             "military.combat": "IC0019XWV.jpg"
         },
-        "Luhansk": {
+        "Luhans'k": {
             "military": "IC001I23X.jpg",
-            "economics": "IC001HV4M.jpg",
-            "economics.finance": "IC001HV4M.jpg",
+            "economic": "IC001HV4M.jpg",
+            "economic.finance": "IC001HV4M.jpg",
             "military.weapons": "IC001I23X.jpg"
         },
         "Astrakhan'": {
@@ -3301,16 +3301,16 @@
             "military.weapons": "IC001I23X.jpg"
         },
         "Rostov": {
-            "economics": "IC001HV4M.jpg",
-            "economics.finance": "IC001HV4M.jpg"
+            "economic": "IC001HV4M.jpg",
+            "economic.finance": "IC001HV4M.jpg"
         },
         "Kharkiv": {
-            "economics": "IC001HV4M.jpg",
-            "economics.finance": "IC001HV4M.jpg"
+            "economic": "IC001HV4M.jpg",
+            "economic.finance": "IC001HV4M.jpg"
         }
     },
     "2016-02": {
-        "Donetsk": {
+        "Donets'k": {
             "military": "IC001IKE0.jpg",
             "military.ceasefire": "IC001IKE0.jpg"
         },
@@ -3320,8 +3320,8 @@
         },
         "Krasnoyarsk": {
             "military": "IC001IKE0.jpg",
-            "economics": "IC001C3R7.jpg",
-            "economics.finance": "IC001C3R7.jpg",
+            "economic": "IC001C3R7.jpg",
+            "economic.finance": "IC001C3R7.jpg",
             "military.ceasefire": "IC001IKE0.jpg"
         },
         "Kiev City": {
@@ -3330,8 +3330,8 @@
         },
         "Cherkasy": {
             "military": "IC001IKE0.jpg",
-            "economics": "IC001C3R7.jpg",
-            "economics.finance": "IC001C3R7.jpg",
+            "economic": "IC001C3R7.jpg",
+            "economic.finance": "IC001C3R7.jpg",
             "military.ceasefire": "IC001IKE0.jpg"
         },
         "Nizhegorod": {
@@ -3340,7 +3340,7 @@
         }
     },
     "2017-10": {
-        "Donetsk": {
+        "Donets'k": {
             "military": "HC00001QW.jpg",
             "military.combat": "HC00001QW.jpg"
         },
@@ -3369,26 +3369,26 @@
             "military.combat": "HC00001QW.jpg"
         },
         "Tyumen'": {
-            "economics": "N/A_IMG",
-            "economics.trade": "N/A_IMG"
+            "economic": "N/A_IMG",
+            "economic.trade": "N/A_IMG"
         },
         "Kiev": {
-            "economics": "N/A_IMG",
-            "economics.trade": "N/A_IMG"
+            "economic": "N/A_IMG",
+            "economic.trade": "N/A_IMG"
         },
         "Tomsk": {
-            "economics": "N/A_IMG",
-            "economics.trade": "N/A_IMG"
+            "economic": "N/A_IMG",
+            "economic.trade": "N/A_IMG"
         }
     },
     "2016-05": {
-        "Donetsk": {
+        "Donets'k": {
             "military": "IC001I1IE.jpg"
         },
         "Krasnoyarsk": {
             "military": "IC001I1IE.jpg",
-            "economics": "N/A_IMG",
-            "economics.finance": "N/A_IMG"
+            "economic": "N/A_IMG",
+            "economic.finance": "N/A_IMG"
         },
         "Rivne": {
             "military": "HC0002K7A.jpg",
@@ -3399,8 +3399,8 @@
             "military.ceasefire": "HC000QGDH.jpg"
         },
         "Moscow City": {
-            "economics": "N/A_IMG",
-            "economics.finance": "N/A_IMG"
+            "economic": "N/A_IMG",
+            "economic.finance": "N/A_IMG"
         }
     },
     "2008-08": {
@@ -3435,8 +3435,8 @@
         },
         "Krasnoyarsk": {
             "military": "HC000ZEVL.jpg",
-            "economics": "N/A_IMG",
-            "economics.finance": "N/A_IMG"
+            "economic": "N/A_IMG",
+            "economic.finance": "N/A_IMG"
         },
         "Kiev City": {
             "military": "HC000ZEVL.jpg",
@@ -3455,24 +3455,24 @@
             "military": "HC000ZEVL.jpg"
         },
         "N/A": {
-            "economics": "N/A_IMG",
-            "economics.finance": "N/A_IMG"
+            "economic": "N/A_IMG",
+            "economic.finance": "N/A_IMG"
         }
     },
     "2012-07": {
         "Krasnoyarsk": {
             "military": "N/A_IMG",
-            "economics": "N/A_IMG",
+            "economic": "N/A_IMG",
             "military.ceasefire": "N/A_IMG",
-            "economics.trade": "N/A_IMG"
+            "economic.trade": "N/A_IMG"
         },
         "Cherkasy": {
-            "economics": "N/A_IMG",
-            "economics.trade": "N/A_IMG"
+            "economic": "N/A_IMG",
+            "economic.trade": "N/A_IMG"
         },
         "Moscow City": {
-            "economics": "N/A_IMG",
-            "economics.trade": "N/A_IMG"
+            "economic": "N/A_IMG",
+            "economic.trade": "N/A_IMG"
         }
     },
     "2012-05": {
@@ -3485,8 +3485,8 @@
             "military": "HC0002SYU.jpg"
         },
         "Krasnoyarsk": {
-            "economics": "HC0003DW0.jpg",
-            "economics.finance": "HC0003DW0.jpg"
+            "economic": "HC0003DW0.jpg",
+            "economic.finance": "HC0003DW0.jpg"
         }
     },
     "2010-04": {
@@ -3497,132 +3497,132 @@
     },
     "2017-02": {
         "Cherkasy": {
-            "economics": "HC000SOOJ.jpg",
-            "economics.trade": "HC000SOOJ.jpg"
+            "economic": "HC000SOOJ.jpg",
+            "economic.trade": "HC000SOOJ.jpg"
         },
         "Kiev City": {
-            "economics": "HC000SOOJ.jpg",
-            "economics.trade": "HC000SOOJ.jpg"
+            "economic": "HC000SOOJ.jpg",
+            "economic.trade": "HC000SOOJ.jpg"
         },
         "Krasnoyarsk": {
-            "economics": "HC000SOOJ.jpg",
-            "economics.trade": "HC000SOOJ.jpg"
+            "economic": "HC000SOOJ.jpg",
+            "economic.trade": "HC000SOOJ.jpg"
         },
         "Moscow City": {
-            "economics": "HC000SOOJ.jpg",
-            "economics.trade": "HC000SOOJ.jpg"
+            "economic": "HC000SOOJ.jpg",
+            "economic.trade": "HC000SOOJ.jpg"
         },
         "N/A": {
-            "economics": "HC000SOOJ.jpg",
-            "economics.trade": "HC000SOOJ.jpg"
+            "economic": "HC000SOOJ.jpg",
+            "economic.trade": "HC000SOOJ.jpg"
         },
-        "Luhansk": {
-            "economics": "HC000SOOJ.jpg",
-            "economics.trade": "HC000SOOJ.jpg"
+        "Luhans'k": {
+            "economic": "HC000SOOJ.jpg",
+            "economic.trade": "HC000SOOJ.jpg"
         },
         "Crimea": {
-            "economics": "HC000SOOJ.jpg",
-            "economics.trade": "HC000SOOJ.jpg"
+            "economic": "HC000SOOJ.jpg",
+            "economic.trade": "HC000SOOJ.jpg"
         },
-        "Donetsk": {
-            "economics": "HC000SOOJ.jpg",
-            "economics.trade": "HC000SOOJ.jpg"
+        "Donets'k": {
+            "economic": "HC000SOOJ.jpg",
+            "economic.trade": "HC000SOOJ.jpg"
         },
         "Rostov": {
-            "economics": "HC000SOOJ.jpg",
-            "economics.trade": "HC000SOOJ.jpg"
+            "economic": "HC000SOOJ.jpg",
+            "economic.trade": "HC000SOOJ.jpg"
         },
         "Zaporizhzhya": {
-            "economics": "HC000SOOJ.jpg",
-            "economics.trade": "HC000SOOJ.jpg"
+            "economic": "HC000SOOJ.jpg",
+            "economic.trade": "HC000SOOJ.jpg"
         }
     },
     "2017-04": {
         "Cherkasy": {
-            "economics": "HC00000FM.png",
-            "economics.finance": "HC00000FM.png"
+            "economic": "HC00000FM.png",
+            "economic.finance": "HC00000FM.png"
         },
         "Kiev City": {
-            "economics": "HC00000FM.png",
-            "economics.finance": "HC00000FM.png"
+            "economic": "HC00000FM.png",
+            "economic.finance": "HC00000FM.png"
         },
         "Krasnoyarsk": {
-            "economics": "HC00000FM.png",
-            "economics.finance": "HC00000FM.png"
+            "economic": "HC00000FM.png",
+            "economic.finance": "HC00000FM.png"
         },
         "Moscow City": {
-            "economics": "HC00000FM.png",
-            "economics.finance": "HC00000FM.png"
+            "economic": "HC00000FM.png",
+            "economic.finance": "HC00000FM.png"
         },
         "Krasnodar": {
-            "economics": "HC00000FM.png",
-            "economics.finance": "HC00000FM.png"
+            "economic": "HC00000FM.png",
+            "economic.finance": "HC00000FM.png"
         },
-        "Donetsk": {
-            "economics": "HC00000FM.png",
-            "economics.finance": "HC00000FM.png"
+        "Donets'k": {
+            "economic": "HC00000FM.png",
+            "economic.finance": "HC00000FM.png"
         },
         "Kharkiv": {
-            "economics": "HC00000FM.png",
-            "economics.finance": "HC00000FM.png"
+            "economic": "HC00000FM.png",
+            "economic.finance": "HC00000FM.png"
         },
         "L'viv": {
-            "economics": "HC00000FM.png",
-            "economics.finance": "HC00000FM.png"
+            "economic": "HC00000FM.png",
+            "economic.finance": "HC00000FM.png"
         }
     },
     "2013-10": {
         "Krasnoyarsk": {
-            "economics": "N/A_IMG",
-            "economics.finance": "N/A_IMG",
-            "economics.trade": "N/A_IMG"
+            "economic": "N/A_IMG",
+            "economic.finance": "N/A_IMG",
+            "economic.trade": "N/A_IMG"
         },
         "Moscow City": {
-            "economics": "N/A_IMG",
-            "economics.trade": "N/A_IMG"
+            "economic": "N/A_IMG",
+            "economic.trade": "N/A_IMG"
         },
         "N/A": {
-            "economics": "N/A_IMG",
-            "economics.trade": "N/A_IMG"
+            "economic": "N/A_IMG",
+            "economic.trade": "N/A_IMG"
         },
         "Krasnodar": {
-            "economics": "N/A_IMG",
-            "economics.trade": "N/A_IMG"
+            "economic": "N/A_IMG",
+            "economic.trade": "N/A_IMG"
         },
         "Moskva": {
-            "economics": "N/A_IMG",
-            "economics.trade": "N/A_IMG"
+            "economic": "N/A_IMG",
+            "economic.trade": "N/A_IMG"
         },
         "Novosibirsk": {
-            "economics": "N/A_IMG",
-            "economics.finance": "N/A_IMG"
+            "economic": "N/A_IMG",
+            "economic.finance": "N/A_IMG"
         }
     },
     "2010-02": {
         "Krasnoyarsk": {
-            "economics": "N/A_IMG",
-            "economics.finance": "N/A_IMG"
+            "economic": "N/A_IMG",
+            "economic.finance": "N/A_IMG"
         }
     },
     "2012-11": {
         "Krasnoyarsk": {
-            "economics": "N/A_IMG",
-            "economics.finance": "N/A_IMG"
+            "economic": "N/A_IMG",
+            "economic.finance": "N/A_IMG"
         }
     },
     "2011-06": {
         "Moscow City": {
-            "economics": "N/A_IMG",
-            "economics.finance": "N/A_IMG"
+            "economic": "N/A_IMG",
+            "economic.finance": "N/A_IMG"
         },
         "L'viv": {
-            "economics": "N/A_IMG",
-            "economics.finance": "N/A_IMG",
-            "economics.trade": "N/A_IMG"
+            "economic": "N/A_IMG",
+            "economic.finance": "N/A_IMG",
+            "economic.trade": "N/A_IMG"
         },
         "Stavropol'": {
-            "economics": "N/A_IMG",
-            "economics.tax": "N/A_IMG"
+            "economic": "N/A_IMG",
+            "economic.tax": "N/A_IMG"
         }
     },
     "2018-05": {

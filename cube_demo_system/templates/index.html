@@ -26,7 +26,7 @@
     <script type="text/javascript">
 
 
-    console.log("entered")
+    // console.log("entered")
 
 
       var topicWeights = {{ topicWeights|safe }};
@@ -40,11 +40,12 @@
       var ids = {{phrase|safe}};
       var key_phrase = {{sentence|safe}};
       var image = {{images|safe}};
+      
 
     $( document ).ready(function() {
 
 
-          console.log("load")
+          // console.log("load")
 
 
           document.getElementById("military.ceasefire").checked = false;
@@ -117,11 +118,14 @@
 
           layerGroup.eachLayer(function (layer) {
               layer.on('click', function () {
-                console.log(layer.feature.properties.NAME_1);
+                // console.log(layer.feature.properties.NAME_1);
                 // //console.log(this._leaflet_id)
                 var input_time = document.getElementById("monthText").innerHTML;
                    var input_city = layer.feature.properties.NAME_1.toString();
-                   
+                   var current_input_city = document.getElementById("current_input_city");
+                   current_input_city.innerHTML = "Current: " + input_city.toString();
+                   var hidden_input_city = document.getElementById("hidden_input_city");
+                   hidden_input_city.innerHTML = input_city;
                    //Define radio button list
                    var politics = ["justice", "election", "international_relation", "governance"];
                    var economy = ["trade", "finance", "tax", "welfare"];
@@ -132,6 +136,15 @@
                        if (document.getElementById(all_radio_button_ids[i]).checked == true) {
                            checked_button_id = all_radio_button_ids[i].split(".")[1];
                        }
+                   }
+                   if (document.getElementById("economic").checked == true) {
+                     checked_button_id = "economic";
+                   }
+                   if (document.getElementById("military").checked == true) {
+                     checked_button_id = "military";
+                   }
+                   if (document.getElementById("politics").checked == true) {
+                     checked_button_id = "politics";
                    }
 
                   
@@ -148,12 +161,12 @@
                 }
                
                 var locations_keys = Object.keys(locations);
-                console.log(times_id_list);
+                // console.log(times_id_list);
                 for (var i = 0; i < locations_keys.length; i++) {
                     var temp_key = locations_keys[i];
                 
                     if (times_id_list.includes(temp_key)) {
-                      console.log(locations[temp_key]);
+                      // console.log(locations[temp_key]);
                     if (locations[temp_key].includes(input_city)) {
                         var temp_topic = topics[i].split(".");
                        
@@ -170,7 +183,7 @@
                 }
             }
         }
-        console.log(piechart_news_dict);
+        // console.log(piechart_news_dict);
 
                 // Now, piechart_dict is already be completed, we need to draw the graph;
                 var piechartContainer = document.getElementById("piechartContainer");
@@ -225,10 +238,15 @@
               var modal_group_html = "";
             //   var keywords_html = "";
               var points = myPieChart.getElementsAtEvent(evt);
-              console.log(points);
+              // console.log(points);
               var graph_index = points[0]._index;
               var topic_name = Object.keys(piechart_dict)[graph_index];
-              var news_list = piechart_news_dict[topic_name]; // This stores the news id for each clicked category;
+              var news_list=[];
+              if (Object.keys(piechart_dict).length != 0) {
+              var news_list = piechart_news_dict[topic_name];
+              } else {
+                news_list = [];
+              } // This stores the news id for each clicked category;
               var paper_detail_width = document.getElementById("paper_de").offsetWidth;
               var name2 = document.getElementById("name2");
               name2.innerHTML = "News Details of " + topic_name;
@@ -255,11 +273,17 @@
                   paperdetail.innerHTML = "";
                   modal_group.innerHTML = "";
                 //   var keywords_html = "";
-                  var default_category = Object.keys(piechart_dict)[0];
+                var default_category = "";
+                if (Object.keys(piechart_dict).length != 0) {
+                  default_category = Object.keys(piechart_dict)[0];
+                }
                   var name2 = document.getElementById("name2");
               name2.innerHTML = "News Details of " + default_category;
-                  console.log(default_category);
-                  var news_list = piechart_news_dict[default_category]; // This stores the news id for each clicked category;
+                  // console.log(default_category);
+                  var news_list=[];
+                if (Object.keys(piechart_news_dict).length != 0) {
+                  news_list = piechart_news_dict[default_category];
+                 } // This stores the news id for each clicked category;
                   var paper_detail_width = document.getElementById("paper_de").offsetWidth;
                   for (var i = 0; i < news_list.length; i++) {
                       var temp_title = titles[news_list[i]]["title"];
@@ -274,7 +298,7 @@
                   //Then, let's build the line chart. but we need to do somethind for the data
                   var linechart_dict={};
                   var name;
-                  if (politics.includes(checked_button_id) == true) {
+                  if (politics.includes(checked_button_id) == true || checked_button_id == "politics") {
                       linechart_dict["justice"] = {"January":0, "Feburary":0, "March":0, "April":0, "May":0, "June":0, "July":0, "August":0, "September":0, "October":0, "November":0, "December":0};
                       linechart_dict["election"] = {"January":0, "Feburary":0, "March":0, "April":0, "May":0, "June":0, "July":0, "August":0,"September":0, "October":0, "November":0, "December":0};
                       linechart_dict["international_relation"]= {"January":0, "Feburary":0, "March":0, "April":0, "May":0, "June":0, "July":0, "August":0,"September":0, "October":0, "November":0, "December":0};
@@ -282,7 +306,7 @@
                       linechart_dict["miss"] =  {"January":0, "Feburary":0, "March":0, "April":0, "May":0, "June":0, "July":0,"August":0, "September":0, "October":0, "November":0, "December":0};
                       name = "politics";
                   }
-                  if (military.includes(checked_button_id)) {
+                  if (military.includes(checked_button_id) == true || checked_button_id == "military") {
                     linechart_dict["combat"] = {"January":0, "Feburary":0, "March":0, "April":0, "May":0, "June":0, "July":0, "August":0, "September":0, "October":0, "November":0, "December":0};
                     linechart_dict["weapons"] = {"January":0, "Feburary":0, "March":0, "April":0, "May":0, "June":0, "July":0, "August":0,"September":0, "October":0, "November":0, "December":0};
                     linechart_dict["terrorism"]= {"January":0, "Feburary":0, "March":0, "April":0, "May":0, "June":0, "July":0, "August":0,"September":0, "October":0, "November":0, "December":0};
@@ -290,7 +314,7 @@
                     linechart_dict["miss"] =  {"January":0, "Feburary":0, "March":0, "April":0, "May":0, "June":0, "July":0,"August":0, "September":0, "October":0, "November":0, "December":0};
                     name = "military";
                 }
-                  if (economy.includes(checked_button_id)) {
+                  if (economy.includes(checked_button_id)==true || checked_button_id == "economic") {
                     linechart_dict["trade"] = {"January":0, "Feburary":0, "March":0, "April":0, "May":0, "June":0, "July":0, "August":0, "September":0, "October":0, "November":0, "December":0};
                     linechart_dict["finance"] = {"January":0, "Feburary":0, "March":0, "April":0, "May":0, "June":0, "July":0, "August":0,"September":0, "October":0, "November":0, "December":0};
                     linechart_dict["tax"]= {"January":0, "Feburary":0, "March":0, "April":0, "May":0, "June":0, "July":0, "August":0,"September":0, "October":0, "November":0, "December":0};
@@ -309,7 +333,7 @@
             
                   for (var i = 0; i < ids.length; i++) {
                       if (location_list_ids.includes(ids[i])) {
-                          if (times[i].length >= 5) {
+                          if (times[i].length >= 5 && times[i].includes(input_time.substr(0,4))) {
                           var temp_time = times[i].split("-")[1];
                          
                           var temp_month = month_dict[temp_time];
@@ -434,26 +458,31 @@
       //Next part is the keywords and phrases and image
       var keyword_sentence = document.getElementById("keywords");
       keyword_sentence.innerHTML = "";
+      // console.log(key_phrase);
       var key_phrase_list = [];
       var key_sentence_list=[];
       var phrase_html = "";
       var category_name = "";
-      if (military.includes(checked_button_id)) {
+      if (military.includes(checked_button_id) || checked_button_id == "military") {
         category_name = "military";
       }
-      if (economy.includes(checked_button_id)) {
+      if (economy.includes(checked_button_id) || checked_button_id == "economic") {
         category_name = "economics";
       }
-      if (politics.includes(checked_button_id)) {
+      if (politics.includes(checked_button_id) || checked_button_id == "politics") {
         category_name = "politics";
       }
+      
       var paper_detail_width = document.getElementById("paper_de").offsetWidth;
       for(var key in key_phrase){
+        if (checked_button_id == "politics" || checked_button_id == "military" || checked_button_id == "economic") {
+          checked_button_id = checked_button_id+".";
+        }
         if(key.includes(checked_button_id)){
           if(key.includes(input_time)){
             if(key.includes(input_city)){
               var content = key_phrase[key];
-              console.log(content);
+              // console.log(content);
               for(var words in content){    
                 var sentence = content[words];
                 phrase_html += '<a class="list-group-item list-group-item-action flex-column align-items-start" style="border-radius:16px; width:'+(paper_detail_width*0.84).toString()+'px!important; border-style:none;"><li class="font-weight-bold text-primary" style="text-transform: uppercase;font-size:15px;">'+words.substr(0,3)+'<span class="text-dark" style="text-transform:upperclass;">'+words.substr(3,words.length)+'</span></li><li class="section-subheading text-muted font-weight-bold" style="font-size:smaller;font-family: "Droid Serif"; font-style: italic!important;">'+sentence+'</li></a>';
@@ -466,7 +495,7 @@
         }
       }     
       keyword_sentence.innerHTML = phrase_html;
-
+     console.log(key_phrase["politics.governance_SEP_Donets'k_SEP_2014-05"]);
 
       //Keywords is done, we need to do the image part
       var src = "";
@@ -477,6 +506,9 @@
             if(temp_city.includes(input_city) && src.length == 0){
               var temp_topic = location[temp_city];
               for(var topic_name in temp_topic){
+                if (checked_button_id == "politics" || checked_button_id == "economic" ||checked_button_id == "military") {
+                  checked_button_id = checked_button_id + ".";
+                }
                 if(topic_name.includes(checked_button_id) && src.length == 0){
                   src = temp_topic[topic_name];
                   break;
@@ -503,6 +535,7 @@
       //   }
       // }
       //Complete the src of image, then put innerhtml in the index
+      console.log(src);
       if(src.includes("jpg")){
         src = "static/jsonData/pics/pics/jpg/"+src;
       }
@@ -512,7 +545,7 @@
       console.log(src);
       var image_container = document.getElementById("image_container");
       var imagegroup = document.getElementById("imagegroup");
-      if (src.length != 0) {
+      if (src != "") {
       image_container.innerHTML = "<img  id = 'actual' src=" + src +" style='height:auto; width:"+(imagegroup.offsetWidth*0.95).toString()+"px!important; border-radius:25px;'>";
     } else {
       var temp_src = "static/img/notfound.png";
@@ -527,6 +560,11 @@
       var actual = document.getElementById("actual");
       var overlay = document.getElementById("overlay");
       overlay.style.width = actual.offsetWidth.toString() + "px";
+      var search = document.getElementById("search");
+      search.value= "";
+
+  
+
 
 
 
@@ -596,8 +634,8 @@
 
 
           $(".topic").click(function () {
-              console.log("topic")
-              console.log(map.hasLayer(layerGroup))
+              // console.log("topic")
+              // console.log(map.hasLayer(layerGroup))
               resetColor(layerGroup);
               var topic = $(this).attr('id');
               var useTime = document.getElementById("useTime").checked;
@@ -639,9 +677,6 @@
               return max;
           };
       })
-
-
-
 
 
 		</script>
@@ -761,8 +796,8 @@ border-radius: 3px!important;
 .transition;
 }
 input[type="radio"]:checked + label{
-background-color: KrasnoyarskBD5D38!important;
-color: white!imporKrasnoyarskant;
+background-color: #BD5D38!important;
+color: white!important;
 }
 .collapsible {
 background-color:white!important;
@@ -1215,8 +1250,11 @@ font-style: italic;
                         <div class="container">
                             <div class="row">
                                 <div class="col-lg-12 text-center">
-                                  <h2 class="section-heading text-uppercase" style="font-size:25px;margin-top:0;margin-bottom:15px;">MAP</h2>
+                                  <h2 class="section-heading text-uppercase" style="font-size:25px;margin-top:0;margin-bottom:15px;">MAP </h2>
                                   <h5 class="section-subheading text-muted" style="font-size:smaller;font-style: italic;font-family: 'Droid Serif';">Please click each city to update information.</h5>
+                                
+          
+                                 
                                 </div>
                         </div>
 
@@ -1235,129 +1273,12 @@ font-style: italic;
                  <br>
          
                  <p id="p_date"></p>
-                           
-                           <div class="row" id="selector">
-                              <div class="col-lg-12 text-center">
-                                <h2 class="section-heading text-uppercase" style="font-size:25px;margin-top:0;margin-bottom:15px;">TOPIC SELECTOR</h2>
-                                <h5 class="section-subheading text-muted" style="font-size:smaller;font-style: italic;font-family: 'Droid Serif';">Please select one topic from a category.</h5>
-                              </div>
-                      </div>
-                     
-                          <div class="row mt-5">
-                              <div class="col-md-4">
-                                  <div class="service-box">
-                                      <div class="service-icon yellow">
-                                          <span class="fa-stack fa-4x mb-4">
-                                              <i class="fas fa-circle fa-stack-2x text-primary";></i>
-                                              <i class="fas fa-briefcase fa-stack-1x fa-inverse"></i>
-                                  </span>
-                                  <h4>Politics</h4>
-                                      </div>
-                                      <div class="service-content">
-                                          <h3>Politics</h3>
-                                          <div id="politicsRadios" style="margin-left:35%;display: block;"> 
-                                              <div>
-                                                <input type="radio" class="topic" id="politics.justice" name="topic_filter" value="0" autocomplete="off" checked="false" />
-                                                <label for="politics.justice">Justice</label>
-                                              </div>
-                                    
-                                              <div>
-                                                <input type="radio" class="topic" id="politics.election" name="topic_filter" value="1" autocomplete="off" />
-                                                <label for="politics.election">Election</label>
-                                                <script>
-                                                    function temp() {
-                                                var default_check = document.getElementById("politics.election");
-                                                    default_check.checked = true;
-                                                    console.log("success");
-                                                }
-                                                </script>
-                                              </div>
-                                              <div>
-                                                <input type="radio" class="topic" id="politics.international_relation" name="topic_filter" value="2" autocomplete="off" checked="false" />
-                                                <label for="politics.international_relation">International Relation</label>
-                                              </div>
-                                              <div>
-                                                <input type="radio" class="topic" id="politics.governance" name="topic_filter" value="3" autocomplete="off" checked="false"/>
-                                                <label for="politics.governance">Governance</label>
-                                              </div>
-                                          </div>
-                                         
-                                      </div>
-                                  </div>
-                              </div>
-                              <div class="col-md-4">
-                                  <div class="service-box">
-                                      <div class="service-icon orange">
-                                          <span class="fa-stack fa-4x mb-4">
-                                              <i class="fas fa-circle fa-stack-2x text-primary";></i>
-                                              <i class="fas fa-dollar-sign fa-stack-1x fa-inverse"></i>
-                                  </span>
-                                  <h4>Economy</h4>
-                                      </div>
-                                      <div class="service-content">
-                                          <h3>Economy</h3>
-                                          <div id="economicRadios"  style="display: block;margin-left:35%;">
-                          <div>
-                            <input type="radio" class="topic" id="economic.trade" name="topic_filter" value="4" autocomplete="off" checked="false" />
-                            <label for="economic.trade">Trade</label>
-                          </div>
-                          <div >
-                            <input type="radio" class="topic" id="economic.finance" name="topic_filter" value="5" autocomplete="off" checked="false" />
-                            <label for="economic.finance">Finance</label>
-                          </div>
-                          <div >
-                            <input type="radio" class="topic" id="economic.tax" name="topic_filter" value="6" autocomplete="off" checked="false"/>
-                            <label for="economic.tax">Tax</label>
-                          </div>
-                          <div >
-                            <input type="radio" class="topic" id="economic.welfare" name="topic_filter" value="7" autocomplete="off" checked="false"/>
-                            <label for="economic.welfare">Welfare</label>
-                          </div>
-                      </div>
-                                        
-                                      </div>
-                                  </div>
-                              </div>
-                              <div class="col-md-4">
-                                  <div class="service-box ">
-                                      <div class="service-icon red">
-                                          <span class="fa-stack fa-4x mb-4">
-                                              <i class="fas fa-circle fa-stack-2x text-primary";></i>
-                                              <i class="fas fa-anchor fa-stack-1x fa-inverse"></i>
-                                  </span>
-                                  <h4>Military</h4>
-                                      </div>
-                                      <div class="service-content">
-                                          <h3>Military</h3>
-                                          <div id="militaryRadios"  style="margin-left:35%;display: block;">
-                                              <div>
-                                                <input type="radio" class="topic" id="military.combat" name="topic_filter" value="8" autocomplete="off" checked="false"/>
-                                                <label for="military.combat">Combat</label>
-                                              </div>
-                                              <div>
-                                                <input type="radio" class="topic" id="military.weapons" name="topic_filter" value="9" autocomplete="off" checked="false"/>
-                                                <label for="military.weapons">Weapons</label>
-                                              </div>
-                                              <div style="display: block;">
-                                                <input type="radio" class="topic" id="military.terrorism" name="topic_filter" value="10" autocomplete="off" checked="false" />
-                                                <label for="military.terrorism">Terrorism</label>
-                                              </div>
-                                              <div>
-                                                <input type="radio" class="topic" id="military.ceasefire" name="topic_filter" value="11" autocomplete="off" checked="false"/>
-                                                <label for="military.ceasefire">Ceasefire</label>
-                                              </div>
-                                          </div>
-                                         
-                                      </div>
-                                  </div>
-                              </div>
-                             
-                          </div>
+                
                       </div>
                     </section>
 
 
-      <div class="row" id="visual">
+      <div class="row" id="visual" style="margin-top:-30px;">
             <div class="col-lg-12 text-center">
               <h2 class="section-heading text-uppercase" style="font-size:25px;margin-top:0;margin-bottom:15px;">VISUALIZATION</h2>
               <h5 class="section-subheading text-muted" style="font-size:smaller;font-style: italic;font-family: 'Droid Serif';">It shows the distribution of news of different categories.</h5>
@@ -1488,7 +1409,7 @@ font-style: italic;
       </div>
   
   
-   <div class="temp">
+   <!-- <div class="temp">
     <div id="button"></div>
   <div id="container" style="border-radius: 25px;">
   <div id="cont" >
@@ -1519,7 +1440,7 @@ font-style: italic;
   </div>
   </div>
   </div>
-  </div>
+  </div> -->
  
   
 </div>
