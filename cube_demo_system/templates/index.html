@@ -2,21 +2,21 @@
 {% load staticfiles %}
 {% block extra_head %}
 
-<link href="{% static 'css/visualization/county.css' %}" rel="stylesheet">
+<!-- <link href="{% static 'css/visualization/county.css' %}" rel="stylesheet"> -->
 <link href="https://fonts.googleapis.com/css?family=Courgette" rel="stylesheet">
 <link href='https://fonts.googleapis.com/css?family=Merriweather+Sans:800' rel='stylesheet' type='text/css'>
 <link href="https://fonts.googleapis.com/css?family=Alegreya+Sans" rel="stylesheet">
 
     <script src="{% static 'js/visualization/county.js' %}"></script>
-    <script src="{% static 'js/visualization/chart.js' %}" type="text/javascript"></script>
 
 
 
-    <link href="{% static 'chart/css/sb-admin.css' %}" rel="stylesheet">
+
+    <!-- <link href="{% static 'chart/css/sb-admin.css' %}" rel="stylesheet">
   <link href="{% static 'chart/css/sb-admin-2.css' %}" rel="stylesheet">
   <link href="{% static 'chart/modal/css/freelancer.min.css' %}" rel="stylesheet">
   <link href="{% static 'css/sb-admin-2.min.css' %}" rel="stylesheet">
-  <link href="{% static 'vendor/fontawesome-free/css/all.min.css' %}" rel="stylesheet" type="text/css">
+  <link href="{% static 'vendor/fontawesome-free/css/all.min.css' %}" rel="stylesheet" type="text/css"> -->
 
         <link href="{% static 'css/leaflet.css' %}" rel="stylesheet">
     <script src="{% static 'js/jquery-1.11.1.min.js' %}"></script>
@@ -40,7 +40,7 @@
       var ids = {{phrase|safe}};
       var key_phrase = {{sentence|safe}};
       var image = {{images|safe}};
-      
+
 
     $( document ).ready(function() {
 
@@ -147,7 +147,7 @@
                      checked_button_id = "politics";
                    }
 
-                  
+
                    // Let's prepare data for the pie chart, currently the pie chart is selected only based on years
                    var piechart_dict={};
                    var piechart_news_dict={};
@@ -159,17 +159,17 @@
                        }
                    }
                 }
-               
+
                 var locations_keys = Object.keys(locations);
                 // console.log(times_id_list);
                 for (var i = 0; i < locations_keys.length; i++) {
                     var temp_key = locations_keys[i];
-                
+
                     if (times_id_list.includes(temp_key)) {
                       // console.log(locations[temp_key]);
                     if (locations[temp_key].includes(input_city)) {
                         var temp_topic = topics[i].split(".");
-                       
+
                         if (temp_topic.length > 1) {
                         if (!(temp_topic[1] in piechart_dict)) {
                             piechart_dict[temp_topic[1]] = 1;
@@ -190,12 +190,12 @@
                 piechartContainer.innerHTML='<canvas id="myAreaChart"></canvas>';
                 // Chart.defaults.global.defaultFontFamily = 'Nunito', '-apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif';
                   Chart.defaults.global.defaultFontColor = '#000000';
-             
+
                   var piechart_label = Object.keys(piechart_dict);
                   for (var i = 0; i < piechart_label.length; i++) {
                     piechart_label[i] = piechart_label[i].toUpperCase();
                   }
-                 
+
                   // Pie Chart Example
                   var ctx = document.getElementById("myAreaChart");
                   var myPieChart = new Chart(ctx, {
@@ -247,21 +247,22 @@
               } else {
                 news_list = [];
               } // This stores the news id for each clicked category;
-              var paper_detail_width = document.getElementById("paper_de").offsetWidth;
+              var paper_detail_width = document.getElementById("cool").offsetWidth;
               var name2 = document.getElementById("name2");
               name2.innerHTML = "News Details of " + topic_name;
+              console.log(paper_detail_width);
               for (var i = 0; i < news_list.length; i++) {
                   var temp_title = titles[news_list[i]]["title"];
                   var temp_text = titles[news_list[i]]["text"];
                   var target_id = news_list[i];
                   var very_important = document.getElementById("wholebody").offsetWidth;
-                  paperdetail_html +=  '<a data-toggle="modal"  data-target="#myModal' + target_id + '" class="list-group-item list-group-item-action" style="border-radius:20px; border-style:none;width:'+(paper_detail_width*0.85).toString()+'"><p class="font-weight-bold" style="text-align: left; font-size:13px;">' +temp_title+'</p></a>'; 
-                  modal_group_html += '<div class="modal fade" id="myModal' + target_id +'" role="dialog" ><div class="modal-dialog" style="margin-right:'+(very_important/2).toString()+'px!important;"><div class="modal-content" style="border-radius:40px!important; border: none; width:1000px!important;"><div class="modal-header" style="border:none!important;" ><div class="portfolio-modal-dialog bg-white" ><a class="close-button d-none d-md-block portfolio-modal-dismiss" data-dismiss="modal" style="color: #4e73df;!important;margin-left:920px;"><i class="fa fa-3x fa-times"></i></a><div class="container text-center" ><div class="row"> <div class="col-lg-8 mx-auto"><h2 class="text-secondary mb-0" style="text-align:left;">' +temp_title+'</h2><p class="mb-5" style="text-align:left; font-size:15px; margin-top:15px;">'+'</p><p class="mb-5" style="text-align:left; font-size:15px; margin-top:-30px;">'+'</p><p class="mb-5" style="font-weight:15px; margin-top:-30px!important; text-align:left;">'+'</p><hr class="star-dark mb-5" style="font-size:10px;"><p class="mb-5" style="text-align:left; text-indent: 30px;">'+ temp_text+'</p><a class="btn btn-primary btn-lg rounded-pill portfolio-modal-dismiss" data-dismiss="modal"  style="color:#FFF!important;"> <i class="fa fa-close"></i>Close</a></div>   </div></div> </div> </div></div> </div></div>';
+                  paperdetail_html +=  '<a data-toggle="modal"  data-target="#myModal' + target_id + '" class="list-group-item list-group-item-action" style="border-radius:20px; border-style:none;width:'+(paper_detail_width).toString()+'px;"><p class="font-weight-bold" style="text-align: center; font-size:21px; font-weight:bold;">' +temp_title+'</p></a>';
+                  modal_group_html +=  '<div class="portfolio-modal modal fade" id="myModal'+target_id+'" tabindex="-1" role="dialog" aria-hidden="true"><div class="modal-dialog"><div class="modal-content"><div class="close-modal" data-dismiss="modal"><div class="lr"><div class="rl"></div></div></div><div class="container"><div class="row"><div class="col-lg-8 col-lg-offset-2"><div class="modal-body"><h2  style="text-align:left;">'+temp_title+'</h2><p  style="text-align:left;">'+temp_text+'</p><button type="button" class="btn btn-primary" data-dismiss="modal"><i class="fa fa-times"></i> Close Project</button></div></div></div></div></div></div></div>';
               }
               paperdetail.innerHTML = paperdetail_html;
               modal_group.innerHTML = modal_group_html;
 
-          
+
                          }
                     },
                   });
@@ -284,14 +285,14 @@
                 if (Object.keys(piechart_news_dict).length != 0) {
                   news_list = piechart_news_dict[default_category];
                  } // This stores the news id for each clicked category;
-                  var paper_detail_width = document.getElementById("paper_de").offsetWidth;
+                  var paper_detail_width = document.getElementById("cool").offsetWidth;
                   for (var i = 0; i < news_list.length; i++) {
                       var temp_title = titles[news_list[i]]["title"];
                       var temp_text = titles[news_list[i]]["text"];
                       var target_id = news_list[i];
                       var very_important = document.getElementById("wholebody").offsetWidth;
-                      paperdetail_html +=  '<a data-toggle="modal"  data-target="#myModal' + target_id + '" class="list-group-item list-group-item-action" style="border-radius:20px; border-style:none;width:'+(paper_detail_width*0.85).toString()+'"><p class="font-weight-bold" style="text-align: left; font-size:13px;">' +temp_title+'</p></a>'; 
-                      modal_group_html += '<div class="modal fade" id="myModal' + target_id +'" role="dialog" ><div class="modal-dialog" style="margin-right:'+(very_important/2).toString()+'px!important;"><div class="modal-content" style="border-radius:40px!important; border: none; width:1000px!important;"><div class="modal-header" style="border:none!important;" ><div class="portfolio-modal-dialog bg-white" ><a class="close-button d-none d-md-block portfolio-modal-dismiss" data-dismiss="modal" style="color: #4e73df;!important;margin-left:920px;"><i class="fa fa-3x fa-times"></i></a><div class="container text-center" ><div class="row"> <div class="col-lg-8 mx-auto"><h2 class="text-secondary mb-0" style="text-align:left;">' +temp_title+'</h2><p class="mb-5" style="text-align:left; font-size:15px; margin-top:15px;">'+'</p><p class="mb-5" style="text-align:left; font-size:15px; margin-top:-30px;">'+'</p><p class="mb-5" style="font-weight:15px; margin-top:-30px!important; text-align:left;">'+'</p><hr class="star-dark mb-5" style="font-size:10px;"><p class="mb-5" style="text-align:left; text-indent: 30px;">'+ temp_text+'</p><a class="btn btn-primary btn-lg rounded-pill portfolio-modal-dismiss" data-dismiss="modal"  style="color:#FFF!important;"> <i class="fa fa-close"></i>Close</a></div>   </div></div> </div> </div></div> </div></div>';
+                      paperdetail_html +=  '<a data-toggle="modal"  data-target="#myModal' + target_id + '" class="list-group-item list-group-item-action" style="border-radius:20px; border-style:none;width:'+(paper_detail_width).toString()+'px;"><p class="font-weight-bold" style="text-align: center; font-weight:bold; font-size:21px;">' +temp_title+'</p></a>';
+                      modal_group_html +=  '<div class="portfolio-modal modal fade" id="myModal'+target_id+'" tabindex="-1" role="dialog" aria-hidden="true"><div class="modal-dialog"><div class="modal-content"><div class="close-modal" data-dismiss="modal"><div class="lr"><div class="rl"></div></div></div><div class="container"><div class="row"><div class="col-lg-8 col-lg-offset-2"><div class="modal-body"><h2  style="text-align:left;">'+temp_title+'</h2><p  style="text-align:left;">'+temp_text+'</p><button type="button" class="btn btn-primary" data-dismiss="modal"><i class="fa fa-times"></i> Close Project</button></div></div></div></div></div></div></div>';
                   }
                   paperdetail.innerHTML = paperdetail_html;
                   modal_group.innerHTML = modal_group_html;
@@ -320,7 +321,7 @@
                     linechart_dict["tax"]= {"January":0, "Feburary":0, "March":0, "April":0, "May":0, "June":0, "July":0, "August":0,"September":0, "October":0, "November":0, "December":0};
                     linechart_dict["welfare"] =   {"January":0, "Feburary":0, "March":0, "April":0, "May":0, "June":0, "July":0,"August":0, "September":0, "October":0, "November":0, "December":0};
                     linechart_dict["miss"] =  {"January":0, "Feburary":0, "March":0, "April":0, "May":0, "June":0, "July":0,"August":0, "September":0, "October":0, "November":0, "December":0};
-                    name = "economic";  
+                    name = "economic";
                 }
                   var location_list_ids = [];
                   var month_dict={"01":"January", "02":"Feburary", "03":"March", "04":"April", "05":"May", "06":"June","07":"July","08":"August", "09":"September", "10":"October", "11":"November", "12":"December"};
@@ -330,15 +331,15 @@
                           location_list_ids.push(key);
                       }
                   }
-            
+
                   for (var i = 0; i < ids.length; i++) {
                       if (location_list_ids.includes(ids[i])) {
                           if (times[i].length >= 5 && times[i].includes(input_time.substr(0,4))) {
                           var temp_time = times[i].split("-")[1];
-                         
+
                           var temp_month = month_dict[temp_time];
                           var temp_topic = topics[i].split(".");
-                         
+
                           if (temp_topic.length == 2) {
                               if (temp_topic[1] in linechart_dict) {
                               linechart_dict[temp_topic[1]][temp_month] += 1;
@@ -353,7 +354,7 @@
                   }
                   //Now, the data is ready, we begin to build line chart
                   // helpful color to build line chart
-                
+
                  //Codes for building line chart
                   var colors= ['rgb(93,165,218,', 'rgb(250,164,58,', 'rgb(96,189,104,',"rgb(241,124,176,","rgb(219,50,54,","#DECF3F"];
                   var linechartContainer = document.getElementById("linechartContainer");
@@ -472,8 +473,8 @@
       if (politics.includes(checked_button_id) || checked_button_id == "politics") {
         category_name = "politics";
       }
-      
-      var paper_detail_width = document.getElementById("paper_de").offsetWidth;
+
+      var paper_detail_width = document.getElementById("keywords").offsetWidth;
       for(var key in key_phrase){
         if (checked_button_id == "politics" || checked_button_id == "military" || checked_button_id == "economic") {
           checked_button_id = checked_button_id+".";
@@ -483,9 +484,9 @@
             if(key.includes(input_city)){
               var content = key_phrase[key];
               // console.log(content);
-              for(var words in content){    
+              for(var words in content){
                 var sentence = content[words];
-                phrase_html += '<a class="list-group-item list-group-item-action flex-column align-items-start" style="border-radius:16px; width:'+(paper_detail_width*0.84).toString()+'px!important; border-style:none;"><li class="font-weight-bold text-primary" style="text-transform: uppercase;font-size:15px;">'+words.substr(0,3)+'<span class="text-dark" style="text-transform:upperclass;">'+words.substr(3,words.length)+'</span></li><li class="section-subheading text-muted font-weight-bold" style="font-size:smaller;font-family: "Droid Serif"; font-style: italic!important;">'+sentence+'</li></a>';
+                phrase_html += '<a class="list-group-item bg-light-gray list-group-item-action flex-column align-items-start" style="border-radius:16px; width:'+(paper_detail_width).toString()+'px!important; border-style:none;"><li class="font-weight-bold text-primary" style="text-transform: uppercase;font-size:21px;">'+words.substr(0,3)+'<span class="text-dark" style="text-transform:upperclass;">'+words.substr(3,words.length)+'</span></li><li class="section-subheading text-muted font-weight-bold" style="font-size:17px;font-family: "Droid Serif"; font-style: italic!important;">'+sentence+'</li></a>';
 
               }
               break;
@@ -493,7 +494,7 @@
             }
           }
         }
-      }     
+      }
       keyword_sentence.innerHTML = phrase_html;
      console.log(key_phrase["politics.governance_SEP_Donets'k_SEP_2014-05"]);
 
@@ -519,7 +520,7 @@
           }
         }
 
-      
+
 
       //Please keep this code, probably these codes will be used later.
       // if(src.length == 0){
@@ -563,14 +564,14 @@
       var search = document.getElementById("search");
       search.value= "";
 
-  
 
 
 
 
-                
 
-                
+
+
+
               });
           });
 
@@ -666,7 +667,7 @@
               refillColor(layerGroup, month, topic);
           });
 
-         
+
           function arrayMax(arr) {
               let len = arr.length, max = -Infinity;
               while (len--) {
@@ -685,7 +686,7 @@
 <!-- Compiled and minified JavaScript -->
 <style>
 {% block extra_css %}
- 
+
  .custom-range {
   -webkit-appearance: none;
   height: 5px;
@@ -712,7 +713,7 @@
   background: #007bff;
   cursor: pointer;
   border: none!important;
-} 
+}
 
 .custom-range::-moz-range-thumb {
   width: 18px;
@@ -734,14 +735,14 @@ hr-sect {
       display: block;
       text-align: center;
       overflow: hidden;
-      white-space: nowrap; 
+      white-space: nowrap;
   }
 
   .strike > p {
       position: relative;
       display: inline-block;
   }
-  
+
   .strike > p:before,
   .strike > p:after {
       content: "";
@@ -994,14 +995,11 @@ h1{
       #paperdetail a {
           position: relative;
           display: block;
-          
-
-          padding: 40px;
-          text-align: center;
+          text-align: left;
           float: right!important;
           margin:0 auto!important;
           border:none!important;
-          
+
           text-transform: uppercase;
           animation: fadeIn 0.5s linear;
           animation-fill-mode: both;
@@ -1234,6 +1232,30 @@ font-style: italic;
     }
 }
 
+#dataTable {
+  font-family: "Montserrat";
+  border-collapse: collapse;
+  width: 100%;
+}
+
+#dataTable td, #dataTable th {
+  border: 1px
+  padding: 8px;
+  font-size: 23px;
+}
+
+#dataTable tr:nth-child(even){background-color: #f2f2f2;}
+
+#dataTable tr:hover {background-color: #ddd;}
+
+#dataTable th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: center;
+  background-color:  black;
+  text-transform: uppercase;
+  color: white;
+}
 
 {% endblock %}
 </style>
@@ -1245,176 +1267,254 @@ font-style: italic;
 
 
 
-        <div id="map_visualization_container" class="mt-2">
-                <section class="page-section" id="services">
-                        <div class="container">
+        <div id="map_visualization_container">
+                <section class="page-section bg-light-gray" id="services">
+                        <div class="container" id="block7">
                             <div class="row">
                                 <div class="col-lg-12 text-center">
-                                  <h2 class="section-heading text-uppercase" style="font-size:25px;margin-top:0;margin-bottom:15px;">MAP </h2>
+                                  <h2 class="section-heading text-uppercase" style="margin-top:0;">MAP </h2>
                                   <h5 class="section-subheading text-muted" style="font-size:smaller;font-style: italic;font-family: 'Droid Serif';">Please click each city to update information.</h5>
-                                
-          
-                                 
+
+
+
                                 </div>
                         </div>
 
-                 <div id="mapid" style="height: 500px; margin-bottom: 20px; border-radius: 35px;"></div>
+                 <div id="mapid" style="height: 700px; border-radius: 35px;"></div>
 
-           
-                 <br>
-                 <br>
-         
-                 <input type="checkbox" id="useTime" checked="true" style="visibility: hidden;"/>
-                 <label for="useTime" style="visibility: hidden;">Use time dimension</label>
-         
-                
-         
-                 <br>
-                 <br>
-         
-                 <p id="p_date"></p>
-                
+
+                 <!-- <br>
+                 <br> -->
+
+                 <input type="checkbox" id="useTime" checked="true" style="visibility: hidden; height:0px;"/>
+                 <label for="useTime" style="visibility: hidden; height:0px;">Use time dimension</label>
+
+
+
+                 <!-- <br>
+                 <br> -->
+
+                 <p id="p_date" style="display:none;"></p>
+
                       </div>
                     </section>
-
-
+                    </div>
+<section>
+<div class="container" id="block8">
       <div class="row" id="visual" style="margin-top:-30px;">
             <div class="col-lg-12 text-center">
-              <h2 class="section-heading text-uppercase" style="font-size:25px;margin-top:0;margin-bottom:15px;">VISUALIZATION</h2>
-              <h5 class="section-subheading text-muted" style="font-size:smaller;font-style: italic;font-family: 'Droid Serif';">It shows the distribution of news of different categories.</h5>
+              <h2 class="section-heading text-uppercase" style="margin-top:0;margin-bottom:15px;">LINE CHART VISUALIZATION</h2>
+              <h5 class="section-subheading text-muted" style="font-size:smaller;font-style: italic;font-family: 'Droid Serif';">The line chart represents the distribution of news of different categories in different months.</h5>
             </div>
     </div>
-        <form class="mt-5 col-xl-1">
+        <!-- <form class="mt-5 col-xl-1"> -->
             <!-- <div class="row" style="margin-bottom: 15px; margin-right: 1px;">
-  
+
               <div class="col">
                 <input type="text" class="form-control" id="cityinput" placeholder="City Name">
               </div>
-  
+
               <button type="button" class="btn btn-dark btn-email waves-light font-weight-bold" id="updatebutton" onclick="creategraph(); return false;" style="border-radius: 6px;">Update</button>
-  
+
             </div> -->
-  
-          </form>
-  
-          <div class="row">
-              <div class="col-lg-6" id="piechartgroup">
-                  <div class="card shadow mb-4" style="border-radius: 30px;" >
-                    <!-- Card Header - Dropdown -->
-                    <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between" style="background-color: rgb(0,0,0,0);border: none;">
-                      <h6 class="m-0 font-weight-bold text-dark" style="margin:0 auto!important; font-family: 'Droid Serif';"></h6>
-                    </div>
-                    <!-- Card Body -->
-                    <div class="card-body">
-                        <h4 class="small font-weight-bold" style="text-align:center; margin-top:7px; margin-bottom: -5px;" id='category1'></h4>
-                      <div class="chart-area pt-4 pb-2" id="piechartContainer">
-  
-  
-                      </div>
+
+          <!-- </form> -->
+
+          <!-- <div class="row"> -->
+           <!-- <div class="row" style="margin-top:100px!important;">
+                  <div class="col-lg-12 text-center" style="margin-top:100px!important;">
+                    <h5 class="section-subheading text-muted" style="font-size:smaller;font-style: italic;font-family: 'Droid Serif';">The line chart represents the distribution of news of different categories in different months.</h5>
+                  </div>
+          </div> -->
+
+            <div class="col-xl-12 mb-5" id="linechartgroup" >
+                <div class="card shadow mb-4" style="border-radius: 30px;">
+                  <!-- Card Header - Dropdown -->
+                  <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between" style="background-color: rgb(0,0,0,0);border: none;">
+                    <h6 class="m-0 font-weight-bold text-dark" style="margin:0 auto!important;font-family: 'Droid Serif';"></h6>
+                  </div>
+                  <!-- Card Body -->
+                  <div class="card-body">
+                      <h4 class="small font-weight-bold" style="text-align:center; margin-top:7px; margin-bottom: -5px;" id='category2'></h4>
+                    <div class="chart-area" id="linechartContainer" style="height:350px;">
+                      <!-- <canvas id="myAreaChart"></canvas> -->
                     </div>
                   </div>
                 </div>
-  
-  
-  
-                <div class="col-lg-6" id="paper_de">
-                    <div class="card shadow mb-4" style="border-radius: 30px;">
-                      <!-- Card Header - Dropdown -->
-                      <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between"  style="background-color: rgb(0,0,0,0);border: none;">
-                        <h6 class="m-0 font-weight-bold text-dark" style="margin:0 auto!important; font-family: 'Droid Serif';" id="name2">News Details</h6>
-  
+              </div>
+
+
+
+          </div>
+          </section>
+<section class="bg-light-gray">
+  <div class="container" id="block6">
+
+              <div class="row">
+                     <div class="col-lg-12 text-center" >
+                         <h2 class="section-heading text-uppercase" style="margin-top:0;margin-bottom:15px;">PIE CHART VISUALIZATION</h2>
+                       <h5 class="section-subheading text-muted" style="font-size:smaller;font-style: italic;font-family: 'Droid Serif';">Click each category to update details of news below.</h5>
+                     </div>
+             </div>
+              <div class="row col-lg-12 text-center" id="piechartgroup">
+                  <!-- <div class="card shadow mb-4" style="border-radius: 30px;" > -->
+                    <!-- Card Header - Dropdown -->
+                    <!-- Card Body -->
+                    <!-- <div class="card-body" style='margin-top:55px;'> -->
+                        <!-- <h4 class="small font-weight-bold" style="text-align:center; margin-top:7px; margin-bottom: -5px;" id='category1'></h4> -->
+                      <div class="chart-area pt-4 pb-2" id="piechartContainer" style='height:320px; margin-top:3em;'>
+
+
                       </div>
+                    <!-- </div> -->
+                  <!-- </div> -->
+                </div>
+
+
+
+                </div>
+                </section>
+                <section>
+                  <div class="container" id="block9">
+
+
+                <div class="row">
+                      <div class="col-lg-12 text-center">
+                          <h2 class="section-heading text-uppercase" id="name2" style="margin-top:0;margin-bottom:15px;"></h2>
+                        <h5 class="section-subheading text-muted"   style="font-size:smaller;font-style: italic;font-family: 'Droid Serif';">It shows the titles of all the news of clicked category.</h5>
+                      </div>
+              </div>
+                <div class="col-lg-12" id="paper_de" style='border-color:red;border-width: thick;'>
+                    <div class="card shadow mb-4" style="border-radius: 30px; border-color:red;border-width: thick;">
+                      <!-- Card Header - Dropdown -->
+                      <!-- <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between"  style="background-color: rgb(0,0,0,0);border: none;"> -->
+                        <!-- <h6 class="m-0 font-weight-bold text-dark" style="margin:0 auto!important; font-family: 'Droid Serif';" id="name2"></h6> -->
+
+                      <!-- </div> -->
                       <!-- Card Body -->
-  
-                      <div class="card-body" style="margin:0 auto; height:300px;"  style="overflow:hidden; position: relative;">
-                          <ul class="list-group list-group-flush" style=" overflow-x:hidden!important; overflow-y: auto; height:250px;" id="paperdetail">
-  
+
+                      <div class="card-body" style="margin:0 auto; height:400px;"  style="overflow:hidden; position: relative;">
+                          <ul class="list-group list-group-flush" style=" overflow-x:hidden!important; overflow-y: auto; height:400px;" id="paperdetail">
+
                           </ul>
                       </div>
                     </div>
                   </div>
-  
-  
-  
-  
-              </div>
-  
-  
-              <div class="col-xl-12 mb-5" id="linechartgroup">
-                  <div class="card shadow mb-4" style="border-radius: 30px;">
-                    <!-- Card Header - Dropdown -->
-                    <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between" style="background-color: rgb(0,0,0,0);border: none;">
-                      <h6 class="m-0 font-weight-bold text-dark" style="margin:0 auto!important;font-family: 'Droid Serif';"></h6>
-                    </div>
-                    <!-- Card Body -->
-                    <div class="card-body">
-                        <h4 class="small font-weight-bold" style="text-align:center; margin-top:7px; margin-bottom: -5px;" id='category2'></h4>
-                      <div class="chart-area" id="linechartContainer">
-                        <!-- <canvas id="myAreaChart"></canvas> -->
-                      </div>
-                    </div>
-                  </div>
-                </div>
-  
-  
-                <div class="row mt-5" id="key">
+
+
+
+
+              <!-- </div> -->
+
+</div>
+</section>
+<section class="bg-light-gray" id="cool">
+<div class="container" id="container10">
+
+
+                <div class="row" id="key" style="margin-bottom:30px;">
                     <div class="col-lg-12 text-center">
-                      <h2 class="section-heading text-uppercase" style="font-size:25px;margin-top:70px;margin-bottom:15px;">KEYWORDS & IMAGE</h2>
+                      <h2 class="section-heading text-uppercase" style="margin-bottom:15px;">KEYWORDS & IMAGE</h2>
                       <h5 class="section-subheading text-muted" style="font-size:smaller;font-style: italic;font-family: 'Droid Serif';">It shows the related image and keywords.</h5>
                     </div>
             </div>
                 <!-- The following is the keywords, keyphrase, and image section -->
-                <div class="row mt-5">
-                    <div class="col-lg-6">
-  
+                <!-- <div class="row mt-5"> -->
+
+                    <div class="col-lg-6" id=imagecontain>
+
                             <div class="importantcontent" style="margin: 0 auto; " id="imagegroup">
                               <div>
                                 <div id="overlay" class="content-overlay" style="border-radius: 25px;"></div>
                                 <div id="image_container">
-  
+
                               </div>
                                 <div class="content-details" id="explain">
-  
+
                                 </div>
                               </div>
-  
-  
+
+
                             </div>
-  
+
                           </div>
-  
-  
-                      <div class="col-lg-6" id="paper_de">
-                          <div class="card shadow mb-4" style="border-radius: 30px;">
+                          <!-- <script type="text/javascript">
+                            var imagecontain = document.getElementById("imagecontain");
+                            var group = document.getElementById("piechartgroup").offsetWidth;
+                            imagecontain.style.marginLeft = (group/2).toString() + "px";
+                          </script> -->
+
+
+                      <div class="col-lg-6" style="border-radius: 30px; border: 1px solid #000;">
+                          <div style="border-radius: 30px;">
                             <!-- Card Header - Dropdown -->
-                            <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between"  style="background-color: rgb(0,0,0,0);border: none;">
-                              <h6 class="m-0 font-weight-bold text-dark" style="margin:0 auto!important; font-family: 'Droid Serif';" id="name2">Key Words & Phrases</h6>
-  
-                            </div>
+
                             <!-- Card Body -->
-  
-                            <div class="card-body" style="margin:0 auto; height:350px;"  style="overflow:hidden; position: relative; ">
-                                <ul class="list-group list-group-flush" style=" overflow-x:hidden!important; overflow-y: auto; height:300px;" id="keywords">
+
+                            <div style="margin:0 auto; height:550px;"  style="overflow:hidden; position: relative;border: solid #000; border-width: 0 1px;">
+                                <ul class="list-group list-group-flush" style="margin-top:10px!important;overflow-x:hidden!important; overflow-y: auto; height:520px; list-style: none!important;" id="keywords">
   4
                                 </ul>
                             </div>
                           </div>
                         </div>
-  
-  
-  
-  
-                    </div>
-  
-      </div>
-  
-  
+
+
+
+</div>
+<script type="text/javascript">
+  var container = document.getElementById("container10");
+  var cool = document.getElementById("cool").offsetWidth;
+  var paperdetail = document.getElementById("block9");
+  var block8 = document.getElementById("block8");
+  var block7 = document.getElementById("block7");
+  var block6 = document.getElementById("block6");
+
+  container.style.width = cool.toString() + "px";
+  paperdetail.style.width = cool.toString() + "px";
+  block8.style.width = cool.toString() + "px";
+  block7.style.width = cool.toString() + "px";
+  block6.style.width = cool.toString() + "px";
+</script>
+      </section>
+
+      <section id="services">
+        <div class="col-lg-12">
+            <div class="row" id="key" style="margin-bottom:35px;">
+                <div class="col-lg-12 text-center">
+                  <h2 class="section-heading text-uppercase" style="margin-bottom:15px;">Category Representative Phrases</h2>
+                  <h5 class="section-subheading text-muted" style="font-size:smaller;font-style: italic;font-family: 'Droid Serif';">It shows relevant words of different categories;</h5>
+                </div>
+        </div>
+            <!-- <div class="row">
+                <div class="col-lg-12 text-center">
+                    <h2 class="section-heading">Category Representative Phrases</h2>
+                    <h3 class="section-subheading text-muted"></h3>
+                </div>
+            </div> -->
+            <div class="text-center col-lg-12 mt-5">
+              <div class="table-responsive">
+                        <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                          <thead id="table_title">
+
+                          </thead>
+
+                          <tbody id = "table_content">
+
+                          </tbody>
+                        </table>
+                      </div>
+            </div>
+        </div>
+    </section>
+
+
    <!-- <div class="temp">
     <div id="button"></div>
   <div id="container" style="border-radius: 25px;">
   <div id="cont" >
   <div class="temp_center">
-  
+
     <h4 style="margin-top:60px; color: white;">TIME NAVIGATION</h4>
     <form class="range-field custom-range" style=" margin-top:18px;">
         <input type="range" id="monthSlider" list="tickmarks" class="slider col-lg-13 custom-range" value="0" step="1" min="0" max="72"/>
@@ -1434,15 +1534,15 @@ font-style: italic;
 
           };
 
-       
+
       </script>
-  
+
   </div>
   </div>
   </div>
   </div> -->
- 
-  
+
+
 </div>
 
 
@@ -1452,4 +1552,3 @@ font-style: italic;
 
         </div>
 {% endblock %}
-

@@ -1,4 +1,42 @@
+function loadJSON(callback) {
+  var xobj = new XMLHttpRequest();
+  xobj.overrideMimeType("application/json");
+  xobj.open('GET', "static/json/table.json", true);
+  xobj.onreadystatechange = function () {
+    if (xobj.readyState == 4 && xobj.status == "200") {
+      callback(JSON.parse(xobj.responseText));
+    }
+  };
+  xobj.send(null);
+}
+loadJSON(function(json) {
+  console.log(json);
+  var table_title = document.getElementById("table_title");
+  console.log(table_title.innerHTML);
+  var table_content = document.getElementById("table_content");
+  var table_title_html="";
+  var table_content_html="";
+  table_title_html += "<tr>";
+  for (var i = 0; i < json["0"].length; i++) {
+    table_title_html+="<th>" + json["0"][i]+"</th>";
+  }
+  table_title_html += "</tr>";
+  table_title.innerHTML = table_title_html;
 
+  for (var i = 1; i < 20; i++) {
+    var temp_list = json[i.toString()];
+    table_content_html += "<tr>";
+    for (var j = 0; j < temp_list.length; j++) {
+      if (i < 4) {
+        table_content_html += "<td style='color:#BD5D38;'>"+temp_list[j]+"</td>";
+      } else {
+      table_content_html += "<td>"+temp_list[j]+"</td>";
+      }
+    }
+    table_content_html += "</tr>";
+  }
+  table_content.innerHTML = table_content_html;
+});
 function creategraph(city_name) {
     function loadJSON(callback) {
             var xobj = new XMLHttpRequest();
@@ -77,8 +115,8 @@ function creategraph(city_name) {
             };
             xobj.send(null);
           }
-        
-        
+
+
           loadJSON(function(json) {
             loadJSON2(function(json2) {
                 loadJSON3(function(json3) {
@@ -94,7 +132,7 @@ function creategraph(city_name) {
                    var ids = json5;
                    var key_phrase = json6;
                    var image = json7;
-                  
+
                    var input_time = document.getElementById("monthText").innerHTML;
                    var input_city = city_name;
                    var current_input_city = document.getElementById("current_input_city");
@@ -121,8 +159,11 @@ function creategraph(city_name) {
                    if (document.getElementById("politics").checked == true) {
                      checked_button_id = "politics";
                    }
+                   var categoryinput = document.getElementById("categoryinput");
+                   categoryinput.innerHTML = "Category: "+checked_button_id;
+                   var importanttimeinput = document.getElementById("importanttimeinput");
+                   importanttimeinput.innerHTML = "Time: "+ input_time;
 
-                  
                    // Let's prepare data for the pie chart, currently the pie chart is selected only based on years
                    var piechart_dict={};
                    var piechart_news_dict={};
@@ -134,17 +175,17 @@ function creategraph(city_name) {
                        }
                    }
                 }
-               
+
                 var locations_keys = Object.keys(locations);
                 // console.log(times_id_list);
                 for (var i = 0; i < locations_keys.length; i++) {
                     var temp_key = locations_keys[i];
-                
+
                     if (times_id_list.includes(temp_key)) {
                       // console.log(locations[temp_key]);
                     if (locations[temp_key].includes(input_city)) {
                         var temp_topic = topics[i].split(".");
-                       
+
                         if (temp_topic.length > 1) {
                         if (!(temp_topic[1] in piechart_dict)) {
                             piechart_dict[temp_topic[1]] = 1;
@@ -163,14 +204,15 @@ function creategraph(city_name) {
                 // Now, piechart_dict is already be completed, we need to draw the graph;
                 var piechartContainer = document.getElementById("piechartContainer");
                 piechartContainer.innerHTML='<canvas id="myAreaChart"></canvas>';
+
                 // Chart.defaults.global.defaultFontFamily = 'Nunito', '-apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif';
                   Chart.defaults.global.defaultFontColor = '#000000';
-             
+
                   var piechart_label = Object.keys(piechart_dict);
                   for (var i = 0; i < piechart_label.length; i++) {
                     piechart_label[i] = piechart_label[i].toUpperCase();
                   }
-                 
+
                   // Pie Chart Example
                   var ctx = document.getElementById("myAreaChart");
                   var myPieChart = new Chart(ctx, {
@@ -185,7 +227,7 @@ function creategraph(city_name) {
                       }],
                     },
                     options: {
-                      maintainAspectRatio: false,
+                      maintainAspectRatio:false,
                       tooltips: {
                         backgroundColor: "rgb(255,255,255)",
                         bodyFontColor: "#858796",
@@ -197,7 +239,7 @@ function creategraph(city_name) {
                         caretPadding: 12,
                       },
                       legend: {
-                        position: 'right',
+                        position: 'bottom',
                         fontWeight: 'bolder',
                         labels: {
                             usePointStyle:true,
@@ -222,7 +264,7 @@ function creategraph(city_name) {
             }  else {
               news_list = [];
             }// This stores the news id for each clicked category;
-              var paper_detail_width = document.getElementById("paper_de").offsetWidth;
+              var paper_detail_width = document.getElementById("cool").offsetWidth;
               var name2 = document.getElementById("name2");
               name2.innerHTML = "News Details of " + topic_name;
               for (var i = 0; i < news_list.length; i++) {
@@ -230,13 +272,14 @@ function creategraph(city_name) {
                   var temp_text = titles[news_list[i]]["text"];
                   var target_id = news_list[i];
                   var very_important = document.getElementById("wholebody").offsetWidth;
-                  paperdetail_html +=  '<a data-toggle="modal"  data-target="#myModal' + target_id + '" class="list-group-item list-group-item-action" style="border-radius:20px; border-style:none;width:'+(paper_detail_width*0.85).toString()+'"><p class="font-weight-bold" style="text-align: left; font-size:13px;">' +temp_title+'</p></a>'; 
-                  modal_group_html += '<div class="modal fade" id="myModal' + target_id +'" role="dialog" ><div class="modal-dialog" style="margin-right:'+(very_important/2).toString()+'px!important;"><div class="modal-content" style="border-radius:40px!important; border: none; width:1000px!important;"><div class="modal-header" style="border:none!important;" ><div class="portfolio-modal-dialog bg-white" ><a class="close-button d-none d-md-block portfolio-modal-dismiss" data-dismiss="modal" style="color: #4e73df;!important;margin-left:920px;"><i class="fa fa-3x fa-times"></i></a><div class="container text-center" ><div class="row"> <div class="col-lg-8 mx-auto"><h2 class="text-secondary mb-0" style="text-align:left;">' +temp_title+'</h2><p class="mb-5" style="text-align:left; font-size:15px; margin-top:15px;">'+'</p><p class="mb-5" style="text-align:left; font-size:15px; margin-top:-30px;">'+'</p><p class="mb-5" style="font-weight:15px; margin-top:-30px!important; text-align:left;">'+'</p><hr class="star-dark mb-5" style="font-size:10px;"><p class="mb-5" style="text-align:left; text-indent: 30px;">'+ temp_text+'</p><a class="btn btn-primary btn-lg rounded-pill portfolio-modal-dismiss" data-dismiss="modal"  style="color:#FFF!important;"> <i class="fa fa-close"></i>Close</a></div>   </div></div> </div> </div></div> </div></div>';
+                  console.log(paper_detail_width);
+                  paperdetail_html +=  '<a data-toggle="modal"  data-target="#myModal' + target_id + '" class="list-group-item list-group-item-action" style="border-radius:20px; border-style:none;width:'+(paper_detail_width).toString()+'px;"><p class="font-weight-bold" style="text-align: center; font-weight:bold; font-size:21px;">' +temp_title+'</p></a>';
+                  modal_group_html +=  '<div class="portfolio-modal modal fade" id="myModal'+target_id+'" tabindex="-1" role="dialog" aria-hidden="true"><div class="modal-dialog"><div class="modal-content"><div class="close-modal" data-dismiss="modal"><div class="lr"><div class="rl"></div></div></div><div class="container"><div class="row"><div class="col-lg-8 col-lg-offset-2"><div class="modal-body"><h2  style="text-align:left;">'+temp_title+'</h2><p  style="text-align:left;">'+temp_text+'</p><button type="button" class="btn btn-primary" data-dismiss="modal"><i class="fa fa-times"></i> Close Project</button></div></div></div></div></div></div></div>';;
               }
               paperdetail.innerHTML = paperdetail_html;
               modal_group.innerHTML = modal_group_html;
 
-          
+
                          }
                     },
                   });
@@ -257,19 +300,28 @@ function creategraph(city_name) {
                   // console.log(default_category);
                   var news_list=[];
                   if (default_category != "") {
-                  news_list = piechart_news_dict[default_category]; 
+                  news_list = piechart_news_dict[default_category];
                   }// This stores the news id for each clicked category;
-                  var paper_detail_width = document.getElementById("paper_de").offsetWidth;
+                  var paper_detail_width = document.getElementById("cool").offsetWidth;
                   for (var i = 0; i < news_list.length; i++) {
                       var temp_title = titles[news_list[i]]["title"];
                       var temp_text = titles[news_list[i]]["text"];
                       var target_id = news_list[i];
                       var very_important = document.getElementById("wholebody").offsetWidth;
-                      paperdetail_html +=  '<a data-toggle="modal"  data-target="#myModal' + target_id + '" class="list-group-item list-group-item-action" style="border-radius:20px; border-style:none;width:'+(paper_detail_width*0.85).toString()+'"><p class="font-weight-bold" style="text-align: left; font-size:13px;">' +temp_title+'</p></a>'; 
-                      modal_group_html += '<div class="modal fade" id="myModal' + target_id +'" role="dialog" ><div class="modal-dialog" style="margin-right:'+(very_important/2).toString()+'px!important;"><div class="modal-content" style="border-radius:40px!important; border: none; width:1000px!important;"><div class="modal-header" style="border:none!important;" ><div class="portfolio-modal-dialog bg-white" ><a class="close-button d-none d-md-block portfolio-modal-dismiss" data-dismiss="modal" style="color: #4e73df;!important;margin-left:920px;"><i class="fa fa-3x fa-times"></i></a><div class="container text-center" ><div class="row"> <div class="col-lg-8 mx-auto"><h2 class="text-secondary mb-0" style="text-align:left;">' +temp_title+'</h2><p class="mb-5" style="text-align:left; font-size:15px; margin-top:15px;">'+'</p><p class="mb-5" style="text-align:left; font-size:15px; margin-top:-30px;">'+'</p><p class="mb-5" style="font-weight:15px; margin-top:-30px!important; text-align:left;">'+'</p><hr class="star-dark mb-5" style="font-size:10px;"><p class="mb-5" style="text-align:left; text-indent: 30px;">'+ temp_text+'</p><a class="btn btn-primary btn-lg rounded-pill portfolio-modal-dismiss" data-dismiss="modal"  style="color:#FFF!important;"> <i class="fa fa-close"></i>Close</a></div>   </div></div> </div> </div></div> </div></div>';
+                      paperdetail_html +=  '<a data-toggle="modal"  data-target="#myModal' + target_id + '" class="list-group-item list-group-item-action" style="border-radius:20px; border-style:none;width:'+(paper_detail_width).toString()+'px;"><p class="font-weight-bold" style="text-align: center; font-weight:bold; font-size:21px;">' +temp_title+'</p></a>';
+                      modal_group_html +=  '<div class="portfolio-modal modal fade" id="myModal'+target_id+'" tabindex="-1" role="dialog" aria-hidden="true" style="overscroll-behavior: contain!important;"><div class="modal-dialog"><div class="modal-content"><div class="close-modal" data-dismiss="modal"><div class="lr"><div class="rl"></div></div></div><div class="container"><div class="row"><div class="col-lg-8 col-lg-offset-2"><div class="modal-body"><h2 style="text-align:left;">'+temp_title+'</h2><p  style="text-align:left;">'+temp_text+'</p><button type="button" class="btn btn-primary" data-dismiss="modal"><i class="fa fa-times"></i> Close Project</button></div></div></div></div></div></div></div>';
                   }
                   paperdetail.innerHTML = paperdetail_html;
                   modal_group.innerHTML = modal_group_html;
+
+
+
+
+
+
+
+
+
                   //Then, let's build the line chart. but we need to do somethind for the data
                   var linechart_dict={};
                   var name;
@@ -295,7 +347,7 @@ function creategraph(city_name) {
                     linechart_dict["tax"]= {"January":0, "Feburary":0, "March":0, "April":0, "May":0, "June":0, "July":0, "August":0,"September":0, "October":0, "November":0, "December":0};
                     linechart_dict["welfare"] =   {"January":0, "Feburary":0, "March":0, "April":0, "May":0, "June":0, "July":0,"August":0, "September":0, "October":0, "November":0, "December":0};
                     linechart_dict["miss"] =  {"January":0, "Feburary":0, "March":0, "April":0, "May":0, "June":0, "July":0,"August":0, "September":0, "October":0, "November":0, "December":0};
-                    name = "economic";  
+                    name = "economic";
                 }
                   var location_list_ids = [];
                   var month_dict={"01":"January", "02":"Feburary", "03":"March", "04":"April", "05":"May", "06":"June","07":"July","08":"August", "09":"September", "10":"October", "11":"November", "12":"December"};
@@ -305,15 +357,15 @@ function creategraph(city_name) {
                           location_list_ids.push(key);
                       }
                   }
-            
+
                   for (var i = 0; i < ids.length; i++) {
                       if (location_list_ids.includes(ids[i])) {
                           if (times[i].length >= 5 && times[i].includes(input_time.substr(0,4))) {
                           var temp_time = times[i].split("-")[1];
-                         
+
                           var temp_month = month_dict[temp_time];
                           var temp_topic = topics[i].split(".");
-                         
+
                           if (temp_topic.length == 2) {
                               if (temp_topic[1] in linechart_dict) {
                               linechart_dict[temp_topic[1]][temp_month] += 1;
@@ -328,7 +380,7 @@ function creategraph(city_name) {
                   }
                   //Now, the data is ready, we begin to build line chart
                   // helpful color to build line chart
-                
+
                  //Codes for building line chart
                   var colors= ['rgb(93,165,218,', 'rgb(250,164,58,', 'rgb(96,189,104,',"rgb(241,124,176,","rgb(219,50,54,","#DECF3F"];
                   var linechartContainer = document.getElementById("linechartContainer");
@@ -447,8 +499,8 @@ function creategraph(city_name) {
       if (politics.includes(checked_button_id) || checked_button_id == "politics") {
         category_name = "politics";
       }
-      
-      var paper_detail_width = document.getElementById("paper_de").offsetWidth;
+
+      var paper_detail_width = document.getElementById("keywords").offsetWidth;
       for(var key in key_phrase){
         if (checked_button_id == "politics" || checked_button_id == "military" || checked_button_id == "economic") {
           checked_button_id = checked_button_id+".";
@@ -458,9 +510,9 @@ function creategraph(city_name) {
             if(key.includes(input_city)){
               var content = key_phrase[key];
               // console.log(content);
-              for(var words in content){    
+              for(var words in content){
                 var sentence = content[words];
-                phrase_html += '<a class="list-group-item list-group-item-action flex-column align-items-start" style="border-radius:16px; width:'+(paper_detail_width*0.84).toString()+'px!important; border-style:none;"><li class="font-weight-bold text-primary" style="text-transform: uppercase;font-size:15px;">'+words.substr(0,3)+'<span class="text-dark" style="text-transform:upperclass;">'+words.substr(3,words.length)+'</span></li><li class="section-subheading text-muted font-weight-bold" style="font-size:smaller;font-family: "Droid Serif"; font-style: italic!important;">'+sentence+'</li></a>';
+                phrase_html += '<a class="list-group-item bg-light-gray list-group-item-action flex-column align-items-start" style="border-radius:16px; width:'+(paper_detail_width).toString()+'px!important; border-style:none;"><li class="font-weight-bold text-primary" style="text-transform: uppercase;font-size:21px;">'+words.substr(0,3)+'<span class="text-dark" style="text-transform:upperclass;">'+words.substr(3,words.length)+'</span></li><li class="section-subheading text-muted font-weight-bold" style="font-size:17px;font-family: "Droid Serif"; font-style: italic!important;">'+sentence+'</li></a>';
 
               }
               break;
@@ -468,7 +520,7 @@ function creategraph(city_name) {
             }
           }
         }
-      }     
+      }
       keyword_sentence.innerHTML = phrase_html;
     //  console.log(key_phrase["politics.governance_SEP_Donets'k_SEP_2014-05"]);
 
@@ -494,7 +546,7 @@ function creategraph(city_name) {
           }
         }
 
-      
+
 
       //Please keep this code, probably these codes will be used later.
       // if(src.length == 0){
@@ -538,10 +590,10 @@ function creategraph(city_name) {
       var search = document.getElementById("search");
       search.value= "";
 
-  
 
 
-              
+
+
                     });
                 });
             });
@@ -551,4 +603,3 @@ function creategraph(city_name) {
    });
 
                   }
-                
