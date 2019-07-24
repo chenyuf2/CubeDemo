@@ -420,6 +420,74 @@ footer.footer .social-link:hover {
 a:focus {
     outline: none!important;
 }
+
+
+@-webkit-keyframes scroll-inner {
+  from {
+    margin-top: 15%;
+  }
+  to {
+    margin-top: 50%;
+  }
+}
+@keyframes scroll-inner {
+  from {
+    margin-top: 15%;
+  }
+  to {
+    margin-top: 50%;
+  }
+}
+@-webkit-keyframes scroll-mouse {
+  from {
+    margin-top: 0;
+  }
+  to {
+    margin-top: 0px;
+  }
+}
+@keyframes scroll-mouse {
+  from {
+    margin-top: 0;
+  }
+  to {
+    margin-top: 0px;
+  }
+}
+div.mouse-container {
+  position: relative;
+  display: block;
+  height: 100px;
+}
+
+div.mouse {
+  position: relative;
+  margin: 0 auto;
+  display: block;
+  width: 30px;
+  height: 48px;
+  border: solid 2px #fff;
+  border-radius: 25px;
+  -webkit-animation: scroll-mouse 1.5s;
+  animation: scroll-mouse 1.5s;
+  -webkit-animation-iteration-count: infinite;
+  animation-iteration-count: infinite;
+}
+div.mouse span.scroll-down {
+  display: block;
+  width: 10px;
+  height: 10px;
+  background: #fff;
+  border-radius: 50%;
+  margin: 15% auto auto auto;
+  -webkit-animation: scroll-inner 1.5s;
+  animation: scroll-inner 1.5s;
+  -webkit-animation-iteration-count: infinite;
+  animation-iteration-count: infinite;
+  -webkit-animation-timing-function: ease;
+  animation-timing-function: ease;
+}
+
 {% block extra_css %}{% endblock %}
   </style>
 
@@ -747,9 +815,16 @@ Moscow City
               <div class="intro-text">
                   <div class="intro-lead-in">Welcome To Our DEMO!</div>
                   <div class="intro-heading">It's Nice To Meet You</div>
-                  <a href="#services" class="page-scroll btn btn-xl" style="background-color:#BD5D38;border:none!important;">Let's Explore</a>
+                  <!-- <a href="#services" class="page-scroll btn btn-xl" style="background-color:#BD5D38;border:none!important;">Let's Explore</a> -->
+
               </div>
+
           </div>
+          <div class='mouse-container' id="mouse">
+              <div class='mouse'>
+                <span class='scroll-down'></span>
+              </div>
+            </div>
       </header>
 
 
@@ -783,6 +858,7 @@ Moscow City
    var icons = document.getElementById("icons");
    var hey = document.getElementById("interesting").offsetWidth;
    icons.style.marginLeft = (widthlength/2-hey/2).toString() + "px";
+
    </script>
 
    <script src="{% static 'updatetemplate/vendor/jquery/jquery.min.js' %}"></script>
