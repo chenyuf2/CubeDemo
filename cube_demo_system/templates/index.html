@@ -40,6 +40,7 @@
       var ids = {{phrase|safe}};
       var key_phrase = {{sentence|safe}};
       var image = {{images|safe}};
+      var json8 = {{celldata|safe}};
 
 
     $( document ).ready(function() {
@@ -154,35 +155,69 @@
                    var times_id_list=[];
                    for (var i = 0; i < times.length; i++) {
                        if (times[i].length >= 7) {
-                       if (times[i].substr(0,4) == input_time.substr(0,4)) {
+                       if (times[i].substr(0,7) == input_time) {
                            times_id_list.push(ids[i]);
                        }
                    }
                 }
 
                 var locations_keys = Object.keys(locations);
-                // console.log(times_id_list);
-                for (var i = 0; i < locations_keys.length; i++) {
-                    var temp_key = locations_keys[i];
-
-                    if (times_id_list.includes(temp_key)) {
-                      // console.log(locations[temp_key]);
-                    if (locations[temp_key].includes(input_city)) {
+                for (var i = 0; i < ids.length; i++) {
+                  if (times[i].length > 5) {
+                    var temptime = times[i].substr(0,7);
+                    if (temptime == input_time) {
+                    if (ids[i] in locations) {
+                      temp_list = locations[ids[i]];
+                      if (temp_list.includes(input_city)) {
                         var temp_topic = topics[i].split(".");
-
                         if (temp_topic.length > 1) {
-                        if (!(temp_topic[1] in piechart_dict)) {
-                            piechart_dict[temp_topic[1]] = 1;
-                            piechart_news_dict[temp_topic[1]]=[];
-                            piechart_news_dict[temp_topic[1]].push(temp_key);
-                        } else {
-                            piechart_dict[temp_topic[1]] += 1;
-                            piechart_news_dict[temp_topic[1]].push(temp_key);
-                        }
+                                   if (!(temp_topic[1] in piechart_dict)) {
+                                       piechart_dict[temp_topic[1]] = 1;
+                                       piechart_news_dict[temp_topic[1]]=[];
+                                       piechart_news_dict[temp_topic[1]].push(ids[i]);
+                                   } else {
+                                       piechart_dict[temp_topic[1]] += 1;
+                                       piechart_news_dict[temp_topic[1]].push(ids[i]);
+                                   }
+                               } else {
+                                 if (!(temp_topic[0] in piechart_dict)) {
+                                     piechart_dict[temp_topic[0]] = 1;
+                                     piechart_news_dict[temp_topic[0]]=[];
+                                     piechart_news_dict[temp_topic[0]].push(ids[i]);
+                                 } else {
+                                     piechart_dict[temp_topic[0]] += 1;
+                                     piechart_news_dict[temp_topic[0]].push(ids[i]);
+                                 }
+
+                               }
+                      }
+                      // for (var i = 0; i < temp_list.length; i++) {
+                      }
+                      }
                     }
-                }
-            }
-        }
+                  }
+                // console.log(times_id_list);
+        //         for (var i = 0; i < locations_keys.length; i++) {
+        //             var temp_key = locations_keys[i];
+        //
+        //             if (times_id_list.includes(temp_key)) {
+        //               // console.log(locations[temp_key]);
+        //             if (locations[temp_key].includes(input_city)) {
+        //                 var temp_topic = topics[i].split(".");
+        //
+        //                 if (temp_topic.length > 1) {
+        //                 if (!(temp_topic[1] in piechart_dict)) {
+        //                     piechart_dict[temp_topic[1]] = 1;
+        //                     piechart_news_dict[temp_topic[1]]=[];
+        //                     piechart_news_dict[temp_topic[1]].push(temp_key);
+        //                 } else {
+        //                     piechart_dict[temp_topic[1]] += 1;
+        //                     piechart_news_dict[temp_topic[1]].push(temp_key);
+        //                 }
+        //             }
+        //         }
+        //     }
+        // }
         // console.log(piechart_news_dict);
 
                 // Now, piechart_dict is already be completed, we need to draw the graph;
@@ -222,7 +257,7 @@
                         caretPadding: 12,
                       },
                       legend: {
-                        position: 'right',
+                        position: 'bottom',
                         fontWeight: 'bolder',
                         labels: {
                             usePointStyle:true,
@@ -566,6 +601,23 @@
 
 
 
+      var input_time = document.getElementById("monthText").innerHTML;
+      var all_ids = ["politics", "military","economic","politics.justice", "politics.election", "politics.international_relation", "politics.governance","economic.trade", "economic.finance", "economic.tax", "economic.welfare","military.combat", "military.weapons", "military.terrorism", "military.ceasefire"];
+
+      for (var i = 0; i < all_ids.length; i++) {
+        var temp = document.getElementById(all_ids[i] + "1");
+        var num = 0;
+        if (input_city in json8[input_time]) {
+          if (all_ids[i] in json8[input_time][input_city]) {
+         num = json8[input_time][input_city][all_ids[i]];
+       }
+      }
+        if (all_ids[i] == "politics" || all_ids[i] == "military" || all_ids[i] == "economic") {
+          temp.innerHTML = all_ids[i] + " (" + num.toString() + ")";
+        } else {
+          temp.innerHTML = all_ids[i].split(".")[1] + " (" + num.toString() +")";
+        }
+      }
 
 
 
@@ -1380,7 +1432,7 @@ font-style: italic;
 
                 <div class="row">
                       <div class="col-lg-12 text-center">
-                          <h2 class="section-heading text-uppercase" id="name2" style="margin-top:0;margin-bottom:15px;"></h2>
+                          <h2 class="section-heading text-uppercase" id="name2" style="margin-top:0;"></h2>
                         <h5 class="section-subheading text-muted"   style="font-size:smaller;font-style: italic;font-family: 'Droid Serif';">It shows the titles of all the news of clicked category.</h5>
                       </div>
               </div>
@@ -1393,8 +1445,8 @@ font-style: italic;
                       <!-- </div> -->
                       <!-- Card Body -->
 
-                      <div class="card-body" style="margin:0 auto; height:400px;"  style="overflow:hidden; position: relative;">
-                          <ul class="list-group list-group-flush" style=" overflow-x:hidden!important; overflow-y: auto; height:400px;" id="paperdetail">
+                      <div class="card-body" style="margin:0 auto; height:200px;"  style="overflow:hidden; position: relative;">
+                          <ul class="list-group list-group-flush" style=" overflow-x:hidden!important; overflow-y: auto; height:200px;" id="paperdetail">
 
                           </ul>
                       </div>

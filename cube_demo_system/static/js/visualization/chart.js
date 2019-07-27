@@ -115,6 +115,17 @@ function creategraph(city_name) {
             };
             xobj.send(null);
           }
+          function loadJSON8(callback) {
+            var xobj = new XMLHttpRequest();
+            xobj.overrideMimeType("application/json");
+            xobj.open('GET', "static/json/cell_doc_num.json", true);
+            xobj.onreadystatechange = function () {
+              if (xobj.readyState == 4 && xobj.status == "200") {
+                callback(JSON.parse(xobj.responseText));
+              }
+            };
+            xobj.send(null);
+          }
 
 
           loadJSON(function(json) {
@@ -124,7 +135,8 @@ function creategraph(city_name) {
                         loadJSON5(function(json5) {
                           loadJSON6(function(json6) {
                             loadJSON7(function(json7) {
-
+                                loadJSON8(function(json8) {
+                  console.log(Object.keys(json).length);
                    var titles = json;
                    var locations = json2;
                    var times = json3;
@@ -169,8 +181,9 @@ function creategraph(city_name) {
                    var piechart_news_dict={};
                    var times_id_list=[];
                    for (var i = 0; i < times.length; i++) {
-                       if (times[i].length >= 7) {
-                       if (times[i].substr(0,4) == input_time.substr(0,4)) {
+                       if (times[i].length >= 5) {
+              
+                       if (times[i].substr(0,7) == input_time) {
                            times_id_list.push(ids[i]);
                        }
                    }
@@ -178,27 +191,72 @@ function creategraph(city_name) {
 
                 var locations_keys = Object.keys(locations);
                 // console.log(times_id_list);
-                for (var i = 0; i < locations_keys.length; i++) {
-                    var temp_key = locations_keys[i];
-
-                    if (times_id_list.includes(temp_key)) {
-                      // console.log(locations[temp_key]);
-                    if (locations[temp_key].includes(input_city)) {
+                for (var i = 0; i < ids.length; i++) {
+                  if (times[i].length > 5) {
+                    var temptime = times[i].substr(0,7);
+                    if (temptime == input_time) {
+                    if (ids[i] in locations) {
+                      temp_list = locations[ids[i]];
+                      if (temp_list.includes(city_name)) {
                         var temp_topic = topics[i].split(".");
-
                         if (temp_topic.length > 1) {
-                        if (!(temp_topic[1] in piechart_dict)) {
-                            piechart_dict[temp_topic[1]] = 1;
-                            piechart_news_dict[temp_topic[1]]=[];
-                            piechart_news_dict[temp_topic[1]].push(temp_key);
-                        } else {
-                            piechart_dict[temp_topic[1]] += 1;
-                            piechart_news_dict[temp_topic[1]].push(temp_key);
-                        }
+                                   if (!(temp_topic[1] in piechart_dict)) {
+                                       piechart_dict[temp_topic[1]] = 1;
+                                       piechart_news_dict[temp_topic[1]]=[];
+                                       piechart_news_dict[temp_topic[1]].push(ids[i]);
+                                   } else {
+                                       piechart_dict[temp_topic[1]] += 1;
+                                       piechart_news_dict[temp_topic[1]].push(ids[i]);
+                                   }
+                               } else {
+                                 if (!(temp_topic[0] in piechart_dict)) {
+                                     piechart_dict[temp_topic[0]] = 1;
+                                     piechart_news_dict[temp_topic[0]]=[];
+                                     piechart_news_dict[temp_topic[0]].push(ids[i]);
+                                 } else {
+                                     piechart_dict[temp_topic[0]] += 1;
+                                     piechart_news_dict[temp_topic[0]].push(ids[i]);
+                                 }
+
+                               }
+                      }
+                      // for (var i = 0; i < temp_list.length; i++) {
+                      }
+                      }
                     }
-                }
-            }
-        }
+                  }
+                    // var temp_key = locations_keys[i];
+            //         if (times_id_list.includes(temp_key)) {
+            //           // console.log(locations[temp_key]);
+            //           console.log(temp_key);
+            //         if (locations[temp_key].includes(input_city)) {
+            //             var temp_topic = topics[i].split(".");
+            //             console.log(temp_topic);
+            //             if (temp_topic.length > 1) {
+            //             if (!(temp_topic[1] in piechart_dict)) {
+            //                 piechart_dict[temp_topic[1]] = 1;
+            //                 piechart_news_dict[temp_topic[1]]=[];
+            //                 piechart_news_dict[temp_topic[1]].push(temp_key);
+            //             } else {
+            //                 piechart_dict[temp_topic[1]] += 1;
+            //                 piechart_news_dict[temp_topic[1]].push(temp_key);
+            //             }
+            //         } else {
+            //           if (!(temp_topic[0] in piechart_dict)) {
+            //               piechart_dict[temp_topic[0]] = 1;
+            //               piechart_news_dict[temp_topic[0]]=[];
+            //               piechart_news_dict[temp_topic[0]].push(temp_key);
+            //           } else {
+            //               piechart_dict[temp_topic[0]] += 1;
+            //               piechart_news_dict[temp_topic[0]].push(temp_key);
+            //           }
+            //
+            //         }
+            //     }
+            // }
+        //   }
+        // }
+        console.log(piechart_dict);
         // console.log(piechart_news_dict);
 
                 // Now, piechart_dict is already be completed, we need to draw the graph;
@@ -592,8 +650,24 @@ function creategraph(city_name) {
 
 
 
+      var input_time = document.getElementById("monthText").innerHTML;
+      var all_ids = ["politics", "military","economic","politics.justice", "politics.election", "politics.international_relation", "politics.governance","economic.trade", "economic.finance", "economic.tax", "economic.welfare","military.combat", "military.weapons", "military.terrorism", "military.ceasefire"];
 
-
+      for (var i = 0; i < all_ids.length; i++) {
+        var temp = document.getElementById(all_ids[i] + "1");
+        var num = 0;
+        if (city_name in json8[input_time]) {
+          if (all_ids[i] in json8[input_time][city_name]) {
+         num = json8[input_time][city_name][all_ids[i]];
+       }
+      }
+        if (all_ids[i] == "politics" || all_ids[i] == "military" || all_ids[i] == "economic") {
+          temp.innerHTML = all_ids[i] + " (" + num.toString() + ")";
+        } else {
+          temp.innerHTML = all_ids[i].split(".")[1] + " (" + num.toString() +")";
+        }
+      }
+                      });
                     });
                 });
             });

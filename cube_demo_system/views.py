@@ -40,10 +40,12 @@ class HomePageView(TemplateView):
             images = json.load(imagefile)
         with open(another_path + 'phrase_text_700_code.json') as phrasefile:
             phrase = json.load(phrasefile)
+        with open(directoryPath + 'cell_doc_num.json') as datafile:
+            celldata = json.load(datafile)
 
-        
-        
-        
+
+
+
 
         topic_list = ['politics.international_relation',
                       'politics',
@@ -74,6 +76,7 @@ class HomePageView(TemplateView):
                 'topics':topics,
                 'sentence':sentence,
                 'images':images,
-                'phrase':phrase
+                'phrase':phrase,
+                'celldata':celldata
 
             })
