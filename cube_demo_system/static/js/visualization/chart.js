@@ -182,7 +182,7 @@ function creategraph(city_name) {
                    var times_id_list=[];
                    for (var i = 0; i < times.length; i++) {
                        if (times[i].length >= 5) {
-              
+
                        if (times[i].substr(0,7) == input_time) {
                            times_id_list.push(ids[i]);
                        }
@@ -568,11 +568,20 @@ function creategraph(city_name) {
             if(key.includes(input_city)){
               var content = key_phrase[key];
               // console.log(content);
-              for(var words in content){
-                var sentence = content[words];
+              // for(var words in content){
+              //   if (words != "coverage") {
+              var temp_phrase = content["key_phrases"];
+              var temp_sentences = content["key_sentences"];
+              var words = "";
+              var sentence = "";
+              for (var i = 0; i < temp_phrase.length; i++) {
+                words += temp_phrase[i] + "<br>";
+              }
+              for (var i = 0; i < temp_sentences.length; i++) {
+                sentence += temp_sentences[i] + "<br>";
+              }
                 phrase_html += '<a class="list-group-item bg-light-gray list-group-item-action flex-column align-items-start" style="border-radius:16px; width:'+(paper_detail_width).toString()+'px!important; border-style:none;"><li class="font-weight-bold text-primary" style="text-transform: uppercase;font-size:21px;">'+words.substr(0,3)+'<span class="text-dark" style="text-transform:upperclass;">'+words.substr(3,words.length)+'</span></li><li class="section-subheading text-muted font-weight-bold" style="font-size:17px;font-family: "Droid Serif"; font-style: italic!important;">'+sentence+'</li></a>';
 
-              }
               break;
 
             }
@@ -583,19 +592,28 @@ function creategraph(city_name) {
     //  console.log(key_phrase["politics.governance_SEP_Donets'k_SEP_2014-05"]);
 
       //Keywords is done, we need to do the image part
-      var src = "";
+      var usefulid = ""
+      var all_radio_button_names = ["military", "politics", "economic","politics.justice", "politics.election", "politics.international_relation", "politics.governance","economic.trade", "economic.finance", "economic.tax", "economic.welfare","military.combat", "military.weapons", "military.terrorism", "military.ceasefire"];
+      for (var i = 0; i < all_radio_button_names.length; i++) {
+        if (document.getElementById(all_radio_button_names[i]).checked == true) {
+            usefulid = all_radio_button_names[i];
+        }
+      }
+
+      var src_list = [];
+
+      console.log(checked_button_id);
+      console.log(input_time);
       for(var t in image){
-        if(t.includes(input_time) && src.length == 0){
+        if(t.includes(input_time) && src_list.length == 0){
           var location = image[t];
           for(var temp_city in location){
-            if(temp_city.includes(input_city) && src.length == 0){
+            if(temp_city.includes(input_city) && src_list.length == 0){
               var temp_topic = location[temp_city];
+              console.log(temp_topic);
               for(var topic_name in temp_topic){
-                if (checked_button_id == "politics" || checked_button_id == "economic" ||checked_button_id == "military") {
-                  checked_button_id = checked_button_id + ".";
-                }
-                if(topic_name.includes(checked_button_id) && src.length == 0){
-                  src = temp_topic[topic_name];
+                if(topic_name == usefulid && src_list.length == 0){
+                  src_list = temp_topic[topic_name];
                   break;
                 }
               }
@@ -621,32 +639,63 @@ function creategraph(city_name) {
       // }
       //Complete the src of image, then put innerhtml in the index
       // console.log(src);
+      for (var i = 0; i < src_list.length; i++) {
+        var src = src_list[i];
       if(src.includes("jpg")){
-        src = "static/jsonData/pics/pics/jpg/"+src;
+        src_list[i] = "static/jsonData/pics/pics/jpg/"+src;
       }
       else if (src.includes("png")){
-        src = "static/jsonData/pics/pics/png/"+src;
+        src_list[i] = "static/jsonData/pics/pics/png/"+src;
       }
-      // console.log(src);
-      var image_container = document.getElementById("image_container");
-      var imagegroup = document.getElementById("imagegroup");
-      if (src.length != 0) {
-      image_container.innerHTML = "<img  id = 'actual' src=" + src +" style='height:auto; width:"+(imagegroup.offsetWidth*0.95).toString()+"px!important; border-radius:25px;'>";
-    } else {
-      var temp_src = "static/img/notfound.png";
-      image_container.innerHTML = "<img  id='actual' src=" + temp_src +" style='height:auto; width:"+(imagegroup.offsetWidth*0.95).toString()+"px!important; border-radius:25px;'>";
     }
-      var explain = document.getElementById("explain");
-      if (src.length != 0) {
-        explain.innerHTML = "<h3>Relevant Image</h3><p>This image is selected based on selections of user.</p>";
-      } else {
-        explain.innerHTML = "<h3>No Relevant Image Found</h3><p></p>";
-      }
-      var actual = document.getElementById("actual");
-      var overlay = document.getElementById("overlay");
-      overlay.style.width = actual.offsetWidth.toString() + "px";
-      var search = document.getElementById("search");
-      search.value= "";
+      // console.log(src);
+      var image_container = document.getElementById("imagelist");
+      var imagegroup = document.getElementById("imagegroup");
+      var image_container_html = "";
+      console.log(src_list);
+      if (src_list.length != []) {
+        for (var i = 0; i < src_list.length; i++) {
+          var src = src_list[i];
+          if (i == 0) {
+            if (src=="N/A_IMG") {
+              src = "static/img/notfound.png";
+              image_container_html += "<img class='mySlides'  id = 'actual' src=" + src +" style='height:auto; width:"+(imagegroup.offsetWidth*0.95).toString()+"px!important; border-radius:25px;'>";
+            } else {
+image_container_html += "<img class='mySlides'  id = 'actual' src=" + src +" style='height:auto; width:"+(imagegroup.offsetWidth*0.95).toString()+"px!important; border-radius:25px;'>";
+}
+} else {
+    image_container_html += "<img class='mySlides'  id = 'actual' src=" + src +" style='height:auto; display:none;width:"+(imagegroup.offsetWidth*0.95).toString()+"px!important; border-radius:25px;'>";
+}
+
+    }
+    } else {
+
+      var temp_src = "static/img/notfound.png";
+      image_container_html+= "<img  class='mySlides' id='actual' src=" + temp_src +" style='height:auto; width:"+(imagegroup.offsetWidth*0.95).toString()+"px!important; border-radius:25px;'>";
+    }
+    image_container.innerHTML = image_container_html;
+
+var button1 = document.getElementById("button1");
+var button2 = document.getElementById("button2");
+if (src_list.length >= 2) {
+  button1.style.visibility = "visible";
+  button2.style.visibility="visible";
+} else {
+  button1.style.visibility = "hidden";
+  button2.style.visibility="hidden";
+}
+
+      // var explain = document.getElementById("explain");
+      // if (src.length != 0) {
+      //   explain.innerHTML = "<h3>Relevant Image</h3><p>This image is selected based on selections of user.</p>";
+      // } else {
+      //   explain.innerHTML = "<h3>No Relevant Image Found</h3><p></p>";
+      // }
+      // var actual = document.getElementById("actual");
+      // var overlay = document.getElementById("overlay");
+      // overlay.style.width = actual.offsetWidth.toString() + "px";
+      // var search = document.getElementById("search");
+      // search.value= "";
 
 
 

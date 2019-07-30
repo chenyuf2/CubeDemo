@@ -51,6 +51,7 @@
 
     <script src="https://cdn.rawgit.com/kimmobrunfeldt/progressbar.js/0.5.6/dist/progressbar.js"></script>
     <script src="http://d3js.org/d3.v2.min.js?2.9.3"></script>
+
     <!-- <script src = "build_graph.js"></script> -->
     <!-- Custom styles for this template-->
     <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> -->
@@ -70,6 +71,13 @@
      <link href="{% static 'updatetemplate/css/agency.min.css' %}" rel="stylesheet">
 
 
+
+     <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script> -->
+
+
+<!-- <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css"> -->
     {% block extra_head %} {% endblock %}
   </head>
  <style>
@@ -548,7 +556,7 @@ Moscow City
                   <div  class="subnav-content" style="height: 70px!important; width:35%; border-radius: 15px!important; background-color: rgba(255,255,255,0)!important;">
                       <div class="subnav">
                           <button class="subnavbtn">Economy <i class="fa fa-caret-down"></i></button>
-                          <div  class="subnav-content" style="height: 290px!important; border-radius: 15px!important; background-color:  white!important;">
+                          <div  class="subnav-content" style="height: 350px!important; border-radius: 15px!important; background-color:  white!important;">
                               <input type="radio" class="topic" id="economic" name="topic_filter" value="4" autocomplete="off" checked="false" oninput="creategraph(document.getElementById('hidden_input_city').innerHTML)"/>
                               <label for="economic"  id="economic1">Economic</label>
                               <input type="radio" class="topic" id="economic.trade" name="topic_filter" value="4" autocomplete="off" checked="false" oninput="creategraph(document.getElementById('hidden_input_city').innerHTML)"/>
@@ -567,7 +575,7 @@ Moscow City
                         </div>
                         <div class="subnav">
                             <button class="subnavbtn">Military <i class="fa fa-caret-down"></i></button>
-                            <div  class="subnav-content" style="height: 290px!important; border-radius: 15px!important; background-color:  white!important;">
+                            <div  class="subnav-content" style="height: 350px!important; border-radius: 15px!important; background-color:  white!important;">
                                  <input type="radio" class="topic" id="military" name="topic_filter" value="8" autocomplete="off" checked="false" oninput="creategraph(document.getElementById('hidden_input_city').innerHTML)" />
                               <label for="military" id="military1">Military</label>
 
@@ -589,7 +597,7 @@ Moscow City
                           </div>
                           <div class="subnav">
                               <button class="subnavbtn">Politics <i class="fa fa-caret-down"></i></button>
-                              <div  class="subnav-content" style="height: 290px!important; border-radius: 15px!important; background-color:  white!important;">
+                              <div  class="subnav-content" style="height: 350px!important; border-radius: 15px!important; background-color:  white!important;">
                                   <input type="radio" class="topic" id="politics" name="topic_filter" value="0" autocomplete="off" checked="false" oninput="creategraph(document.getElementById('hidden_input_city').innerHTML)" />
                                   <label for="politics" id="politics1">Politics</label>
                                   <input type="radio" class="topic" id="politics.justice" name="topic_filter" value="0" autocomplete="off" checked="false" oninput="creategraph(document.getElementById('hidden_input_city').innerHTML)" />

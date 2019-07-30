@@ -519,11 +519,18 @@
             if(key.includes(input_city)){
               var content = key_phrase[key];
               // console.log(content);
-              for(var words in content){
-                var sentence = content[words];
+              var temp_phrase = content["key_phrases"];
+              var temp_sentences = content["key_sentences"];
+              var words = "";
+              var sentence = "";
+              for (var i = 0; i < temp_phrase.length; i++) {
+                words += temp_phrase[i] + "<br>";
+              }
+              for (var i = 0; i < temp_sentences.length; i++) {
+                sentence += temp_sentences[i] + "<br>";
+              }
                 phrase_html += '<a class="list-group-item bg-light-gray list-group-item-action flex-column align-items-start" style="border-radius:16px; width:'+(paper_detail_width).toString()+'px!important; border-style:none;"><li class="font-weight-bold text-primary" style="text-transform: uppercase;font-size:21px;">'+words.substr(0,3)+'<span class="text-dark" style="text-transform:upperclass;">'+words.substr(3,words.length)+'</span></li><li class="section-subheading text-muted font-weight-bold" style="font-size:17px;font-family: "Droid Serif"; font-style: italic!important;">'+sentence+'</li></a>';
 
-              }
               break;
 
             }
@@ -534,19 +541,28 @@
      console.log(key_phrase["politics.governance_SEP_Donets'k_SEP_2014-05"]);
 
       //Keywords is done, we need to do the image part
-      var src = "";
+      var usefulid = ""
+      var all_radio_button_names = ["military", "politics", "economic","politics.justice", "politics.election", "politics.international_relation", "politics.governance","economic.trade", "economic.finance", "economic.tax", "economic.welfare","military.combat", "military.weapons", "military.terrorism", "military.ceasefire"];
+      for (var i = 0; i < all_radio_button_names.length; i++) {
+        if (document.getElementById(all_radio_button_names[i]).checked == true) {
+            usefulid = all_radio_button_names[i];
+        }
+      }
+
+      var src_list = [];
+
+      console.log(checked_button_id);
+      console.log(input_time);
       for(var t in image){
-        if(t.includes(input_time) && src.length == 0){
+        if(t.includes(input_time) && src_list.length == 0){
           var location = image[t];
           for(var temp_city in location){
-            if(temp_city.includes(input_city) && src.length == 0){
+            if(temp_city.includes(input_city) && src_list.length == 0){
               var temp_topic = location[temp_city];
+              console.log(temp_topic);
               for(var topic_name in temp_topic){
-                if (checked_button_id == "politics" || checked_button_id == "economic" ||checked_button_id == "military") {
-                  checked_button_id = checked_button_id + ".";
-                }
-                if(topic_name.includes(checked_button_id) && src.length == 0){
-                  src = temp_topic[topic_name];
+                if(topic_name == usefulid && src_list.length == 0){
+                  src_list = temp_topic[topic_name];
                   break;
                 }
               }
@@ -571,35 +587,49 @@
       //   }
       // }
       //Complete the src of image, then put innerhtml in the index
-      console.log(src);
+      for (var i = 0; i < src_list.length; i++) {
+        var src = src_list[i];
       if(src.includes("jpg")){
-        src = "static/jsonData/pics/pics/jpg/"+src;
+        src_list[i] = "static/jsonData/pics/pics/jpg/"+src;
       }
       else if (src.includes("png")){
-        src = "static/jsonData/pics/pics/png/"+src;
+        src_list[i] = "static/jsonData/pics/pics/png/"+src;
       }
-      console.log(src);
-      var image_container = document.getElementById("image_container");
+      }
+      // console.log(src);
+      var image_container = document.getElementById("imagelist");
       var imagegroup = document.getElementById("imagegroup");
-      if (src != "") {
-      image_container.innerHTML = "<img  id = 'actual' src=" + src +" style='height:auto; width:"+(imagegroup.offsetWidth*0.95).toString()+"px!important; border-radius:25px;'>";
-    } else {
-      var temp_src = "static/img/notfound.png";
-      image_container.innerHTML = "<img  id='actual' src=" + temp_src +" style='height:auto; width:"+(imagegroup.offsetWidth*0.95).toString()+"px!important; border-radius:25px;'>";
+      var image_container_html = "";
+      if (src_list.length != 0) {
+        for (var i = 0; i < src_list.length; i++) {
+          var src = src_list[i];
+          if (i == 0) {
+            if (src=="N/A_IMG") {
+              src = "static/img/notfound.png";
+              image_container_html += "<img class='mySlides'  id = 'actual' src=" + src +" style='height:auto; width:"+(imagegroup.offsetWidth*0.95).toString()+"px!important; border-radius:25px;'>";
+            } else {
+      image_container_html += "<img class='mySlides'  id = 'actual' src=" + src +" style='height:auto; width:"+(imagegroup.offsetWidth*0.95).toString()+"px!important; border-radius:25px;'>";
     }
-      var explain = document.getElementById("explain");
-      if (src.length != 0) {
-        explain.innerHTML = "<h3>Relevant Image</h3><p>This image is selected based on selections of user.</p>";
       } else {
-        explain.innerHTML = "<h3>No Relevant Image Found</h3><p></p>";
+      image_container_html += "<img class='mySlides'  id = 'actual' src=" + src +" style='height:auto; display:none;width:"+(imagegroup.offsetWidth*0.95).toString()+"px!important; border-radius:25px;'>";
       }
-      var actual = document.getElementById("actual");
-      var overlay = document.getElementById("overlay");
-      overlay.style.width = actual.offsetWidth.toString() + "px";
-      var search = document.getElementById("search");
-      search.value= "";
 
+      }
+      } else {
+      var temp_src = "static/img/notfound.png";
+      image_container_html += "<img  id='actual' src=" + temp_src +" style='height:auto; width:"+(imagegroup.offsetWidth*0.95).toString()+"px!important; border-radius:25px;'>";
+      }
+      image_container.innerHTML = image_container_html;
 
+      var button1 = document.getElementById("button1");
+      var button2 = document.getElementById("button2");
+      if (src_list.length >= 2) {
+        button1.style.visibility = "visible";
+        button2.style.visibility="visible";
+      } else {
+        button1.style.visibility = "hidden";
+        button2.style.visibility="hidden";
+      }
 
       var input_time = document.getElementById("monthText").innerHTML;
       var all_ids = ["politics", "military","economic","politics.justice", "politics.election", "politics.international_relation", "politics.governance","economic.trade", "economic.finance", "economic.tax", "economic.welfare","military.combat", "military.weapons", "military.terrorism", "military.ceasefire"];
@@ -1445,8 +1475,8 @@ font-style: italic;
                       <!-- </div> -->
                       <!-- Card Body -->
 
-                      <div class="card-body" style="margin:0 auto; height:200px;"  style="overflow:hidden; position: relative;">
-                          <ul class="list-group list-group-flush" style=" overflow-x:hidden!important; overflow-y: auto; height:200px;" id="paperdetail">
+                      <div class="card-body" style="margin:0 auto; height:150px;"  style="overflow:hidden; position: relative;">
+                          <ul class="list-group list-group-flush" style=" overflow-x:hidden!important; overflow-y: auto; height:150px;" id="paperdetail">
 
                           </ul>
                       </div>
@@ -1476,20 +1506,76 @@ font-style: italic;
                     <div class="col-lg-6" id=imagecontain>
 
                             <div class="importantcontent" style="margin: 0 auto; " id="imagegroup">
-                              <div>
-                                <div id="overlay" class="content-overlay" style="border-radius: 25px;"></div>
-                                <div id="image_container">
+                              <!-- <div> -->
+                                <!-- <div id="overlay" class="content-overlay" style="border-radius: 25px;"></div> -->
+                                <!-- <div id="image_container"> -->
 
-                              </div>
-                                <div class="content-details" id="explain">
 
-                                </div>
-                              </div>
+                                <div class="w3-content w3-display-container">
+                                  <div id="imagelist">
+  <!-- <img class="mySlides" src="{% static 'img/back.jpg' %}">
+  <img class="mySlides" src="{% static 'updatetemplate/img/header-bg.jpg' %}">
+  <img class="mySlides" src="{% static 'img/back.jpg' %}"> -->
+  </div>
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+                              <!-- </div> -->
+                                <!-- <div class="content-details" id="explain" style="display:none;">
+
+                                </div> -->
+                              <!-- </div> -->
 
 
                             </div>
 
                           </div>
+                          <script type="text/javascript">
+                            var image_group = document.getElementById("imagegroup");
+                            var width_of = document.getElementById("width_of");
+                            // var button2 = document.getElementById("button2");
+                            // var button1 = document.getElementById("button1");
+                            // button2.style.marginLeft=(image_group.offsetWidth*0.48).toString() + "px";
+                            // button1.style.marginLeft=(image_group.offsetWidth*0.4).toString() + "px";
+                            // width_of.style.width = (image_group.offsetWidth).toString() + "px";
+                            var slideIndex = 1;
+                            showDivs(slideIndex);
+
+                            function plusDivs(n) {
+                              showDivs(slideIndex += n);
+                            }
+
+                            function currentDiv(n) {
+                              showDivs(slideIndex = n);
+                            }
+
+                            function showDivs(n) {
+                              var i;
+                              var x = document.getElementsByClassName("mySlides");
+                              // var dots = document.getElementsByClassName("demo");
+                              if (n > x.length) {slideIndex = 1}
+                              if (n < 1) {slideIndex = x.length}
+                              for (i = 0; i < x.length; i++) {
+                                x[i].style.display = "none";
+                              }
+                              // for (i = 0; i < dots.length; i++) {
+                              //   dots[i].className = dots[i].className.replace(" w3-white", "");
+                              // }
+                              x[slideIndex-1].style.display = "block";
+                              // dots[slideIndex-1].className += " w3-white";
+                            }
+                          </script>
+
                           <!-- <script type="text/javascript">
                             var imagecontain = document.getElementById("imagecontain");
                             var group = document.getElementById("piechartgroup").offsetWidth;
@@ -1504,13 +1590,22 @@ font-style: italic;
                             <!-- Card Body -->
 
                             <div style="margin:0 auto; height:550px;"  style="overflow:hidden; position: relative;border: solid #000; border-width: 0 1px;">
-                                <ul class="list-group list-group-flush" style="margin-top:10px!important;overflow-x:hidden!important; overflow-y: auto; height:520px; list-style: none!important;" id="keywords">
+                                <ul class="list-group list-group-flush" style="margin-top:10px!important;overflow-x:hidden!important; overflow-y: auto; height:470px; list-style: none!important;" id="keywords">
   4
                                 </ul>
                             </div>
                           </div>
                         </div>
-
+                        <div class="col-lg-6 row"  style="text-align:center;" id="width_of">
+                          <!-- <div class="w3-left w3-hover-text-khaki navbar-brand" onclick="plusDivs(-1)" id="button1" style="font-size:35px; float:left;">&#10094;</div>
+                          <div class="w3-right w3-hover-text-khaki navbar-brand" onclick="plusDivs(1)" id="button2" style="font-size:35px; float:right;">&#10095;</div> -->
+                          <button  style="display:inline-block;background-color:#BD5D38;" class="btn btn-primary text-uppercase js-scroll-trigger" onclick="plusDivs(-1)" id="button1">&#10094; Prev</button>
+                        <button style="display:inline-block;background-color:#BD5D38;" class="btn btn-primary text-uppercase js-scroll-trigger" onclick="plusDivs(1)" id="button2">Next &#10095;</button>
+                        <!--
+                          <span class="w3-badge demo w3-border w3-transparent w3-hover-white" onclick="currentDiv(1)"></span>
+                          <span class="w3-badge demo w3-border w3-transparent w3-hover-white" onclick="currentDiv(2)"></span>
+                          <span class="w3-badge demo w3-border w3-transparent w3-hover-white" onclick="currentDiv(3)"></span> -->
+                        </div>
 
 
 </div>
